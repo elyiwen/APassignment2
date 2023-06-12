@@ -29,9 +29,8 @@ public class Admin implements Serializable{
     }
 
     public void displayAdmin(){
-        System.out.println("Admin ID: " + getAdminID());
-        System.out.println("Admin Password: " + getPassword());
-        System.out.println(" ");
+        String msg = "Admin ID: " + getAdminID() + "\n" + "Admin Password: " + getPassword();
+        JOptionPane.showMessageDialog(new JFrame(), msg, "NOTIFICATION", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static void displayAdminList(){

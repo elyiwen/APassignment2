@@ -43,7 +43,7 @@ public class LoginSceneController {
     
 
     @FXML
-    public void btnAdminClicked(ActionEvent e){
+    public void btnAdminClicked(ActionEvent e){   // temporary
         Admin.createAdminFile();
         new Admin("admin", "123");
         Admin.writeAdminRecord();
