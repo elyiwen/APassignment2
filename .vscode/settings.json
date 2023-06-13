@@ -1,4 +1,6 @@
 {
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin"  ,
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\fontawesomefx-8.2.jar",
