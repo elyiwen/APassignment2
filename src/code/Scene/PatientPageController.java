@@ -12,7 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class PatientPageController{
+public class PatientPageController {
 
     @FXML
     private Button btnAddPatient;
@@ -22,6 +22,9 @@ public class PatientPageController{
 
     @FXML
     public TableView<Patient> tableView;
+
+    @FXML
+    private Button btnRefresh;
 
     @FXML
     public TableColumn<Patient, String> tcPatientID;
@@ -39,5 +42,9 @@ public class PatientPageController{
         stage.setTitle("Patient Registration Form");
         stage.setScene(scene);
         stage.show();
+    }
+    @FXML
+    void btnRefreshClicked(ActionEvent event) {
+        
     }
 }

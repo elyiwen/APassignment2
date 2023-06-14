@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
@@ -22,9 +21,6 @@ public class PatientRegistrationFormController{
 
     @FXML
     private Button btnRegister;
-
-    @FXML
-    private TableView<Patient> tableView;
 
     @FXML
     void btnRegisterClicked(ActionEvent event) throws IOException {

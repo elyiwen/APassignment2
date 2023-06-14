@@ -53,7 +53,7 @@ public class MainSceneController {
 
     @FXML
     void btnScheduleClicked(ActionEvent event) throws IOException {
-        loadPage("SchedulePage");
+        loadPage("Calendar");   
     }
 
     public void loadPage(String page) throws IOException{

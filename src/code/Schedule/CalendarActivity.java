@@ -1,4 +1,4 @@
-package code.Scene;
+package code.Schedule;
 
 import java.time.ZonedDateTime;
 

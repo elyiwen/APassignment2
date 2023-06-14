@@ -24,5 +24,6 @@
           <TableColumn fx:id="tcPatientName" prefWidth="172.7999725341797" text="Patient Name" />
         </columns>
       </TableView>
+      <Button fx:id="btnRefresh" layoutX="1482.0" layoutY="661.0" mnemonicParsing="false" onAction="#btnRefreshClicked" text="Refresh" />
    </children>
 </AnchorPane>
