@@ -10,12 +10,6 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.Scene.PatientPageController">
    <children>
       <Button layoutX="1485.0" layoutY="14.0" mnemonicParsing="false" text="X" />
-      <TableView prefHeight="57.0" prefWidth="1550.0">
-        <columns>
-          <TableColumn prefWidth="127.99996644258499" text="Patient ID" />
-          <TableColumn prefWidth="172.7999725341797" text="Patient Name" />
-        </columns>
-      </TableView>
       <Button fx:id="btnAddPatient" layoutX="757.0" layoutY="58.0" mnemonicParsing="false" onAction="#btnAddPatientClicked">
          <graphic>
             <FontAwesomeIcon glyphName="PLUS" size="20" />
@@ -24,6 +18,11 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnDisplay" layoutX="717.0" layoutY="115.0" mnemonicParsing="false" onAction="#btnDisplayClicked" text="Display Patient List" />
+      <TableView fx:id="tableView" prefHeight="57.0" prefWidth="1550.0">
+        <columns>
+          <TableColumn fx:id="tcPatientID" prefWidth="127.99996644258499" text="Patient ID" />
+          <TableColumn fx:id="tcPatientName" prefWidth="172.7999725341797" text="Patient Name" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

@@ -2,6 +2,8 @@ package code.Patient;
 
 import java.util.ArrayList;
 
+import javafx.collections.ObservableArray;
+
 public class Patient{
     
     // Biodata
@@ -26,6 +28,8 @@ public class Patient{
 
     //Patient List
     private static ArrayList<Patient> patientList = new ArrayList<>();
+    private static ArrayList<Patient> patientListTmp = new ArrayList<>(); 
+
 
     public Patient(String patientID, String patientName){
         this.patientID = patientID;
@@ -56,5 +60,8 @@ public class Patient{
     }
     public static ArrayList<Patient> getPatientList(){
         return patientList;
+    }
+    public static ArrayList<Patient> getPatientListTmp(){
+        return patientListTmp;
     }
 }

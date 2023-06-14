@@ -1,7 +1,6 @@
 package code.Scene;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import code.Patient.Patient;
 import javafx.event.ActionEvent;
@@ -9,10 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class PatientRegistrationFormController {
+public class PatientRegistrationFormController{
 
     @FXML
     private TextField tfPatientID;
@@ -23,7 +23,8 @@ public class PatientRegistrationFormController {
     @FXML
     private Button btnRegister;
 
-    private static ArrayList<Patient> patientList = Patient.getPatientList();
+    @FXML
+    private TableView<Patient> tableView;
 
     @FXML
     void btnRegisterClicked(ActionEvent event) throws IOException {
@@ -41,7 +42,7 @@ public class PatientRegistrationFormController {
             alertExit.setTitle("ALERT");
 
             if(alertExit.showAndWait().get() == ButtonType.YES){
-                new Patient(patientID, patientName);
+                Patient newPatient = new Patient(patientID, patientName);
                 PatientPageController.stage.close();
             }
         }
