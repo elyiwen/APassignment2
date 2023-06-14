@@ -58,7 +58,6 @@
                      </image>
                   </ImageView>
                   <Button fx:id="btnLogIn" layoutX="264.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnLogInClicked" text="Log In" />
-                  <Button fx:id="btnAdmin" layoutX="53.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnAdminClicked" text="Admin" />
                </children>
             </AnchorPane>
          </right>

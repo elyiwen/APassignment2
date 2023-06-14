@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.Scene.PatientRegistrationFormController">
+   <children>
+      <ScrollPane prefHeight="700.0" prefWidth="800.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="885.0" prefWidth="1160.0">
+               <children>
+                  <Label layoutX="57.0" layoutY="71.0" text="Patient ID" />
+                  <Label layoutX="57.0" layoutY="109.0" text="Patient Name" />
+                  <TextField fx:id="tfPatientID" layoutX="171.0" layoutY="67.0" prefHeight="26.0" prefWidth="205.0" />
+                  <TextField fx:id="tfPatientName" layoutX="171.0" layoutY="105.0" prefHeight="26.0" prefWidth="206.0" />
+                  <Button fx:id="btnRegister" layoutX="327.0" layoutY="168.0" mnemonicParsing="false" onAction="#btnRegisterClicked" text="Register Patient" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
