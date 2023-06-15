@@ -15,8 +15,7 @@
           <TableColumn fx:id="tcPatientName" prefWidth="172.7999725341797" text="Patient Name" />
         </columns>
       </TableView>
-      <Button layoutX="1498.0" layoutY="14.0" mnemonicParsing="false" text="X" />
-      <Button fx:id="btnAddPatient" layoutX="1441.0" layoutY="12.0" mnemonicParsing="false" onAction="#btnAddPatientClicked">
+      <Button fx:id="btnAddPatient" layoutX="1487.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnAddPatientClicked">
          <graphic>
             <FontAwesomeIcon glyphName="PLUS" size="20" />
          </graphic>
@@ -24,6 +23,5 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnRefresh" layoutX="1362.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnRefreshClicked" text="Refresh" />
    </children>
 </AnchorPane>

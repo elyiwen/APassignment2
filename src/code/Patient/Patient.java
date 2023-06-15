@@ -1,8 +1,15 @@
 package code.Patient;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Patient{
+public class Patient implements Serializable{
     
     // Biodata
     private String patientID;
@@ -25,10 +32,11 @@ public class Patient{
     // private String patientEmail;
 
     //Patient List
-    private static ArrayList<Patient> patientList = new ArrayList<>(); 
+    private static File patientFile = new File("patient.json");
+    private static ArrayList<Patient> patientList = new ArrayList<>();
+    private static ArrayList<Patient> patientListRead = new ArrayList<>();
 
-
-    public Patient(String patientID, String patientName){
+    public Patient(String patientID, String patientName) throws IOException{
         this.patientID = patientID;
         this.patientName = patientName;
         patientList.add(this);
@@ -38,15 +46,23 @@ public class Patient{
 
     }
 
-    public void displayPatient(){
-        System.out.println("Patient ID: " + patientID);
-        System.out.println("Patient Name: " + patientName);
+    public static void writeRecord() throws IOException{
+        FileOutputStream fos = new FileOutputStream(patientFile);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        for(Patient patient: patientList){
+            oos.writeObject(patient);
+        }
+       oos.close();
     }
 
-    public static void displayPatientList(){
-        for (Patient p : patientList){
-            p.displayPatient();
+    public static void readRecord() throws IOException, ClassNotFoundException{
+        FileInputStream fis = new FileInputStream(patientFile);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        while(fis.available() > 0){
+            Patient patient = (Patient)ois.readObject();
+            patientListRead.add(patient);
         }
+        ois.close();
     }
 
     public String getPatientID(){
@@ -55,7 +71,13 @@ public class Patient{
     public String getPatientName(){
         return patientName;
     }
+    public static File getPatientFile(){
+        return patientFile;
+    }
     public static ArrayList<Patient> getPatientList(){
         return patientList;
+    }
+    public static ArrayList<Patient> getPatientListRead(){
+        return patientListRead;
     }
 }

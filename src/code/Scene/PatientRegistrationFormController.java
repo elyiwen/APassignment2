@@ -1,7 +1,6 @@
 package code.Scene;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import code.Patient.Patient;
 import javafx.event.ActionEvent;
@@ -25,8 +24,6 @@ public class PatientRegistrationFormController{
     @FXML
     private Button btnRegister;
 
-    private static ArrayList<Patient> newPatientList = new ArrayList<Patient>();
-
     @FXML
     void btnRegisterClicked(ActionEvent event) throws IOException {
         String patientID = tfPatientID.getText();
@@ -43,14 +40,11 @@ public class PatientRegistrationFormController{
             alertExit.setTitle("ALERT");
 
             if(alertExit.showAndWait().get() == ButtonType.YES){
-                Patient newPatient = new Patient(patientID, patientName);
-                newPatientList.add(newPatient);
+                new Patient(patientID, patientName);
+                Patient.writeRecord();
                 PatientPageController.sceneRegistrationForm = new Scene(FXMLLoader.load(getClass().getResource("PatientRegistrationForm.fxml")));
                 PatientPageController.stageRegistrationForm.setScene(PatientPageController.sceneRegistrationForm);
             }
         }
-    }
-    public static ArrayList<Patient> getNewPatientList(){
-        return newPatientList;
     }
 }

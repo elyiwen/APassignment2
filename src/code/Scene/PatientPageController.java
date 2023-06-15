@@ -1,8 +1,9 @@
 package code.Scene;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import code.Patient.Patient;
@@ -24,13 +25,7 @@ public class PatientPageController implements Initializable{
     private Button btnAddPatient;
 
     @FXML
-    private Button btnDisplay;
-
-    @FXML
     public TableView<Patient> tableView;
-
-    @FXML
-    private Button btnRefresh;
 
     @FXML
     public TableColumn<Patient, String> tcPatientID;
@@ -49,25 +44,22 @@ public class PatientPageController implements Initializable{
         stageRegistrationForm.setScene(sceneRegistrationForm);
         stageRegistrationForm.show();
     }
-    @FXML
-    void btnRefreshClicked(ActionEvent event) {
-        ObservableList<Patient> patientListTableView = tableView.getItems();
-        ArrayList<Patient> newPatientListTmp = PatientRegistrationFormController.getNewPatientList();
-        for(Patient newPatient : newPatientListTmp){
-            patientListTableView.add(newPatient);
-        }
-        newPatientListTmp.clear();
-        tableView.setItems(patientListTableView);
-    }
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<Patient> patientListTableViewTmp = tableView.getItems();
-        ArrayList<Patient> patientList = Patient.getPatientList();
-        for(Patient patient : patientList){
-            patientListTableViewTmp.add(patient);
+    public void initialize(URL location, ResourceBundle resources) { 
+        try {
+            Patient.readRecord();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("No Record Found");
         }
-        tableView.setItems(patientListTableViewTmp);
-        
+        ObservableList<Patient> patientListTableView = tableView.getItems();
+        patientListTableView.clear();
+        for (Patient patient : Patient.getPatientListRead()){
+            patientListTableView.add(patient);
+        }
+        tableView.setItems(patientListTableView);
+        Patient.getPatientListRead().clear();
         tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
         tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
     }
