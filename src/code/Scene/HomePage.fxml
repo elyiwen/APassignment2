@@ -93,20 +93,22 @@
                <children>
                   <VBox prefHeight="192.0" prefWidth="302.0">
                      <children>
-                        <Label prefHeight="34.0" prefWidth="302.0" style="-fx-background-color: #0794A3;" text="Today's Appointment" textFill="WHITE">
-                           <padding>
-                              <Insets left="60.0" />
-                           </padding>
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIcon glyphName="PHONE" />
-                           </graphic>
-                        </Label>
                         <ScrollPane prefHeight="192.0" prefWidth="302.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="191.0" prefWidth="318.0" />
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="191.0" prefWidth="318.0">
+                                 <children>
+                                    <Label prefHeight="34.0" prefWidth="302.0" style="-fx-background-color: #0794A3;" text="Today's Appointment" textFill="WHITE">
+                                       <padding>
+                                          <Insets left="60.0" />
+                                       </padding>
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <graphic>
+                                          <FontAwesomeIcon glyphName="PHONE" />
+                                       </graphic>
+                                    </Label>
+                                 </children></AnchorPane>
                           </content>
                         </ScrollPane>
                      </children>
