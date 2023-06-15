@@ -2,7 +2,7 @@ package code.Patient;
 
 public class Candidate{
     
-    private String status;
+    // private String status;
 
     public Candidate(){
         

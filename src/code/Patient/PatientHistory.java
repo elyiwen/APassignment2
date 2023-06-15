@@ -2,7 +2,7 @@ package code.Patient;
 
 public class PatientHistory{
     
-    private String historyID;
+    // private String historyID;
 
     public PatientHistory(){
 

@@ -2,6 +2,6 @@ package code.Patient;
 
 public class Inpatient{
     
-    private String wardNo;
-    private String assignedDep;
+    // private String wardNo;
+    // private String assignedDep;
 }
