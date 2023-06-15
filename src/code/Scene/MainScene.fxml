@@ -15,140 +15,137 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.Scene.MainSceneController">
    <children>
-      <BorderPane fx:id="borderPane" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <HBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="1547.0" style="-fx-background-color: #0794A3;" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fitHeight="69.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                     <image>
-                        <Image url="@/resourceImg/EMRLogoS.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                     <image>
-                        <Image url="@/resourceImg/SettingLogo.png" />
-                     </image>
-                  </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Setting" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="10.0" right="20.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-                  <TextField promptText="Search" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #0794A3;">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="SEARCH" size="20" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnHome" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnHomeClicked" prefHeight="53.0" prefWidth="91.0" style="-fx-background-color: #0794A3;" text="Home" textFill="WHITE" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="40.0" right="30.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="HOME" size="30" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnSchedule" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnScheduleClicked" prefHeight="75.0" prefWidth="102.0" style="-fx-background-color: #0794A3;" text="Schedule" textFill="WHITE" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="-10.0" right="30.0" />
-                     </HBox.margin>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="TABLE" size="30" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnDoc" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnDocClicked" prefHeight="75.0" prefWidth="111.0" style="-fx-background-color: #0794A3;" text="Document" textFill="WHITE" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="-10.0" right="30.0" />
-                     </HBox.margin>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="BOOK" size="30" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnPatient" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnPatientClicked" prefHeight="75.0" prefWidth="111.0" style="-fx-background-color: #0794A3;" text="PatientList" textFill="WHITE" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="-10.0" right="30.0" />
-                     </HBox.margin>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="USERS" size="30" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAdmin" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnAdminClicked" prefHeight="75.0" prefWidth="111.0" style="-fx-background-color: #0794A3;" text="Admin" textFill="WHITE" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="KEY" size="30" />
-                     </graphic>
-                     <HBox.margin>
-                        <Insets left="-10.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Label prefHeight="30.0" prefWidth="57.0" text="06:57" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="50.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="30.0" prefWidth="118.0" text="23/05/2023" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="60.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="33.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="30.0" />
-                     </HBox.margin>
-                     <image>
-                        <Image url="@/resourceImg/DoctorIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="75.0" prefWidth="82.0" style="-fx-background-color: #0794A3;" text="Profile" textFill="WHITE" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Button>
-               </children>
-               <opaqueInsets>
+      <BorderPane fx:id="borderPane" layoutX="35.0" layoutY="125.0" prefHeight="655.0" prefWidth="1465.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="125.0" />
+      <HBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="1547.0" style="-fx-background-color: #0794A3;">
+         <children>
+            <ImageView fitHeight="69.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <image>
+                  <Image url="@/resourceImg/EMRLogoS.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="36.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@/resourceImg/SettingLogo.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Setting" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="10.0" right="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField promptText="Search" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" style="-fx-background-color: #0794A3;">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontAwesomeIcon glyphName="SEARCH" size="20" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnHome" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnHomeClicked" prefHeight="53.0" prefWidth="91.0" style="-fx-background-color: #0794A3;" text="Home" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="40.0" right="30.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon glyphName="HOME" size="30" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnSchedule" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnScheduleClicked" prefHeight="75.0" prefWidth="102.0" style="-fx-background-color: #0794A3;" text="Schedule" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="-10.0" right="30.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontAwesomeIcon glyphName="TABLE" size="30" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnDoc" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnDocClicked" prefHeight="75.0" prefWidth="111.0" style="-fx-background-color: #0794A3;" text="Document" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="-10.0" right="30.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontAwesomeIcon glyphName="BOOK" size="30" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnPatient" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnPatientClicked" prefHeight="75.0" prefWidth="111.0" style="-fx-background-color: #0794A3;" text="PatientList" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="-10.0" right="30.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontAwesomeIcon glyphName="USERS" size="30" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnAdmin" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnAdminClicked" prefHeight="75.0" prefWidth="111.0" style="-fx-background-color: #0794A3;" text="Admin" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon glyphName="KEY" size="30" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="-10.0" />
+               </HBox.margin>
+            </Button>
+            <Label prefHeight="30.0" prefWidth="57.0" text="06:57" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="118.0" text="23/05/2023" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="60.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="33.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@/resourceImg/DoctorIcon.png" />
+               </image>
+            </ImageView>
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="75.0" prefWidth="82.0" style="-fx-background-color: #0794A3;" text="Profile" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
                   <Insets />
-               </opaqueInsets>
-            </HBox>
-         </top>
-      </BorderPane>
+               </HBox.margin>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
    </children>
 </AnchorPane>
