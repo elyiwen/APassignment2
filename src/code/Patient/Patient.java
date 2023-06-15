@@ -27,8 +27,7 @@ public class Patient{
     private String patientEmail;
 
     //Patient List
-    private static ArrayList<Patient> patientList = new ArrayList<>();
-    private static ArrayList<Patient> patientListTmp = new ArrayList<>(); 
+    private static ArrayList<Patient> patientList = new ArrayList<>(); 
 
 
     public Patient(String patientID, String patientName){
@@ -60,8 +59,5 @@ public class Patient{
     }
     public static ArrayList<Patient> getPatientList(){
         return patientList;
-    }
-    public static ArrayList<Patient> getPatientListTmp(){
-        return patientListTmp;
     }
 }

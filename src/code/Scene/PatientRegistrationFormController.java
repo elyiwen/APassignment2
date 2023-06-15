@@ -26,7 +26,9 @@ public class PatientRegistrationFormController{
     private Button btnRegister;
 
     private static Patient newPatient;
+
     private static ArrayList<Patient> newPatientList = new ArrayList<Patient>();
+    private static ArrayList<Patient> patientList = Patient.getPatientList();
 
     @FXML
     void btnRegisterClicked(ActionEvent event) throws IOException {

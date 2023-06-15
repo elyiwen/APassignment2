@@ -55,13 +55,19 @@ public class PatientPageController implements Initializable{
         ArrayList<Patient> newPatientListTmp = PatientRegistrationFormController.getNewPatientList();
         for(Patient newPatient : newPatientListTmp){
             patientListTableView.add(newPatient);
-
         }
         newPatientListTmp.clear();
         tableView.setItems(patientListTableView);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<Patient> patientListTableViewTmp = tableView.getItems();
+        ArrayList<Patient> patientList = Patient.getPatientList();
+        for(Patient patient : patientList){
+            patientListTableViewTmp.add(patient);
+        }
+        tableView.setItems(patientListTableViewTmp);
+        
         tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
         tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
     }
