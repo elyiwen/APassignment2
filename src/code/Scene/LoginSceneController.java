@@ -15,9 +15,6 @@ import javafx.stage.Stage;
 public class LoginSceneController {
 
     @FXML
-    private Button btnAdmin;
-
-    @FXML
     private Button btnLogIn;
 
     @FXML

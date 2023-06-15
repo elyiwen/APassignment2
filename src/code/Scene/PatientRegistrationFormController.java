@@ -25,10 +25,7 @@ public class PatientRegistrationFormController{
     @FXML
     private Button btnRegister;
 
-    private static Patient newPatient;
-
     private static ArrayList<Patient> newPatientList = new ArrayList<Patient>();
-    private static ArrayList<Patient> patientList = Patient.getPatientList();
 
     @FXML
     void btnRegisterClicked(ActionEvent event) throws IOException {
@@ -47,18 +44,11 @@ public class PatientRegistrationFormController{
 
             if(alertExit.showAndWait().get() == ButtonType.YES){
                 Patient newPatient = new Patient(patientID, patientName);
-                setNewPatient(newPatient);
                 newPatientList.add(newPatient);
-                PatientPageController.scene = new Scene(FXMLLoader.load(getClass().getResource("PatientRegistrationForm.fxml")));
-                PatientPageController.stage.setScene(PatientPageController.scene);
+                PatientPageController.sceneRegistrationForm = new Scene(FXMLLoader.load(getClass().getResource("PatientRegistrationForm.fxml")));
+                PatientPageController.stageRegistrationForm.setScene(PatientPageController.sceneRegistrationForm);
             }
         }
-    }
-    public void setNewPatient(Patient newPatient){
-        PatientRegistrationFormController.newPatient = newPatient;
-    }
-    public static Patient getNewPatient(){
-        return newPatient;
     }
     public static ArrayList<Patient> getNewPatientList(){
         return newPatientList;

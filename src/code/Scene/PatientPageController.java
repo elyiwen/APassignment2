@@ -38,16 +38,16 @@ public class PatientPageController implements Initializable{
     @FXML
     public TableColumn<Patient, String> tcPatientName;
 
-    public static Stage stage;
-    public static Scene scene;
+    public static Stage stageRegistrationForm;
+    public static Scene sceneRegistrationForm;
 
     @FXML
     void btnAddPatientClicked(ActionEvent event) throws IOException {
-        stage = new Stage();
-        scene = new Scene(FXMLLoader.load(getClass().getResource("PatientRegistrationForm.fxml")));
-        stage.setTitle("Patient Registration Form");
-        stage.setScene(scene);
-        stage.show();
+        stageRegistrationForm = new Stage();
+        sceneRegistrationForm = new Scene(FXMLLoader.load(getClass().getResource("PatientRegistrationForm.fxml")));
+        stageRegistrationForm.setTitle("Patient Registration Form");
+        stageRegistrationForm.setScene(sceneRegistrationForm);
+        stageRegistrationForm.show();
     }
     @FXML
     void btnRefreshClicked(ActionEvent event) {
