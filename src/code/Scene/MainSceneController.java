@@ -5,7 +5,6 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -34,33 +33,46 @@ public class MainSceneController {
 
     @FXML
     void btnAdminClicked(ActionEvent event) throws IOException {
+        refreshPane();
         Parent root = FXMLLoader.load(getClass().getResource("AdminPage" + ".fxml")); 
         borderPane.setCenter(root);
     }
 
     @FXML
     void btnDocClicked(ActionEvent event) throws IOException {
+        refreshPane();
         Parent root = FXMLLoader.load(getClass().getResource("DocPage" + ".fxml"));
         borderPane.setCenter(root); 
     }
 
     @FXML
     void btnHomeClicked(ActionEvent event) throws IOException {
+        refreshPane();
         Parent root = FXMLLoader.load(getClass().getResource("HomePage" + ".fxml")); 
         borderPane.setCenter(root);
     }
 
     @FXML
     void btnPatientClicked(ActionEvent event) throws IOException {
+        refreshPane();
         Parent root = FXMLLoader.load(getClass().getResource("PatientPage" + ".fxml"));
         borderPane.setCenter(root); 
     }
 
     @FXML
     void btnScheduleClicked(ActionEvent event) throws IOException {
+        refreshPane();
         Parent root1 = FXMLLoader.load(getClass().getResource("Calendar" + ".fxml")); 
         Parent root2 = FXMLLoader.load(getClass().getResource("Appointment" + ".fxml")); 
         borderPane.setLeft(root1);
         borderPane.setCenter(root2);
+    }
+
+    public void refreshPane(){
+        borderPane.setCenter(null);
+        borderPane.setRight(null);
+        borderPane.setTop(null);
+        borderPane.setLeft(null);
+        borderPane.setBottom(null);
     }
 }
