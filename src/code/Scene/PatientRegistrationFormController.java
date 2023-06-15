@@ -41,7 +41,6 @@ public class PatientRegistrationFormController{
 
             if(alertExit.showAndWait().get() == ButtonType.YES){
                 new Patient(patientID, patientName);
-                Patient.writeRecord();
                 PatientPageController.sceneRegistrationForm = new Scene(FXMLLoader.load(getClass().getResource("PatientRegistrationForm.fxml")));
                 PatientPageController.stageRegistrationForm.setScene(PatientPageController.sceneRegistrationForm);
             }

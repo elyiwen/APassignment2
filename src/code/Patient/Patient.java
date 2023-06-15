@@ -40,26 +40,23 @@ public class Patient implements Serializable{
         this.patientID = patientID;
         this.patientName = patientName;
         patientList.add(this);
+        writeRecord(this);
     }
 
     public void calAge(){
 
     }
 
-    public static void writeRecord() throws IOException{
+    public static void writeRecord(Patient patient) throws IOException{
         FileOutputStream fos = new FileOutputStream(patientFile, true);
         if(patientFile.length() == 0){
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            for(Patient patient: patientList){
-                oos.writeObject(patient);
-            }
+            oos.writeObject(patient);
             oos.close();
         }
         else{
             AppendingObjectOutputStream aoos = new AppendingObjectOutputStream(fos);
-            for(Patient patient: patientList){
-                aoos.writeObject(patient);
-            }
+            aoos.writeObject(patient);
             aoos.close();
         }
     }
