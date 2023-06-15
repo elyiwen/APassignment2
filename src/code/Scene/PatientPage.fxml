@@ -2,20 +2,15 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.Scene.PatientPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="1415.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.Scene.PatientPageController">
    <children>
-      <TableView fx:id="tableView" layoutY="42.0" prefHeight="870.0" prefWidth="1550.0">
-        <columns>
-          <TableColumn fx:id="tcPatientID" prefWidth="127.99996644258499" text="Patient ID" />
-          <TableColumn fx:id="tcPatientName" prefWidth="172.7999725341797" text="Patient Name" />
-        </columns>
-      </TableView>
-      <Button fx:id="btnAddPatient" layoutX="1487.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnAddPatientClicked">
+      <Button fx:id="btnAddPatient" layoutX="1252.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnAddPatientClicked" text="Add Patient">
          <graphic>
             <FontAwesomeIcon glyphName="PLUS" size="20" />
          </graphic>
@@ -23,5 +18,19 @@
             <Font size="15.0" />
          </font>
       </Button>
+      <ScrollPane layoutY="57.0" prefHeight="528.0" prefWidth="1414.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1100.0" prefWidth="1550.0">
+               <children>
+                  <TableView fx:id="tableView" prefHeight="546.0" prefWidth="1416.0">
+                    <columns>
+                      <TableColumn fx:id="tcPatientID" prefWidth="127.99996644258499" text="Patient ID" />
+                      <TableColumn fx:id="tcPatientName" prefWidth="172.7999725341797" text="Patient Name" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
