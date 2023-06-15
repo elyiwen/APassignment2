@@ -47,13 +47,23 @@ public class Patient implements Serializable{
     }
 
     public static void writeRecord() throws IOException{
-        FileOutputStream fos = new FileOutputStream(patientFile);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        for(Patient patient: patientList){
-            oos.writeObject(patient);
+        FileOutputStream fos = new FileOutputStream(patientFile, true);
+        if(patientFile.length() == 0){
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            for(Patient patient: patientList){
+                oos.writeObject(patient);
+            }
+            oos.close();
         }
-       oos.close();
+        else{
+            AppendingObjectOutputStream aoos = new AppendingObjectOutputStream(fos);
+            for(Patient patient: patientList){
+                aoos.writeObject(patient);
+            }
+            aoos.close();
+        }
     }
+    
 
     public static void readRecord() throws IOException, ClassNotFoundException{
         FileInputStream fis = new FileInputStream(patientFile);
