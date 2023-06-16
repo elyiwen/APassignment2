@@ -21,9 +21,8 @@ public class AppointmentController {
     private DatePicker datePicker;
 
     @FXML
-    private ComboBox<String> timeComboBox;  // Changed to a ComboBox
+    private ComboBox<String> timeComboBox;
 
-    // Populate the timeComboBox options
     @FXML
     public void initialize() {
         timeComboBox.getItems().addAll("1:00 AM", "2:00 AM", "3:00 AM", "4:00 AM",
@@ -37,7 +36,7 @@ public class AppointmentController {
         String name = nameTextField.getText();
         String id = idTextField.getText();
         String date = datePicker.getValue().toString();
-        String time = timeComboBox.getValue();  // Retrieve selected time from ComboBox
+        String time = timeComboBox.getValue();
 
         String appointmentDetails = "Name: " + name + "\n" +
                 "ID: " + id + "\n" +
