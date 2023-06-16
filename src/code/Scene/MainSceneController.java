@@ -60,13 +60,18 @@ public class MainSceneController {
     }
 
     @FXML
-    void btnScheduleClicked(ActionEvent event) throws IOException {
+    void btnScheduleClicked(ActionEvent event) {
         refreshPane();
-        Parent root1 = FXMLLoader.load(getClass().getResource("Calendar" + ".fxml")); 
-        Parent root2 = FXMLLoader.load(getClass().getResource("Appointment" + ".fxml")); 
-        borderPane.setLeft(root1);
-        borderPane.setCenter(root2);
+        try {
+            Parent root1 = FXMLLoader.load(getClass().getResource("Calendar.fxml"));
+            Parent root2 = FXMLLoader.load(getClass().getResource("Appointment.fxml"));
+            borderPane.setLeft(root1);
+            borderPane.setCenter(root2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public void refreshPane(){
         borderPane.setCenter(null);
