@@ -23,8 +23,11 @@
     <Label text="Time:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
     <ComboBox fx:id="timeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-    <Button onAction="#makeAppointment" text="Make Appointment" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <Button text="Make Appointment" onAction="#makeAppointment" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <Button text="Edit" onAction="#editAppointments" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
     <columnConstraints>
+        <ColumnConstraints />
         <ColumnConstraints />
         <ColumnConstraints />
     </columnConstraints>
@@ -37,4 +40,7 @@
     </rowConstraints>
 
 </GridPane>
+
+
+
 

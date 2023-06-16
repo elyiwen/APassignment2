@@ -206,4 +206,5 @@ public class CalendarController implements Initializable {
 
         return calendarActivityMap;
     }
+
 }

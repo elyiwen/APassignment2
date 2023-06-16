@@ -5,6 +5,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.time.LocalDate;
 
@@ -58,6 +59,14 @@ public class AppointmentController {
         }
     }
 
+    @FXML
+    public void editAppointments() {
+        try {
+            Desktop.getDesktop().edit(new File("appointments.txt"));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error opening appointments file for editing: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
 
 
