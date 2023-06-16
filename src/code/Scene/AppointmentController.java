@@ -47,7 +47,7 @@ public class AppointmentController {
                     "ID: " + id + "\n" +
                     "Time: " + time + "\n";
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/code/Schedule/appointments.txt", true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("appointments.txt", true))) {
                 writer.write(appointmentDetails);
                 JOptionPane.showMessageDialog(null, "Appointment saved successfully.");
             } catch (IOException e) {
