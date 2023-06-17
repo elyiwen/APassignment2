@@ -5,12 +5,13 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="1415.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.Scene.PatientPageController">
    <children>
-      <Button fx:id="btnAddPatient" layoutX="1252.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnAddPatientClicked" text="Add Patient">
+      <Button fx:id="btnAddPatient" layoutX="1256.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnAddPatientClicked" prefHeight="32.0" prefWidth="76.0" text="Add">
          <graphic>
             <FontAwesomeIcon glyphName="PLUS" size="20" />
          </graphic>
@@ -22,15 +23,48 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1100.0" prefWidth="1550.0">
                <children>
-                  <TableView fx:id="tableView" prefHeight="546.0" prefWidth="1416.0">
+                  <TableView fx:id="tableView" prefHeight="1100.0" prefWidth="1550.0">
                     <columns>
-                      <TableColumn fx:id="tcPatientID" prefWidth="127.99996644258499" text="Patient ID" />
-                      <TableColumn fx:id="tcPatientName" prefWidth="172.7999725341797" text="Patient Name" />
+                      <TableColumn fx:id="tcPatientID" prefWidth="139.9999595284462" text="Patient ID" />
+                      <TableColumn fx:id="tcPatientName" prefWidth="179.9999542236328" text="Patient Name" />
+                        <TableColumn prefWidth="175.20001220703125" text="Attending Physician" />
+                        <TableColumn prefWidth="175.19998168945312" text="Contact No" />
+                        <TableColumn prefWidth="221.60003662109375" text="Status" />
+                        <TableColumn prefWidth="122.4000244140625" text="Ward No." />
+                        <TableColumn prefWidth="329.60009765625" text="Lastest Update" />
+                        <TableColumn fx:id="tcView" prefWidth="48.7999267578125" />
                     </columns>
                   </TableView>
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
+      <TextField layoutX="47.0" prefHeight="26.0" prefWidth="166.0" promptText="Search Patient" />
+      <Button fx:id="btnRefresh" layoutX="922.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnRefreshClicked" prefHeight="32.0" prefWidth="76.0" text="Refresh">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnRemove" layoutX="1138.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnRemoveClicked" prefHeight="32.0" prefWidth="96.0" text="Remove">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon glyphName="REMOVE" size="20" />
+         </graphic>
+      </Button>
+      <Button fx:id="btnView" layoutX="1025.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnViewClicked" prefHeight="32.0" prefWidth="90.0" text="View">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon glyphName="EYE" size="20" />
+         </graphic>
+      </Button>
+      <Button layoutX="225.0" layoutY="-1.0" mnemonicParsing="false">
+         <graphic>
+            <FontAwesomeIcon glyphName="SEARCH" size="20" />
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

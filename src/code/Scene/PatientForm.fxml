@@ -1,78 +1,186 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="857.0" style="-fx-background-color: #DFDFDF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <Pane prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #274D62;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="27.0" layoutY="5.0" prefHeight="27.0" prefWidth="179.0" text="Patient Form" textFill="#dfdfdf">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </top>
-   <left>
-      <Pane prefHeight="375.0" prefWidth="108.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER_RIGHT" layoutX="4.0" layoutY="35.0" prefHeight="27.0" prefWidth="101.0" text="Name">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="8.0" layoutY="82.0" prefHeight="27.0" prefWidth="93.0" text="IC No.">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="8.0" layoutY="134.0" prefHeight="27.0" prefWidth="93.0" text="Address">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="-3.0" layoutY="279.0" prefHeight="27.0" prefWidth="107.0" text="Contact No.">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </left>
-   <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="pFName" layoutX="14.0" layoutY="38.0" prefHeight="25.0" prefWidth="285.0" style="-fx-background-color: #FFFFFF;" />
-            <TextField fx:id="ic" layoutX="14.0" layoutY="84.0" prefHeight="25.0" prefWidth="285.0" style="-fx-background-color: #FFFFFF;" />
-            <TextArea layoutX="14.0" layoutY="134.0" prefHeight="128.0" prefWidth="284.0" style="-fx-background-color: #FFFFFF;" />
-            <TextField layoutX="14.0" layoutY="281.0" prefHeight="25.0" prefWidth="285.0" style="-fx-background-color: #FFFFFF;" />
-            <Label alignment="CENTER_RIGHT" layoutX="292.0" layoutY="37.0" prefHeight="27.0" prefWidth="53.0" text="Age">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField layoutX="362.0" layoutY="38.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: #FFFFFF;" />
-            <Label alignment="CENTER_RIGHT" layoutX="422.0" layoutY="37.0" prefHeight="27.0" prefWidth="114.0" text="Date of Birth">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <DatePicker layoutX="553.0" layoutY="38.0" prefHeight="25.0" prefWidth="163.0" />
-            <Label alignment="CENTER_RIGHT" layoutX="306.0" layoutY="134.0" prefHeight="27.0" prefWidth="66.0" text="Gender">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ChoiceBox layoutX="392.0" layoutY="135.0" prefHeight="26.0" prefWidth="119.0" />
-         </children>
-      </Pane>
-   </center>
-</BorderPane>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.Scene.PatientFormController">
+   <children>
+      <TabPane prefHeight="700.0" prefWidth="888.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Demographic">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="888.0">
+                     <children>
+                        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="888.0" style="-fx-background-color: #DFDFDF;">
+                           <top>
+                              <Pane prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #274D62;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="27.0" layoutY="5.0" prefHeight="27.0" prefWidth="179.0" text="Demographic" textFill="#dfdfdf">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <left>
+                              <Pane prefHeight="375.0" prefWidth="108.0" BorderPane.alignment="CENTER" />
+                           </left>
+                           <center>
+                              <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TextField fx:id="tfPatientName" layoutX="51.0" layoutY="37.0" prefHeight="25.0" prefWidth="254.0" style="-fx-background-color: #FFFFFF;" />
+                                    <TextField fx:id="tfIdentityNo" layoutX="51.0" layoutY="117.0" prefHeight="25.0" prefWidth="251.0" style="-fx-background-color: #FFFFFF;" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="390.0" layoutY="35.0" prefHeight="27.0" prefWidth="104.0" text="Date of Birth">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker layoutX="525.0" layoutY="36.0" prefHeight="25.0" prefWidth="163.0" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="-40.0" layoutY="296.0" prefHeight="27.0" prefWidth="66.0" text="Gender">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox layoutX="45.0" layoutY="297.0" prefHeight="26.0" prefWidth="98.0" />
+                                    <Button fx:id="btnSave" layoutX="302.0" layoutY="410.0" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="35.0" prefWidth="74.0" text="Save">
+                                       <font>
+                                          <Font name="System Bold Italic" size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Label alignment="CENTER_RIGHT" layoutX="-34.0" layoutY="116.0" prefHeight="27.0" prefWidth="51.0" text="RN/IC">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER_RIGHT" layoutX="-34.0" layoutY="36.0" prefHeight="27.0" prefWidth="51.0" text="Name">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="tfIdentifyNo1" layoutX="522.0" layoutY="117.0" prefHeight="27.0" prefWidth="147.0" style="-fx-background-color: #FFFFFF;" />
+                                    <Label layoutX="-34.0" layoutY="208.0" text="Preferred Language">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox layoutX="151.0" layoutY="209.0" prefHeight="26.0" prefWidth="98.0" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="374.0" layoutY="208.0" prefHeight="27.0" prefWidth="112.0" text="Marital Status">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox layoutX="516.0" layoutY="209.0" prefHeight="26.0" prefWidth="98.0" />
+                                    <Label layoutX="382.0" layoutY="116.0" text="Race/Ethnicity">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Contact Info">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="888.0">
+                     <children>
+                        <Label layoutX="68.0" layoutY="71.0" text="Address">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="164.0" layoutY="72.0" prefHeight="26.0" prefWidth="319.0" />
+                        <Pane prefHeight="36.0" prefWidth="888.0" style="-fx-background-color: #274D62;">
+                           <children>
+                              <Label layoutX="27.0" layoutY="5.0" prefHeight="27.0" prefWidth="179.0" text="Patient Contact Info" textFill="#dfdfdf">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Label layoutX="575.0" layoutY="71.0" text="City">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="635.0" layoutY="71.0" prefHeight="26.0" prefWidth="156.0" />
+                        <Label layoutX="95.0" layoutY="144.0" text="State">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="167.0" layoutY="144.0" prefHeight="26.0" prefWidth="156.0" />
+                        <Label layoutX="355.0" layoutY="143.0" text="Zip">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="392.0" layoutY="144.0" prefHeight="26.0" prefWidth="110.0" />
+                        <Pane layoutY="394.0" prefHeight="36.0" prefWidth="888.0" style="-fx-background-color: #274D62;">
+                           <children>
+                              <Label layoutX="27.0" layoutY="5.0" prefHeight="27.0" prefWidth="220.0" text="Emergency Contact Info" textFill="#dfdfdf">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Label layoutX="543.0" layoutY="143.0" text="Country">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="638.0" layoutY="144.0" prefHeight="26.0" prefWidth="157.0" />
+                        <Label layoutX="93.0" layoutY="217.0" text="Email">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="162.0" layoutY="218.0" prefHeight="26.0" prefWidth="428.0" />
+                        <Label layoutX="51.0" layoutY="285.0" text="Contact No.">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="162.0" layoutY="285.0" prefHeight="26.0" prefWidth="428.0" />
+                        <Label layoutX="108.0" layoutY="467.0" text="Name">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="189.0" layoutY="468.0" prefHeight="26.0" prefWidth="245.0" />
+                        <Label layoutX="57.0" layoutY="521.0" text="Relationship">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="187.0" layoutY="522.0" prefHeight="26.0" prefWidth="245.0" />
+                        <Label layoutX="57.0" layoutY="573.0" text="Contact No.">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="187.0" layoutY="573.0" prefHeight="26.0" prefWidth="409.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

@@ -11,10 +11,10 @@ import java.util.ArrayList;
 
 public class Patient implements Serializable{
     
-    // Biodata
+    // Demographic
     private String patientID;
     private String patientName;
-    // private String identityNo;
+    private String identityNo;
     // private String doB;
     // private String age;
     // private String gender;
@@ -23,6 +23,7 @@ public class Patient implements Serializable{
     // private String maritalStatus;
 
     // ContactInfo
+    // private String address;
     // private String country;
     // private String state;
     // private String city;
@@ -36,7 +37,8 @@ public class Patient implements Serializable{
     private static ArrayList<Patient> patientList = new ArrayList<>();
     private static ArrayList<Patient> patientListRead = new ArrayList<>();
 
-    public Patient(String patientID, String patientName) throws IOException{
+    public Patient(String patientID, String patientName, String identityNo) throws IOException{
+        this.identityNo = identityNo;
         this.patientID = patientID;
         this.patientName = patientName;
         patientList.add(this);
@@ -61,7 +63,6 @@ public class Patient implements Serializable{
         }
     }
     
-
     public static void readRecord() throws IOException, ClassNotFoundException{
         FileInputStream fis = new FileInputStream(patientFile);
         ObjectInputStream ois = new ObjectInputStream(fis);
@@ -75,15 +76,23 @@ public class Patient implements Serializable{
     public String getPatientID(){
         return patientID;
     }
+
     public String getPatientName(){
         return patientName;
     }
+
+    public String getIdentityNo(){
+        return identityNo;
+    }
+
     public static File getPatientFile(){
         return patientFile;
     }
+
     public static ArrayList<Patient> getPatientList(){
         return patientList;
     }
+
     public static ArrayList<Patient> getPatientListRead(){
         return patientListRead;
     }
