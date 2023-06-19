@@ -21,13 +21,16 @@ import javafx.stage.Stage;
 public class PatientPageController implements Initializable{
 
     @FXML
-    private Button btnAddPatient;
+    private Button btnAdd;
 
     @FXML
     private Button btnDelete;
 
     @FXML
     private Button btnRefresh;
+
+    @FXML
+    private Button btnView;
 
     @FXML
     private TableView<Patient> tableView;
@@ -44,7 +47,7 @@ public class PatientPageController implements Initializable{
     public static Scene scenePatientForm;
 
     @FXML
-    void btnAddPatientClicked(ActionEvent event) throws IOException {
+    void btnAddClicked(ActionEvent event) throws IOException {
         stagePatientForm = new Stage();
         scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("PatientForm.fxml")));
         stagePatientForm.setTitle("Patient Registration Form");
@@ -61,20 +64,18 @@ public class PatientPageController implements Initializable{
     void btnDeleteClicked(ActionEvent event) throws IOException{
         Patient deletePatient = tableView.getSelectionModel().getSelectedItem();
         tableView.getItems().remove(deletePatient);
+        Patient.deletePatient(deletePatient);
+    }
+
+    @FXML
+    void btnViewClicked(ActionEvent event){
+        
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) { 
-        
-        try {
-            Patient.readRecord();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            return;
-        }
-        patientObservableList.addAll(Patient.getPatientListRead());
-        Patient.getPatientListRead().clear();
+        patientObservableList.clear();
+        patientObservableList.addAll(Patient.getPatientList());
         tableView.setItems(patientObservableList);
 
         tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));

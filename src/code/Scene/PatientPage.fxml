@@ -11,9 +11,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="1415.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.Scene.PatientPageController">
    <children>
-      <Button fx:id="btnAddPatient" layoutX="1256.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnAddPatientClicked" prefHeight="32.0" prefWidth="76.0" text="Add">
+      <Button fx:id="btnAdd" layoutX="1256.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnAddClicked" prefHeight="32.0" prefWidth="76.0" text="ADD">
          <graphic>
-            <FontAwesomeIcon glyphName="PLUS" size="20" />
+            <FontAwesomeIcon glyphName="PLUS" size="15" />
          </graphic>
          <font>
             <Font size="15.0" />
@@ -39,7 +39,7 @@
         </content>
       </ScrollPane>
       <TextField layoutX="47.0" prefHeight="26.0" prefWidth="166.0" promptText="Search Patient" />
-      <Button fx:id="btnRefresh" layoutX="1073.0" layoutY="-3.0" mnemonicParsing="false" onAction="#btnRefreshClicked" prefHeight="32.0" prefWidth="76.0" text="Refresh">
+      <Button fx:id="btnRefresh" layoutX="951.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnRefreshClicked" prefHeight="32.0" prefWidth="86.0" text="REFRESH">
          <font>
             <Font size="15.0" />
          </font>
@@ -49,10 +49,21 @@
             <FontAwesomeIcon glyphName="SEARCH" size="20" />
          </graphic>
       </Button>
-      <Button fx:id="btnDelete" layoutX="1169.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnDeleteClicked" prefHeight="32.0" prefWidth="76.0" text="Delete">
+      <Button fx:id="btnDelete" layoutX="1154.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnDeleteClicked" prefHeight="32.0" prefWidth="85.0" text="DELETE">
          <font>
             <Font size="15.0" />
          </font>
+         <graphic>
+            <FontAwesomeIcon glyphName="REMOVE" size="15" />
+         </graphic>
+      </Button>
+      <Button fx:id="btnView" layoutX="1055.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnViewClicked" prefHeight="32.0" prefWidth="85.0" text="VIEW">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon glyphName="EYE" />
+         </graphic>
       </Button>
    </children>
 </AnchorPane>
