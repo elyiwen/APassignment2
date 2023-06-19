@@ -7,12 +7,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+
 
 public class MainSceneController {
 
     @FXML
     private BorderPane borderPane;
+
+    @FXML
+    private Label labelTime;
+
+    @FXML
+    private Label labelDate;
 
     @FXML
     private Button btnAdmin;
@@ -28,8 +36,6 @@ public class MainSceneController {
 
     @FXML
     private Button btnSchedule;
-
-
 
     @FXML
     void btnAdminClicked(ActionEvent event) throws IOException {
