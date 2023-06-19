@@ -55,7 +55,7 @@ public class PatientFormController{
                 String patientID = idFirst + idMid.toUpperCase() + idLast;
 
                 // Add Patient 
-                new Patient(patientID, patientName, patientIdentityNo);
+                new Patient(patientID, patientName);
                 PatientPageController.scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("PatientForm.fxml")));
                 PatientPageController.stagePatientForm.setScene(PatientPageController.scenePatientForm);
             }

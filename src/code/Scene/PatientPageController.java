@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import code.Patient.Patient;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,12 +13,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 public class PatientPageController implements Initializable{
 
@@ -25,16 +24,21 @@ public class PatientPageController implements Initializable{
     private Button btnAddPatient;
 
     @FXML
+    private Button btnDelete;
+
+    @FXML
     private Button btnRefresh;
 
     @FXML
-    public TableView<Patient> tableView;
+    private TableView<Patient> tableView;
 
     @FXML
-    public TableColumn<Patient, String> tcPatientID;
+    private TableColumn<Patient, String> tcPatientID;
 
     @FXML
-    public TableColumn<Patient, String> tcPatientName;
+    private TableColumn<Patient, String> tcPatientName;
+
+    private ObservableList<Patient> patientObservableList = FXCollections.observableArrayList();
 
     public static Stage stagePatientForm;
     public static Scene scenePatientForm;
@@ -50,18 +54,18 @@ public class PatientPageController implements Initializable{
 
     @FXML
     void btnRefreshClicked(ActionEvent event) {
-        refreshPatientList();
+        
     }
-    
+
+    @FXML
+    void btnDeleteClicked(ActionEvent event) throws IOException{
+        Patient deletePatient = tableView.getSelectionModel().getSelectedItem();
+        tableView.getItems().remove(deletePatient);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) { 
-        refreshPatientList();
-
-        tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
-        tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
-    }
-
-    public void refreshPatientList(){
+        
         try {
             Patient.readRecord();
         } catch (ClassNotFoundException e) {
@@ -69,88 +73,11 @@ public class PatientPageController implements Initializable{
         } catch (IOException e) {
             return;
         }
-        ObservableList<Patient> patientListTableView = tableView.getItems();
-        patientListTableView.clear();
-        for (Patient patient : Patient.getPatientListRead()){
-            patientListTableView.add(patient);
-        }
-        tableView.setItems(patientListTableView);
+        patientObservableList.addAll(Patient.getPatientListRead());
         Patient.getPatientListRead().clear();
-        addViewButtonToTable();
-        addDeleteButtonToTable();
+        tableView.setItems(patientObservableList);
+
+        tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
+        tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
     }
-
-    public void addViewButtonToTable() {
-        TableColumn<Patient, Void> colBtnView = new TableColumn<Patient, Void>("");
-
-        Callback<TableColumn<Patient, Void>, TableCell<Patient, Void>> cellFactory = new Callback<TableColumn<Patient, Void>, TableCell<Patient, Void>>() {
-            @Override
-            public TableCell<Patient, Void> call(final TableColumn<Patient, Void> param) {
-                final TableCell<Patient, Void> cellView = new TableCell<Patient, Void>() {
-
-                    private final Button btnView = new Button("View");
-
-                    {
-                        btnView.setOnAction((ActionEvent event) -> {
-                            //Treatment Course of patient
-                        });
-                    }
-
-                    @Override
-                    public void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btnView);
-                        }
-                    }
-                };
-                return cellView;
-            }
-        };
-
-        colBtnView.setCellFactory(cellFactory);
-
-        tableView.getColumns().add(colBtnView);
-
-    }
-    
-    public void addDeleteButtonToTable() {
-        TableColumn<Patient, Void> colBtnDelete = new TableColumn<Patient, Void>("");
-
-        Callback<TableColumn<Patient, Void>, TableCell<Patient, Void>> cellFactory = new Callback<TableColumn<Patient, Void>, TableCell<Patient, Void>>() {
-            @Override
-            public TableCell<Patient, Void> call(final TableColumn<Patient, Void> param) {
-                final TableCell<Patient, Void> cellView = new TableCell<Patient, Void>() {
-
-                    private final Button btnDelete = new Button("Delete");
-
-                    {
-                        btnDelete.setOnAction((ActionEvent event) -> {
-                            Patient deletePatient = getTableView().getItems().get(getIndex());
-                            Patient.deleteRecord(deletePatient);
-                        });
-                    }
-
-                    @Override
-                    public void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btnDelete);
-                        }
-                    }
-                };
-                return cellView;
-            }
-        };
-
-        colBtnDelete.setCellFactory(cellFactory);
-
-        tableView.getColumns().add(colBtnDelete);
-
-    }
-
 }

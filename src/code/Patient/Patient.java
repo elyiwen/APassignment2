@@ -14,7 +14,7 @@ public class Patient implements Serializable{
     // Demographic
     private String patientID;
     private String patientName;
-    private String identityNo;
+    //private String identityNo;
     // private String doB;
     // private String age;
     // private String gender;
@@ -37,8 +37,7 @@ public class Patient implements Serializable{
     private static ArrayList<Patient> patientList = new ArrayList<>();
     private static ArrayList<Patient> patientListRead = new ArrayList<>();
 
-    public Patient(String patientID, String patientName, String identityNo) throws IOException{
-        this.identityNo = identityNo;
+    public Patient(String patientID, String patientName) throws IOException{
         this.patientID = patientID;
         this.patientName = patientName;
         patientList.add(this);
@@ -47,6 +46,15 @@ public class Patient implements Serializable{
 
     public void calAge(){
 
+    }
+
+    public static void writeRecord() throws IOException{
+        FileOutputStream fos = new FileOutputStream(patientFile);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        for (Patient p : patientList){
+            oos.writeObject(p);
+        }
+        oos.close();
     }
 
     public static void writeRecord(Patient patient) throws IOException{
@@ -67,18 +75,10 @@ public class Patient implements Serializable{
         FileInputStream fis = new FileInputStream(patientFile);
         ObjectInputStream ois = new ObjectInputStream(fis);
         while(fis.available() > 0){
-            Patient patient = (Patient)ois.readObject();
-            patientListRead.add(patient);
+            Patient patientRecorded = (Patient)ois.readObject();
+            patientListRead.add(patientRecorded);
         }
         ois.close();
-    }
-
-    public static void deleteRecord(Patient deletePatient){
-        for (Patient p : patientList){
-            if (p.equals(deletePatient)){
-                System.out.println("hello");
-            }
-        }
     }
 
     public String getPatientID(){
@@ -87,10 +87,6 @@ public class Patient implements Serializable{
 
     public String getPatientName(){
         return patientName;
-    }
-
-    public String getIdentityNo(){
-        return identityNo;
     }
 
     public static File getPatientFile(){

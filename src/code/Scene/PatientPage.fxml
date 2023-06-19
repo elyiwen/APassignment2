@@ -39,7 +39,7 @@
         </content>
       </ScrollPane>
       <TextField layoutX="47.0" prefHeight="26.0" prefWidth="166.0" promptText="Search Patient" />
-      <Button fx:id="btnRefresh" layoutX="1156.0" layoutY="-3.0" mnemonicParsing="false" onAction="#btnRefreshClicked" prefHeight="32.0" prefWidth="76.0" text="Refresh">
+      <Button fx:id="btnRefresh" layoutX="1073.0" layoutY="-3.0" mnemonicParsing="false" onAction="#btnRefreshClicked" prefHeight="32.0" prefWidth="76.0" text="Refresh">
          <font>
             <Font size="15.0" />
          </font>
@@ -48,6 +48,11 @@
          <graphic>
             <FontAwesomeIcon glyphName="SEARCH" size="20" />
          </graphic>
+      </Button>
+      <Button fx:id="btnDelete" layoutX="1169.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnDeleteClicked" prefHeight="32.0" prefWidth="76.0" text="Delete">
+         <font>
+            <Font size="15.0" />
+         </font>
       </Button>
    </children>
 </AnchorPane>
