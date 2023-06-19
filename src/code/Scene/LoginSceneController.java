@@ -25,6 +25,9 @@ public class LoginSceneController {
 
     @FXML
     void btnLogInClicked(ActionEvent event) throws IOException{
+        String username = tfUsername.getText();
+        String password = tfPassword.getText();
+
         Parent root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene mainScene = new Scene(root);
@@ -33,5 +36,4 @@ public class LoginSceneController {
         primaryStage.setScene(mainScene);
         primaryStage.show();
     }
-
 }

@@ -3,6 +3,7 @@ package code.Scene;
 import java.io.IOException;
 
 import code.Patient.Patient;
+import code.User.Admin;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 public class Main extends Application{
 
     public void start(Stage primaryStage) throws IOException, ClassNotFoundException{
+        new Admin("111", "admin");
         Patient.getPatientFile().createNewFile();
         Patient.readRecord();
 
@@ -28,7 +30,14 @@ public class Main extends Application{
         primaryStage.setOnCloseRequest(event -> {
             event.consume();
             try {
-                exit(primaryStage);
+                Alert alert = new Alert(AlertType.CONFIRMATION, "Do You Want To Exit", ButtonType.OK);
+                alert.setHeaderText("You Are About To Exit");
+                alert.setTitle("EXIT");
+
+                if (alert.showAndWait().get() == ButtonType.OK){
+                    primaryStage.close();
+                    Patient.writeRecord();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -37,16 +46,5 @@ public class Main extends Application{
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-    public void exit(Stage primaryStage) throws IOException{
-        Alert alert = new Alert(AlertType.CONFIRMATION, "Do You Want To Exit", ButtonType.OK);
-        alert.setHeaderText("You Are About To Exit");
-        alert.setTitle("EXIT");
-
-        if (alert.showAndWait().get() == ButtonType.OK){
-            primaryStage.close();
-            //Patient.writeRecord();
-        }
     }
 }

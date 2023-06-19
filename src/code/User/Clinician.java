@@ -1,5 +1,7 @@
 package code.User;
 
+import java.util.ArrayList;
+
 public class Clinician {
     
     private String clinicianID;
@@ -9,6 +11,13 @@ public class Clinician {
     private String contactInfo;
     private double salary;
     private boolean isAdministrator;
+
+    private static ArrayList<Clinician> clinicianList = new ArrayList<>();
+
+    public Clinician(String clinicianID, String password){
+        this.clinicianID = clinicianID;
+        this.password = password;
+    }
 
     public Clinician(String clinicianID, String firstName, String lastName, String password, String contactInfo, double salary) {
         this.clinicianID = clinicianID;
@@ -84,6 +93,10 @@ public class Clinician {
 
     public void setIsAdministrator(boolean isAdministrator) {
         this.isAdministrator = isAdministrator;
+    }
+
+    public static ArrayList<Clinician> getClinicianList(){
+        return clinicianList;
     }
 
     @Override
