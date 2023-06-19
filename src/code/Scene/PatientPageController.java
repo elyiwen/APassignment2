@@ -12,7 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -31,6 +34,9 @@ public class PatientPageController implements Initializable{
 
     @FXML
     private Button btnView;
+
+    @FXML
+    private Button btnSaveProgress;
 
     @FXML
     private TableView<Patient> tableView;
@@ -57,7 +63,19 @@ public class PatientPageController implements Initializable{
 
     @FXML
     void btnRefreshClicked(ActionEvent event) {
-        
+        patientObservableList.clear();
+        patientObservableList.addAll(Patient.getPatientList());
+        tableView.setItems(patientObservableList);
+    }
+
+    @FXML
+    void btnSaveRecord(ActionEvent event) throws IOException{
+        Alert alert = new Alert(AlertType.CONFIRMATION, "Save Progress?");
+        alert.setHeaderText("NOTIFICATION");
+        alert.setTitle("ALERT");
+        if (alert.showAndWait().get() == ButtonType.OK){
+            Patient.writeRecord();
+        }
     }
 
     @FXML

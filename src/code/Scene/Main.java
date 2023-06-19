@@ -40,14 +40,13 @@ public class Main extends Application{
     }
 
     public void exit(Stage primaryStage) throws IOException{
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("EXIT");
+        Alert alert = new Alert(AlertType.CONFIRMATION, "Do You Want To Exit", ButtonType.OK);
         alert.setHeaderText("You Are About To Exit");
-        alert.setContentText("Do You Want To Exit?");
+        alert.setTitle("EXIT");
 
         if (alert.showAndWait().get() == ButtonType.OK){
             primaryStage.close();
-            Patient.writeRecord();
+            //Patient.writeRecord();
         }
     }
 }
