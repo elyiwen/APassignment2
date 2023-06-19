@@ -73,6 +73,14 @@ public class Patient implements Serializable{
         ois.close();
     }
 
+    public static void deleteRecord(Patient deletePatient){
+        for (Patient p : patientList){
+            if (p.equals(deletePatient)){
+                System.out.println("hello");
+            }
+        }
+    }
+
     public String getPatientID(){
         return patientID;
     }

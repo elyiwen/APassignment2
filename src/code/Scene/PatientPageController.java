@@ -128,7 +128,8 @@ public class PatientPageController implements Initializable{
 
                     {
                         btnDelete.setOnAction((ActionEvent event) -> {
-                            //Delete Patient
+                            Patient deletePatient = getTableView().getItems().get(getIndex());
+                            Patient.deleteRecord(deletePatient);
                         });
                     }
 
