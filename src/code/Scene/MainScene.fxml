@@ -92,9 +92,6 @@
                <HBox.margin>
                   <Insets left="15.0" />
                </HBox.margin>
-               <image>
-                  <Image url="@/resourceImg/DoctorIcon.png" />
-               </image>
             </ImageView>
             <ComboBox fx:id="cbProfile" onAction="#cbProfileClicked" prefHeight="84.0" prefWidth="122.0" style="-fx-background-color: #0794A3; -fx-font-size: 13pt;" HBox.hgrow="ALWAYS" />
          </children>

@@ -3,21 +3,27 @@ package code.Scene;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+import code.Patient.Patient;
+
 import java.net.URL;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 public class MainSceneController implements Initializable{
@@ -52,13 +58,30 @@ public class MainSceneController implements Initializable{
         Date date = new Date();
         labelDateTime.setText(formatter.format(date));
 
-        cbProfile.setPromptText("Profile");
-        cbProfile.getItems().add("Log Out");
+        cbProfile.getItems().removeAll(cbProfile.getItems());
+        cbProfile.getItems().addAll("Profile", "Log Out");
+        cbProfile.getSelectionModel().select("Profile");
     }
 
     @FXML
-    void cbProfileClicked(ActionEvent event){
-
+    void cbProfileClicked(ActionEvent event) throws IOException{
+        if (cbProfile.getValue().equals("Log Out")){
+            cbProfile.getSelectionModel().select("Profile");
+            Alert alertLogOut = new Alert(AlertType.CONFIRMATION, "Are you sure to Log Out. The progress will be save", ButtonType.YES, ButtonType.NO);
+            alertLogOut.setHeaderText("NOTIFICATION");
+            alertLogOut.setTitle("ALERT");
+            if (alertLogOut.showAndWait().get() == ButtonType.YES){
+                Patient.writeRecord();
+                Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                Parent root = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
+                Scene loginScene = new Scene(root);
+                primaryStage.setResizable(false);
+                primaryStage.setMaximized(false);
+                primaryStage.setTitle("Taylor's EMR");
+                primaryStage.setScene(loginScene);
+                primaryStage.show();
+            }
+        }
     }
 
     @FXML

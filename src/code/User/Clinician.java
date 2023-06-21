@@ -1,5 +1,6 @@
 package code.User;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Clinician {
@@ -13,6 +14,7 @@ public class Clinician {
     private boolean isAdministrator;
 
     private static ArrayList<Clinician> clinicianList = new ArrayList<>();
+    private static File clinicianFile = new File("clinician.json");
 
     public Clinician(String clinicianID, String password){
         this.clinicianID = clinicianID;
@@ -97,6 +99,10 @@ public class Clinician {
 
     public static ArrayList<Clinician> getClinicianList(){
         return clinicianList;
+    }
+
+    public static File getClinicianFile(){
+        return clinicianFile;
     }
 
     @Override

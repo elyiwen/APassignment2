@@ -1,5 +1,6 @@
 package code.User;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ public class Admin implements Serializable{
     private boolean isAdministrator;
 
     private static ArrayList<Admin> adminList = new ArrayList<Admin>();
+    private static File adminFile = new File("admin.json");
 
     public Admin(String adminID, String password) {
         this.adminID = adminID;
@@ -67,6 +69,10 @@ public class Admin implements Serializable{
         return adminList;
     }
 
+    public static File getAdminFile(){
+        return adminFile;
+    }
+    
     @Override
     public String toString() {
         return "Admin{" + "adminID=" + adminID + ", password=" + password + ", isAdmin=" + isAdministrator + '}';

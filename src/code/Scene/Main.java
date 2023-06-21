@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import code.Patient.Patient;
 import code.User.Admin;
+import code.User.Clinician;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +17,15 @@ import javafx.stage.Stage;
 public class Main extends Application{
 
     public void start(Stage primaryStage) throws IOException, ClassNotFoundException{
-        new Admin("111", "admin");
+        new Admin("admin1", "111");
+        Alert alertAdminCreated = new Alert(AlertType.CONFIRMATION, "Admin Account: \nAdmin ID: admin1 \nAdmin Password: 111", ButtonType.OK);
+        alertAdminCreated.setHeaderText("NOTIFICATION");
+        alertAdminCreated.setTitle("ALERT");
+        alertAdminCreated.showAndWait();
+
+        Admin.getAdminFile().createNewFile();
+        Clinician.getClinicianFile().createNewFile();
+
         Patient.getPatientFile().createNewFile();
         Patient.readRecord();
 
@@ -30,11 +39,11 @@ public class Main extends Application{
         primaryStage.setOnCloseRequest(event -> {
             event.consume();
             try {
-                Alert alert = new Alert(AlertType.CONFIRMATION, "Do You Want To Exit", ButtonType.OK);
-                alert.setHeaderText("You Are About To Exit");
-                alert.setTitle("EXIT");
+                Alert alertExit = new Alert(AlertType.CONFIRMATION, "Do You Want To Exit", ButtonType.OK);
+                alertExit.setHeaderText("You Are About To Exit");
+                alertExit.setTitle("EXIT");
 
-                if (alert.showAndWait().get() == ButtonType.OK){
+                if (alertExit.showAndWait().get() == ButtonType.OK){
                     primaryStage.close();
                     Patient.writeRecord();
                 }
