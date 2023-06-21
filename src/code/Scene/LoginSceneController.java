@@ -35,7 +35,7 @@ public class LoginSceneController {
         boolean check = false;
         for (Admin a : Admin.getAdminList()){
             if (a.getAdminID().equals(username) && (a.getPassword().equals(password))){
-                Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Login Success", ButtonType.OK);
+                Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Login Success! Welcome Admin", ButtonType.OK);
                 alertSuccess.setHeaderText("NOTIFICATION");
                 alertSuccess.setTitle("ALERT");
                 alertSuccess.showAndWait();
