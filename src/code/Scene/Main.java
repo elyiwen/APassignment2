@@ -18,10 +18,6 @@ public class Main extends Application{
 
     public void start(Stage primaryStage) throws IOException, ClassNotFoundException{
         new Admin("admin1", "111");
-        Alert alertAdminCreated = new Alert(AlertType.CONFIRMATION, "Admin Account: \nAdmin ID: admin1 \nAdmin Password: 111", ButtonType.OK);
-        alertAdminCreated.setHeaderText("NOTIFICATION");
-        alertAdminCreated.setTitle("ALERT");
-        alertAdminCreated.showAndWait();
 
         Admin.getAdminFile().createNewFile();
         Clinician.getClinicianFile().createNewFile();

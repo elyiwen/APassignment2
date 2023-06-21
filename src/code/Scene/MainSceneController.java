@@ -29,7 +29,7 @@ import javafx.stage.Stage;
 public class MainSceneController implements Initializable{
 
     @FXML
-    private BorderPane borderPane;
+    public BorderPane borderPane;
 
     @FXML
     private Label labelDateTime;
@@ -54,7 +54,7 @@ public class MainSceneController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss \t  dd/MM/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
         labelDateTime.setText(formatter.format(date));
 
@@ -113,24 +113,24 @@ public class MainSceneController implements Initializable{
     }
 
     @FXML
-    void btnScheduleClicked(ActionEvent event) {
+    void btnScheduleClicked(ActionEvent event) throws IOException {
         refreshPane();
-        try {
-            Parent root1 = FXMLLoader.load(getClass().getResource("Calendar.fxml"));
-            Parent root2 = FXMLLoader.load(getClass().getResource("Appointment.fxml"));
-            borderPane.setLeft(root1);
-            borderPane.setCenter(root2);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Parent root1 = FXMLLoader.load(getClass().getResource("Calendar.fxml"));
+        Parent root2 = FXMLLoader.load(getClass().getResource("Appointment.fxml"));
+        borderPane.setLeft(root1);
+        borderPane.setCenter(root2);
     }
-
-
     public void refreshPane(){
         borderPane.setCenter(null);
         borderPane.setRight(null);
         borderPane.setTop(null);
         borderPane.setLeft(null);
         borderPane.setBottom(null);
+    }
+
+    public void switchScene(String scene) throws IOException{
+        refreshPane();
+        Parent root = FXMLLoader.load(getClass().getResource(scene + ".fxml")); 
+        borderPane.setCenter(root);
     }
 }

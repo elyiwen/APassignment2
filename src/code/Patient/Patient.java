@@ -84,7 +84,10 @@ public class Patient implements Serializable{
             }
         }
         if (check == false){
-            System.out.println("Patient Not Found");
+            Alert alertNotFound = new Alert(AlertType.CONFIRMATION, "No Patient Recorded");
+            alertNotFound.setHeaderText("NOTIFICATION");
+            alertNotFound.setTitle("ALERT");
+            alertNotFound.showAndWait();
         }
     }
 

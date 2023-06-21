@@ -2,6 +2,7 @@ package code.Scene;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.channels.SelectableChannel;
 import java.util.ResourceBundle;
 
 import code.Patient.Patient;
@@ -11,6 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -52,6 +55,8 @@ public class PatientPageController implements Initializable{
     public static Stage stagePatientForm;
     public static Scene scenePatientForm;
 
+    private static Patient selectedPatient;
+
     @FXML
     void btnAddClicked(ActionEvent event) throws IOException {
         stagePatientForm = new Stage();
@@ -80,14 +85,32 @@ public class PatientPageController implements Initializable{
 
     @FXML
     void btnDeleteClicked(ActionEvent event) throws IOException{
-        Patient deletePatient = tableView.getSelectionModel().getSelectedItem();
-        tableView.getItems().remove(deletePatient);
-        Patient.deletePatient(deletePatient);
+        try{
+            Patient deletePatient = tableView.getSelectionModel().getSelectedItem();
+            tableView.getItems().remove(deletePatient);
+            Patient.deletePatient(deletePatient);
+        }
+        catch (NullPointerException npe){
+            Alert alert = new Alert(AlertType.CONFIRMATION, "Please Select A Patient to Remove", ButtonType.OK);
+            alert.setHeaderText("NOTIFICATION");
+            alert.setTitle("ALERT");
+            alert.showAndWait();
+        }
     }
 
     @FXML
-    void btnViewClicked(ActionEvent event){
-        
+    void btnViewClicked(ActionEvent event) throws IOException{
+        selectedPatient = tableView.getSelectionModel().getSelectedItem();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScene.fxml"));
+        Parent root = loader.load();
+
+        MainSceneController mainSceneController = loader.getController();
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        mainSceneController.switchScene("TreatmentCoursePage");
     }
 
     @Override
@@ -98,5 +121,9 @@ public class PatientPageController implements Initializable{
 
         tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
         tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
+    }
+
+    public static Patient getSelectedPatient(){
+        return selectedPatient;
     }
 }
