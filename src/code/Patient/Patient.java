@@ -36,7 +36,7 @@ public class Patient implements Serializable{
     // private String patientEmail;
 
     //Patient List
-    private static File patientFile = new File("patient.json");
+    private static File patientFile = new File("patient.txt");
     private static ArrayList<Patient> patientList = new ArrayList<>();
 
     public Patient(String patientID, String patientName) throws IOException{

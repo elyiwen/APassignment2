@@ -12,7 +12,7 @@ public class Admin implements Serializable{
     private boolean isAdministrator;
 
     private static ArrayList<Admin> adminList = new ArrayList<Admin>();
-    private static File adminFile = new File("admin.json");
+    private static File adminFile = new File("admin.txt");
 
     public Admin(String adminID, String password) {
         this.adminID = adminID;

@@ -14,7 +14,7 @@ public class Clinician {
     private boolean isAdministrator;
 
     private static ArrayList<Clinician> clinicianList = new ArrayList<>();
-    private static File clinicianFile = new File("clinician.json");
+    private static File clinicianFile = new File("clinician.txt");
 
     public Clinician(String clinicianID, String password){
         this.clinicianID = clinicianID;
