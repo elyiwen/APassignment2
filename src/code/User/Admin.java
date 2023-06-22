@@ -12,29 +12,12 @@ public class Admin implements Serializable{
     private boolean isAdministrator;
 
     private static ArrayList<Admin> adminList = new ArrayList<Admin>();
-    private static File adminFile = new File("admin.txt");
 
     public Admin(String adminID, String password) {
         this.adminID = adminID;
         this.password = password;
         this.isAdministrator = true;
         adminList.add(this);
-    }
-
-    public void displayAdmin(){
-        
-    }
-
-    public static void displayAdminList(){
-        
-    }
-
-    public static void writeAdminRecord(){
-        
-    }
-
-    public static void readAdminRecord(){
-        
     }
 
     public String getAdminID() {
@@ -67,10 +50,6 @@ public class Admin implements Serializable{
 
     public static ArrayList<Admin> getAdminList(){
         return adminList;
-    }
-
-    public static File getAdminFile(){
-        return adminFile;
     }
     
     @Override

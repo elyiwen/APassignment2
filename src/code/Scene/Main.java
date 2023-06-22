@@ -17,9 +17,8 @@ import javafx.stage.Stage;
 public class Main extends Application{
 
     public void start(Stage primaryStage) throws IOException, ClassNotFoundException{
-        new Admin("admin1", "111");
+        new Admin("admin", "111");
 
-        Admin.getAdminFile().createNewFile();
         Clinician.getClinicianFile().createNewFile();
 
         Patient.getPatientFile().createNewFile();

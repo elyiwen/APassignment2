@@ -18,6 +18,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -32,16 +34,13 @@ public class MainSceneController implements Initializable{
     public BorderPane borderPane;
 
     @FXML
-    private Label labelDateTime;
+    private Label labelDate;
 
     @FXML
     private ComboBox<String> cbProfile;
 
     @FXML
     private Button btnAdmin;
-
-    @FXML
-    private Button btnDoc;
 
     @FXML
     private Button btnHome;
@@ -52,21 +51,30 @@ public class MainSceneController implements Initializable{
     @FXML
     private Button btnSchedule;
 
+    @FXML
+    private ImageView imageIcon;
+
+    private String username = LoginSceneController.getUsername();
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
-        labelDateTime.setText(formatter.format(date));
+        labelDate.setText(formatter.format(date));
+
+        String user = LoginSceneController.getUser();
+        Image img = new Image("/resourceImg/" + user + "Icon.png");
+        imageIcon.setImage(img);
 
         cbProfile.getItems().removeAll(cbProfile.getItems());
-        cbProfile.getItems().addAll("Profile", "Log Out");
-        cbProfile.getSelectionModel().select("Profile");
+        cbProfile.getItems().addAll(username, "Log Out");
+        cbProfile.setPromptText(username);
     }
 
     @FXML
     void cbProfileClicked(ActionEvent event) throws IOException{
         if (cbProfile.getValue().equals("Log Out")){
-            cbProfile.getSelectionModel().select("Profile");
+            cbProfile.getSelectionModel().select(username);
             Alert alertLogOut = new Alert(AlertType.CONFIRMATION, "Are you sure to Log Out. The progress will be save", ButtonType.YES, ButtonType.NO);
             alertLogOut.setHeaderText("NOTIFICATION");
             alertLogOut.setTitle("ALERT");
@@ -89,13 +97,6 @@ public class MainSceneController implements Initializable{
         refreshPane();
         Parent root = FXMLLoader.load(getClass().getResource("AdminPage" + ".fxml")); 
         borderPane.setCenter(root);
-    }
-
-    @FXML
-    void btnDocClicked(ActionEvent event) throws IOException {
-        refreshPane();
-        Parent root = FXMLLoader.load(getClass().getResource("DocPage" + ".fxml"));
-        borderPane.setCenter(root); 
     }
 
     @FXML

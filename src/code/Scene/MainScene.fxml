@@ -47,17 +47,6 @@
                   <FontAwesomeIcon glyphName="TABLE" size="30" />
                </graphic>
             </Button>
-            <Button fx:id="btnDoc" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnDocClicked" prefHeight="75.0" prefWidth="111.0" style="-fx-background-color: #0794A3;" text="Document" textFill="WHITE" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="-10.0" right="30.0" />
-               </HBox.margin>
-               <graphic>
-                  <FontAwesomeIcon glyphName="BOOK" size="30" />
-               </graphic>
-            </Button>
             <Button fx:id="btnPatient" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnPatientClicked" prefHeight="75.0" prefWidth="111.0" style="-fx-background-color: #0794A3;" text="PatientList" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="18.0" />
@@ -80,20 +69,23 @@
                   <Insets left="-10.0" />
                </HBox.margin>
             </Button>
-            <Label fx:id="labelDateTime" prefHeight="30.0" prefWidth="254.0" HBox.hgrow="ALWAYS">
+            <Label fx:id="labelDate" prefHeight="30.0" prefWidth="254.0" HBox.hgrow="ALWAYS">
                <HBox.margin>
-                  <Insets left="50.0" />
+                  <Insets left="140.0" />
                </HBox.margin>
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ImageView fitHeight="33.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+            <ImageView fx:id="imageIcon" fitHeight="47.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets left="15.0" />
                </HBox.margin>
             </ImageView>
-            <ComboBox fx:id="cbProfile" onAction="#cbProfileClicked" prefHeight="84.0" prefWidth="122.0" style="-fx-background-color: #0794A3; -fx-font-size: 13pt;" HBox.hgrow="ALWAYS" />
+            <ComboBox fx:id="cbProfile" onAction="#cbProfileClicked" prefHeight="84.0" prefWidth="122.0" style="-fx-background-color: #0794A3; -fx-font-size: 13pt;" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></ComboBox>
          </children>
          <opaqueInsets>
             <Insets />

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.Scene.AdminPageController">
+   <children>
+      <Button fx:id="btnRegisterDoctor" layoutX="227.0" layoutY="93.0" mnemonicParsing="false" onAction="#btnRegisterDoctorClicked" text="Register Doctor Account" />
+      <Button fx:id="btnRegisterNurse" layoutX="229.0" layoutY="134.0" mnemonicParsing="false" onAction="#btnRegisterNurseClicked" text="Register Nurse Account" />
+      <Button fx:id="btnRegisterPharmacist" layoutX="216.0" layoutY="174.0" mnemonicParsing="false" onAction="#btnRegisterPharmacistClicked" text="Register Pharmacist Account" />
+   </children>
+</AnchorPane>

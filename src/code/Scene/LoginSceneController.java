@@ -27,19 +27,23 @@ public class LoginSceneController {
     @FXML
     private TextField tfUsername;
 
+    private static String user;
+    private static String username;
+
     @FXML
     void btnLogInClicked(ActionEvent event) throws IOException{
-        String username = tfUsername.getText();
+        username = tfUsername.getText();
         String password = tfPassword.getText();
         
         boolean check = false;
         for (Admin a : Admin.getAdminList()){
             if (a.getAdminID().equals(username) && (a.getPassword().equals(password))){
+                check = true;
+                user = "Admin";
                 Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Login Success! Welcome Admin", ButtonType.OK);
                 alertSuccess.setHeaderText("NOTIFICATION");
                 alertSuccess.setTitle("ALERT");
                 alertSuccess.showAndWait();
-                check = true;
                 break;
             }
         }
@@ -59,5 +63,13 @@ public class LoginSceneController {
             primaryStage.setScene(mainScene);
             primaryStage.show();
         }
+    }
+
+    public static String getUser(){
+        return user;
+    }
+
+    public static String getUsername(){
+        return username;
     }
 }
