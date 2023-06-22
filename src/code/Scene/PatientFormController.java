@@ -37,6 +37,12 @@ public class PatientFormController implements Initializable{
     private ChoiceBox<String> chbPreferredLanguage;
 
     @FXML
+    private ChoiceBox<String> chbGender;
+
+    @FXML
+    private ChoiceBox<String> chbMaritalStatus;
+
+    @FXML
     private Button btnSave;
 
     @FXML
@@ -46,6 +52,9 @@ public class PatientFormController implements Initializable{
         String patientIdentityNo = tfIdentityNo.getText();
         LocalDate patientDoB = dpDob.getValue();
         String patientRace_Ethnicity = tfRace_Ethnicity.getText();
+        String patientGender = chbGender.getValue();
+        String patientPrefLanguage = chbPreferredLanguage.getValue();
+        String patientMaritalStatus = chbMaritalStatus.getValue();
 
         if (patientIdentityNo.isEmpty() || patientName.isEmpty()){
 
@@ -61,7 +70,7 @@ public class PatientFormController implements Initializable{
 
             if(alertExit.showAndWait().get() == ButtonType.YES){
                 // Add Patient 
-                new Patient(patientName, patientIdentityNo, patientDoB, patientRace_Ethnicity);
+                new Patient(patientName, patientIdentityNo, patientDoB, patientRace_Ethnicity, patientGender, patientPrefLanguage, patientMaritalStatus);
                 PatientPageController.scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("PatientForm.fxml")));
                 PatientPageController.stagePatientForm.setScene(PatientPageController.scenePatientForm);
             }
@@ -73,5 +82,11 @@ public class PatientFormController implements Initializable{
         
         chbPreferredLanguage.getItems().removeAll(chbPreferredLanguage.getItems());
         chbPreferredLanguage.getItems().addAll("English", "Bahasa Melayu", "Chinese");
+
+        chbGender.getItems().removeAll(chbGender.getItems());
+        chbGender.getItems().addAll("Male", "Female");
+
+        chbMaritalStatus.getItems().removeAll(chbMaritalStatus.getItems());
+        chbMaritalStatus.getItems().addAll("Single", "Married");
     }
 }

@@ -44,11 +44,14 @@ public class Patient implements Serializable{
     private static File patientFile = new File("patient.txt");
     private static ArrayList<Patient> patientList = new ArrayList<>();
 
-    public Patient(String patientName, String patientIdentityNo, LocalDate doB, String race_ethnicity) throws IOException{
+    public Patient(String patientName, String patientIdentityNo, LocalDate doB, String race_ethnicity, String gender, String prefLanguage, String maritalStatus) throws IOException{
         this.patientName = patientName;
         this.patientIdentityNo = patientIdentityNo;
         this.doB = doB;
         this.race_ethnicity = race_ethnicity;
+        this.gender = gender;
+        this.prefLanguage = prefLanguage;
+        this.maritalStatus = maritalStatus;
         this.patientID = generateID();
         this.age = calAge(doB);
         patientList.add(this);
@@ -145,6 +148,18 @@ public class Patient implements Serializable{
 
     public String getRace_Ethinicity(){
         return race_ethnicity;
+    }
+
+    public String getGender(){
+        return gender;
+    }
+
+    public String getPrefLanguage(){
+        return prefLanguage;
+    }
+
+    public String getMaritalStatus(){
+        return maritalStatus;
     }
 
     public static ArrayList<Patient> getPatientList(){

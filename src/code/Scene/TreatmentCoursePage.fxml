@@ -163,6 +163,21 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
+                  <Label fx:id="labelGender" layoutX="447.0" layoutY="47.0" prefHeight="30.0" prefWidth="178.0" text="Gender" textFill="#252121">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelPrefLanguage" layoutX="625.0" layoutY="17.0" prefHeight="30.0" prefWidth="178.0" text="Preferred Language" textFill="#252121">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelMaritalStatus" layoutX="625.0" layoutY="44.0" prefHeight="30.0" prefWidth="178.0" text="Marital Status" textFill="#252121">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>

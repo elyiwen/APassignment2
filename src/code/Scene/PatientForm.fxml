@@ -51,7 +51,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <ChoiceBox layoutX="45.0" layoutY="297.0" prefHeight="26.0" prefWidth="98.0" />
+                                    <ChoiceBox fx:id="chbGender" layoutX="45.0" layoutY="297.0" prefHeight="26.0" prefWidth="98.0" />
                                     <Button fx:id="btnSave" layoutX="302.0" layoutY="410.0" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="35.0" prefWidth="74.0" text="Save">
                                        <font>
                                           <Font name="System Bold Italic" size="20.0" />
@@ -79,7 +79,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <ChoiceBox layoutX="516.0" layoutY="209.0" prefHeight="26.0" prefWidth="98.0" />
+                                    <ChoiceBox fx:id="chbMaritalStatus" layoutX="516.0" layoutY="209.0" prefHeight="26.0" prefWidth="98.0" />
                                     <Label layoutX="382.0" layoutY="116.0" text="Race/Ethnicity">
                                        <font>
                                           <Font size="18.0" />

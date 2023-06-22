@@ -36,6 +36,15 @@ public class TreatmentCoursePageController implements Initializable{
     private Label labelRace_Ethnicity;
 
     @FXML
+    private Label labelGender;
+
+    @FXML
+    private Label labelPrefLanguage;
+
+    @FXML
+    private Label labelMaritalStatus;
+
+    @FXML
     private Button btnBack;
 
     @FXML
@@ -58,6 +67,9 @@ public class TreatmentCoursePageController implements Initializable{
         labelPatientAge.setText(selectedPatient.getPatientAge());
         labelPatientDoB.setText(selectedPatient.getPatientDoB().toString());
         labelRace_Ethnicity.setText(selectedPatient.getRace_Ethinicity());
+        labelGender.setText(selectedPatient.getGender());
+        labelPrefLanguage.setText(selectedPatient.getPrefLanguage());
+        labelMaritalStatus.setText(selectedPatient.getMaritalStatus());
     }
 
 }
