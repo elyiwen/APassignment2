@@ -56,7 +56,7 @@ public class PatientFormController implements Initializable{
         String patientPrefLanguage = chbPreferredLanguage.getValue();
         String patientMaritalStatus = chbMaritalStatus.getValue();
 
-        if (patientIdentityNo.isEmpty() || patientName.isEmpty()){
+        if (patientIdentityNo.isEmpty() || patientName.isEmpty() || patientDoB == null){
 
             Alert alertisEmpty = new Alert(AlertType.INFORMATION, "Please Fill In Required Details", ButtonType.OK);
             alertisEmpty.setHeaderText("NOTIFICATION");
@@ -81,12 +81,15 @@ public class PatientFormController implements Initializable{
     public void initialize(URL location, ResourceBundle resources){
         
         chbPreferredLanguage.getItems().removeAll(chbPreferredLanguage.getItems());
-        chbPreferredLanguage.getItems().addAll("English", "Bahasa Melayu", "Chinese");
+        chbPreferredLanguage.getItems().addAll("English", "Bahasa Melayu", "Chinese", "None");
+        chbPreferredLanguage.getSelectionModel().select("None");
 
         chbGender.getItems().removeAll(chbGender.getItems());
-        chbGender.getItems().addAll("Male", "Female");
+        chbGender.getItems().addAll("Male", "Female", "None");
+        chbGender.getSelectionModel().select("None");
 
         chbMaritalStatus.getItems().removeAll(chbMaritalStatus.getItems());
-        chbMaritalStatus.getItems().addAll("Single", "Married");
+        chbMaritalStatus.getItems().addAll("Single", "Married", "None");
+        chbMaritalStatus.getSelectionModel().select("None");
     }
 }

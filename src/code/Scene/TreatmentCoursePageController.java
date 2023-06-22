@@ -62,14 +62,14 @@ public class TreatmentCoursePageController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        labelPatientID.setText(selectedPatient.getPatientID());
-        labelPatientName.setText(selectedPatient.getPatientName());
-        labelPatientAge.setText(selectedPatient.getPatientAge());
-        labelPatientDoB.setText(selectedPatient.getPatientDoB().toString());
-        labelRace_Ethnicity.setText(selectedPatient.getRace_Ethinicity());
-        labelGender.setText(selectedPatient.getGender());
-        labelPrefLanguage.setText(selectedPatient.getPrefLanguage());
-        labelMaritalStatus.setText(selectedPatient.getMaritalStatus());
+        labelPatientID.setText("Patient ID: " + selectedPatient.getPatientID());
+        labelPatientName.setText("Patient Name: " + selectedPatient.getPatientName());
+        labelPatientAge.setText("Age: " + selectedPatient.getPatientAge());
+        labelPatientDoB.setText("DoB: " + selectedPatient.getPatientDoB().toString());
+        labelRace_Ethnicity.setText("Race/Ethnicity: " + selectedPatient.getRace_Ethinicity());
+        labelGender.setText("Gender: " + selectedPatient.getGender());
+        labelPrefLanguage.setText("Preferred Language: " + selectedPatient.getPrefLanguage());
+        labelMaritalStatus.setText("Marital Status: " + selectedPatient.getMaritalStatus());
     }
 
 }

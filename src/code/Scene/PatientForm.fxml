@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -51,7 +52,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <ChoiceBox fx:id="chbGender" layoutX="45.0" layoutY="297.0" prefHeight="26.0" prefWidth="98.0" />
+                                    <ChoiceBox fx:id="chbGender" layoutX="45.0" layoutY="297.0" prefHeight="26.0" prefWidth="140.0" />
                                     <Button fx:id="btnSave" layoutX="302.0" layoutY="410.0" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="35.0" prefWidth="74.0" text="Save">
                                        <font>
                                           <Font name="System Bold Italic" size="20.0" />
@@ -67,7 +68,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="tfRace_Ethnicity" layoutX="522.0" layoutY="117.0" prefHeight="27.0" prefWidth="147.0" style="-fx-background-color: #FFFFFF;" />
+                                    <TextField fx:id="tfRace_Ethnicity" layoutX="522.0" layoutY="117.0" prefHeight="27.0" prefWidth="147.0" style="-fx-background-color: #FFFFFF;" text="None" />
                                     <Label layoutX="-34.0" layoutY="208.0" text="Preferred Language">
                                        <font>
                                           <Font size="18.0" />
@@ -79,12 +80,15 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <ChoiceBox fx:id="chbMaritalStatus" layoutX="516.0" layoutY="209.0" prefHeight="26.0" prefWidth="98.0" />
+                                    <ChoiceBox fx:id="chbMaritalStatus" layoutX="516.0" layoutY="209.0" prefHeight="26.0" prefWidth="136.0" />
                                     <Label layoutX="382.0" layoutY="116.0" text="Race/Ethnicity">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
+                                    <FontAwesomeIcon fill="#e11c1c" glyphName="STAR" layoutX="20.0" layoutY="52.0" />
+                                    <FontAwesomeIcon fill="#e11c1c" glyphName="STAR" layoutX="20.0" layoutY="127.0" />
+                                    <FontAwesomeIcon fill="#e11c1c" glyphName="STAR" layoutX="495.0" layoutY="49.0" />
                                  </children>
                               </Pane>
                            </center>
