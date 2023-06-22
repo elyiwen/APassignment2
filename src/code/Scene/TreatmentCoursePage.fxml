@@ -62,7 +62,7 @@
       </Pane>
       <Pane layoutX="726.0" layoutY="130.0" prefHeight="487.0" prefWidth="671.0" style="-fx-background-color: white; -fx-border-color: grey;">
          <children>
-            <Pane layoutX="23.0" layoutY="37.0" prefHeight="145.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: grey;">
+            <Pane layoutX="31.0" layoutY="26.0" prefHeight="154.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: grey;">
                <children>
                   <Label alignment="CENTER" prefHeight="20.0" prefWidth="84.0" style="-fx-background-color: #8FC8E8;" text="Diagnosis" textFill="WHITE">
                      <font>
@@ -71,7 +71,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="324.0" layoutY="37.0" prefHeight="154.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">
+            <Pane layoutX="329.0" layoutY="21.0" prefHeight="154.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">
                <children>
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Analysis/Test" textFill="WHITE">
                      <font>
@@ -80,7 +80,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="23.0" layoutY="202.0" prefHeight="291.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: grey;">
+            <Pane layoutX="23.0" layoutY="191.0" prefHeight="291.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: grey;">
                <children>
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Procedure" textFill="WHITE">
                      <font>
@@ -89,7 +89,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="357.0" layoutY="202.0" prefHeight="291.0" prefWidth="297.0" style="-fx-background-color: white; -fx-border-color: grey;">
+            <Pane layoutX="357.0" layoutY="191.0" prefHeight="291.0" prefWidth="297.0" style="-fx-background-color: white; -fx-border-color: grey;">
                <children>
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="90.0" style="-fx-background-color: #8FC8E8;" text="Medication" textFill="WHITE">
                      <font>

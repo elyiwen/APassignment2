@@ -44,7 +44,7 @@ public class Patient implements Serializable{
     private static File patientFile = new File("patient.txt");
     private static ArrayList<Patient> patientList = new ArrayList<>();
 
-    public Patient(String patientName, String patientIdentityNo, LocalDate doB, String race_ethnicity, String gender, String prefLanguage, String maritalStatus) throws IOException{
+    public void setPatientBiodata(String patientName, String patientIdentityNo, LocalDate doB, String race_ethnicity, String gender, String prefLanguage, String maritalStatus) throws IOException{
         this.patientName = patientName;
         this.patientIdentityNo = patientIdentityNo;
         this.doB = doB;
@@ -54,7 +54,19 @@ public class Patient implements Serializable{
         this.maritalStatus = maritalStatus;
         this.patientID = generateID();
         this.age = calAge(doB);
-        patientList.add(this);
+    }
+
+    public void setPatientContactInfo(String address, String country, String state, String city, String zipCode, String patientEmail, String patientContactNo, String emergencyContactNo, String emergencyName, String emergencyRelationship){
+        this.address = address;
+        this.country = country;
+        this.state = state;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.patientEmail = patientEmail;
+        this.patientContactNo = patientContactNo;
+        this.emergencyContactNo = emergencyContactNo;
+        this.emergencyName = emergencyName;
+        this.emergencyRelationship = emergencyRelationship;
     }
 
     public String generateID(){
