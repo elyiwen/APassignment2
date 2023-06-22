@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import code.Patient.Patient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -36,6 +39,9 @@ public class PatientPageController implements Initializable{
 
     @FXML
     private Button btnView;
+
+    @FXML
+    private TextField tfSearch;
 
     @FXML
     private Button btnSaveProgress;
@@ -125,13 +131,40 @@ public class PatientPageController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) { 
+
+        tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
+        tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
+        tcPatientContactNo.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientContactNo"));   
+
         patientObservableList.clear();
         patientObservableList.addAll(Patient.getPatientList());
         tableView.setItems(patientObservableList);
 
-        tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
-        tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
-        tcPatientContactNo.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientContactNo"));        
+        FilteredList<Patient> patientFilteredData = new FilteredList<>(patientObservableList, b -> true);
+
+        tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            patientFilteredData.setPredicate(patient -> {
+                if (newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (patient.getPatientName().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }
+                else if (patient.getPatientID().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
+        }
+        );
+
+        SortedList<Patient> patientSortedData = new SortedList<>(patientFilteredData);
+        patientSortedData.comparatorProperty().bind(tableView.comparatorProperty());
+        tableView.setItems(patientSortedData);     
     }
 
     public static Patient getSelectedPatient(){
