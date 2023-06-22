@@ -2,7 +2,6 @@ package code.Scene;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.channels.SelectableChannel;
 import java.util.ResourceBundle;
 
 import code.Patient.Patient;
@@ -63,6 +62,7 @@ public class PatientPageController implements Initializable{
         scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("PatientForm.fxml")));
         stagePatientForm.setTitle("Patient Registration Form");
         stagePatientForm.setScene(scenePatientForm);
+        stagePatientForm.setResizable(false);
         stagePatientForm.show();
     }
 

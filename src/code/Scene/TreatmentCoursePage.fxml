@@ -131,18 +131,38 @@
             </Pane>
             <AnchorPane prefHeight="78.0" prefWidth="1415.0">
                <children>
-                  <Label fx:id="labelPatientName" layoutX="117.0" layoutY="17.0" prefHeight="30.0" prefWidth="178.0" textFill="#252121">
+                  <Label fx:id="labelPatientName" layoutX="117.0" layoutY="17.0" prefHeight="30.0" prefWidth="178.0" text="Name" textFill="#252121">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelPatientID" layoutX="117.0" layoutY="47.0" prefHeight="30.0" prefWidth="150.0" textFill="#252121">
+                  <Label fx:id="labelPatientID" layoutX="117.0" layoutY="47.0" prefHeight="30.0" prefWidth="150.0" text="ID" textFill="#252121">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="65.0" fitWidth="68.0" layoutX="24.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
                   <Button fx:id="btnBack" layoutX="1325.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBackClicked" text="Back" />
+                  <Label fx:id="labelPatientAge" layoutX="304.0" layoutY="17.0" prefHeight="30.0" prefWidth="178.0" text="Age" textFill="#252121">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelPatientAge1" layoutX="304.0" layoutY="47.0" prefHeight="30.0" prefWidth="178.0" textFill="#252121">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelPatientDoB" layoutX="304.0" layoutY="44.0" prefHeight="30.0" prefWidth="178.0" text="DoB" textFill="#252121">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelRace_Ethnicity" layoutX="447.0" layoutY="17.0" prefHeight="30.0" prefWidth="178.0" text="Race/Ethnicity" textFill="#252121">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>

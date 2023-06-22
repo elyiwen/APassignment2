@@ -27,6 +27,15 @@ public class TreatmentCoursePageController implements Initializable{
     private Label labelPatientName;
 
     @FXML
+    private Label labelPatientAge;
+
+    @FXML
+    private Label labelPatientDoB;
+
+    @FXML
+    private Label labelRace_Ethnicity;
+
+    @FXML
     private Button btnBack;
 
     @FXML
@@ -46,6 +55,9 @@ public class TreatmentCoursePageController implements Initializable{
     public void initialize(URL location, ResourceBundle resources){
         labelPatientID.setText(selectedPatient.getPatientID());
         labelPatientName.setText(selectedPatient.getPatientName());
+        labelPatientAge.setText(selectedPatient.getPatientAge());
+        labelPatientDoB.setText(selectedPatient.getPatientDoB().toString());
+        labelRace_Ethnicity.setText(selectedPatient.getRace_Ethinicity());
     }
 
 }

@@ -16,11 +16,6 @@ public class Clinician {
     private static ArrayList<Clinician> clinicianList = new ArrayList<>();
     private static File clinicianFile = new File("clinician.txt");
 
-    public Clinician(String clinicianID, String password){
-        this.clinicianID = clinicianID;
-        this.password = password;
-    }
-
     public Clinician(String clinicianID, String firstName, String lastName, String password, String contactInfo, double salary) {
         this.clinicianID = clinicianID;
         this.firstName = firstName;

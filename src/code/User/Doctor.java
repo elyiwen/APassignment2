@@ -5,11 +5,6 @@ public class Doctor extends Clinician {
     private String Department;
     private boolean isDoctor;
 
-    public Doctor(String clinicianID, String password){
-        super(clinicianID, password); 
-        Clinician.getClinicianList().add(this);      
-    }
-
     public Doctor(String clinicianID, String firstName, String lastName, String password, String contactInfo, double salary, String Department) {
         super(clinicianID, firstName, lastName, password, contactInfo, salary);
         this.Department = Department;
