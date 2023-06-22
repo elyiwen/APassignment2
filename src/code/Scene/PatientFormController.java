@@ -86,16 +86,16 @@ public class PatientFormController implements Initializable{
         String patientPrefLanguage = chbPreferredLanguage.getValue();
         String patientMaritalStatus = chbMaritalStatus.getValue();
 
-        String patientAddress = tfAddress.getText();
-        String patientCity = tfCity.getText();
-        String patientState = tfState.getText();
-        String patientZipCode = tfZip.getText();
-        String patientCountry = tfCountry.getText();
-        String patientEmail = tfEmail.getText();
-        String patientContactNo = tfContactNo.getText();
-        String patientEmergencyName = tfEmergencyName.getText();
-        String patientEmergencyRelationship = tfEmergencyRelationship.getText();
-        String patientEmergencyContactNo = tfEmergencyContactNo.getText();
+        // String patientAddress = tfAddress.getText();
+        // String patientCity = tfCity.getText();
+        // String patientState = tfState.getText();
+        // String patientZipCode = tfZip.getText();
+        // String patientCountry = tfCountry.getText();
+        // String patientEmail = tfEmail.getText();
+        // String patientContactNo = tfContactNo.getText();
+        // String patientEmergencyName = tfEmergencyName.getText();
+        // String patientEmergencyRelationship = tfEmergencyRelationship.getText();
+        // String patientEmergencyContactNo = tfEmergencyContactNo.getText();
 
         if (patientIdentityNo.isEmpty() || patientName.isEmpty() || patientDoB == null){
 
@@ -112,7 +112,6 @@ public class PatientFormController implements Initializable{
             if(alertExit.showAndWait().get() == ButtonType.YES){
                 // Add Patient 
                 Patient newPatient = new Patient(patientName, patientIdentityNo, patientDoB, patientRace_Ethnicity, patientGender, patientPrefLanguage, patientMaritalStatus);
-                newPatient.setContactInfo(patientAddress, patientCountry, patientState, patientCity, patientZipCode, patientEmail, patientContactNo, patientEmergencyContactNo, patientEmergencyName, patientEmergencyRelationship);
                 PatientPageController.scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("PatientForm.fxml")));
                 PatientPageController.stagePatientForm.setScene(PatientPageController.scenePatientForm);
             }
