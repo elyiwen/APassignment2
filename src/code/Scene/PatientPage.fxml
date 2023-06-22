@@ -28,7 +28,7 @@
                       <TableColumn fx:id="tcPatientID" prefWidth="139.9999595284462" text="Patient ID" />
                       <TableColumn fx:id="tcPatientName" prefWidth="179.9999542236328" text="Patient Name" />
                         <TableColumn prefWidth="175.20001220703125" text="Attending Physician" />
-                        <TableColumn prefWidth="175.19998168945312" text="Contact No" />
+                        <TableColumn fx:id="tcPatientContactNo" prefWidth="175.19998168945312" text="Contact No" />
                         <TableColumn prefWidth="221.60003662109375" text="Status" />
                         <TableColumn prefWidth="122.4000244140625" text="Ward No." />
                         <TableColumn prefWidth="329.60009765625" text="Lastest Update" />

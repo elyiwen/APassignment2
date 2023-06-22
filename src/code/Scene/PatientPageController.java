@@ -49,6 +49,9 @@ public class PatientPageController implements Initializable{
     @FXML
     private TableColumn<Patient, String> tcPatientName;
 
+    @FXML
+    private TableColumn<Patient, String> tcPatientContactNo;
+
     private ObservableList<Patient> patientObservableList = FXCollections.observableArrayList();
 
     public static Stage stagePatientForm;
@@ -101,16 +104,23 @@ public class PatientPageController implements Initializable{
     @FXML
     void btnViewClicked(ActionEvent event) throws IOException{
         selectedPatient = tableView.getSelectionModel().getSelectedItem();
+        if (selectedPatient == null){
+            Alert alert = new Alert(AlertType.CONFIRMATION, "Please Select A Patient to View", ButtonType.OK);
+            alert.setHeaderText("NOTIFICATION");
+            alert.setTitle("ALERT");
+            alert.showAndWait();
+        }
+        else{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScene.fxml"));
+            Parent root = loader.load();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScene.fxml"));
-        Parent root = loader.load();
-
-        MainSceneController mainSceneController = loader.getController();
-        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        mainSceneController.switchScene("TreatmentCoursePage");
+            MainSceneController mainSceneController = loader.getController();
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+            mainSceneController.switchScene("TreatmentCoursePage");
+        }
     }
 
     @Override
@@ -121,6 +131,7 @@ public class PatientPageController implements Initializable{
 
         tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
         tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
+        tcPatientContactNo.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientContactNo"));        
     }
 
     public static Patient getSelectedPatient(){

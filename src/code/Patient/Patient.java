@@ -15,7 +15,7 @@ import java.util.Random;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class Patient implements Serializable{
+public class Patient implements ContactInfo ,Serializable{
     
     // Demographic
     private String patientID;
@@ -43,6 +43,7 @@ public class Patient implements Serializable{
     //Patient List
     private static File patientFile = new File("patient.txt");
     private static ArrayList<Patient> patientList = new ArrayList<>();
+    private static ArrayList<Patient> patientContactInfoList = new ArrayList<>();
 
     public Patient(String patientName, String patientIdentityNo, LocalDate doB, String race_ethnicity, String gender, String prefLanguage, String maritalStatus) throws IOException{
         this.patientName = patientName;
@@ -164,5 +165,42 @@ public class Patient implements Serializable{
 
     public static ArrayList<Patient> getPatientList(){
         return patientList;
+    }
+    public static ArrayList<Patient> getPatientContactInforList(){
+        return patientContactInfoList;
+    }
+
+    public String getAddress(){
+        return address + "\n" + city + " " + zipCode + "\n" + state + "," + country;
+    }
+
+    public String getPatientEmail(){
+        return patientEmail;
+    }
+
+    public String getPatientContactNo(){
+        return patientContactNo;
+    }
+
+    public String getEmergencyInfo(){
+        return "Name: " + emergencyName + "\n" + "Relationship: " + emergencyRelationship + "\n" + "ContactNo: " + emergencyContactNo;
+    }
+
+    @Override
+    public void setContactInfo(String address, String country, String state, String city, String zipCode,
+                               String patientEmail, String patientContactNo, String emergencyContactNo, String emergencyName,
+                               String emergencyRelationship) {
+
+        this.address = address;
+        this.country = country;
+        this.state = state;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.patientEmail = patientEmail;
+        this.patientContactNo = patientContactNo;
+        this.emergencyContactNo = emergencyContactNo;
+        this.emergencyName = emergencyName;
+        this.emergencyRelationship = emergencyRelationship;
+        Patient.getPatientContactInforList().add(this);
     }
 }
