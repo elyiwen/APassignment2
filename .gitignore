@@ -1,0 +1,4 @@
+src/clinician.txt
+src/patient.txt
+src/code/Patient/Patient.class
+*.class
