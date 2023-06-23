@@ -69,8 +69,6 @@ public class MainSceneController implements Initializable{
         cbProfile.getItems().removeAll(cbProfile.getItems());
         cbProfile.getItems().addAll(user.getClinicianID(), "Log Out");
         cbProfile.setPromptText(user.getClinicianID());
-
-        System.out.println(user.toString());
     }
 
     @FXML
