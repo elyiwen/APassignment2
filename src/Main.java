@@ -21,17 +21,12 @@ public class Main extends Application{
 
         primaryStage.setOnCloseRequest(event -> {
             event.consume();
-            try {
-                Alert alertExit = new Alert(AlertType.CONFIRMATION, "Do You Want To Exit", ButtonType.OK, ButtonType.CANCEL);
-                alertExit.setHeaderText("You Are About To Exit");
-                alertExit.setTitle("EXIT");
+            Alert alertExit = new Alert(AlertType.CONFIRMATION, "Do You Want To Exit", ButtonType.OK, ButtonType.CANCEL);
+            alertExit.setHeaderText("You Are About To Exit");
+            alertExit.setTitle("EXIT");
 
-                if (alertExit.showAndWait().get() == ButtonType.OK){
-                    primaryStage.close();
-                    Patient.writeRecord();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (alertExit.showAndWait().get() == ButtonType.OK){
+                primaryStage.close();
             }
         });
     }
