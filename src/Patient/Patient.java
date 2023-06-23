@@ -2,15 +2,13 @@ package Patient;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
-import java.util.Random;
 
-public class Patient implements Serializable{
+public abstract class Patient{
     
-    // Demographic
+    // Biodata
     private String patientID;
     private String patientName;
     private String patientIdentityNo;
@@ -20,6 +18,7 @@ public class Patient implements Serializable{
     private String race_ethnicity;
     private String prefLanguage;
     private String maritalStatus;
+    private String status;
 
     // ContactInfo
     private String address;
@@ -37,9 +36,9 @@ public class Patient implements Serializable{
     private static ArrayList<Patient> patientList = new ArrayList<>();
 
     //Patient File
-    private static File patientFile = new File("patient.txt");
+    private static File patientFile = new File("patient.json");
 
-    public void setPatientBiodata(String patientName, String patientIdentityNo, LocalDate doB, String race_ethnicity, String gender, String prefLanguage, String maritalStatus) throws IOException{
+    public void setPatientBiodata(String patientName, String patientIdentityNo, LocalDate doB, String race_ethnicity, String gender, String prefLanguage, String maritalStatus, String status) throws IOException{
         this.patientName = patientName;
         this.patientIdentityNo = patientIdentityNo;
         this.doB = doB;
@@ -47,6 +46,7 @@ public class Patient implements Serializable{
         this.gender = gender;
         this.prefLanguage = prefLanguage;
         this.maritalStatus = maritalStatus;
+        this.status = status;
         this.patientID = generateID();
         this.age = calAge(doB);
     }
@@ -64,16 +64,7 @@ public class Patient implements Serializable{
         this.emergencyRelationship = emergencyRelationship;
     }
 
-    public String generateID(){
-        Random rand = new Random();
-        String random = Integer.toString(rand.nextInt(1000)+1000);
-        String idFirst = "P";
-        char[] patientNameChar = patientName.toCharArray();
-        String idMid = patientNameChar[0] + "-" + patientNameChar[1] + random;
-        String idLast = patientIdentityNo.substring(patientIdentityNo.length() - 4);
-        String patientID = idFirst + idMid.toUpperCase() + idLast;
-        return patientID;
-    }
+    public abstract String generateID();
 
     public String calAge(LocalDate doB){
         int yearDoB = doB.getYear();
@@ -119,11 +110,35 @@ public class Patient implements Serializable{
         return maritalStatus;
     }
 
+    public String getStatus(){
+        return status;
+    }
+
     public static ArrayList<Patient> getPatientList(){
         return patientList;
     }
 
     public String getAddress(){
+        return address;
+    }
+
+    public String getCountry(){
+        return country;
+    }
+
+    public String getState(){
+        return state;
+    }
+    
+    public String getCity(){
+        return city;
+    }
+
+    public String getZipCode(){
+        return zipCode;
+    }
+
+    public String getFullAddress(){
         return address + "\n" + city + " " + zipCode + "\n" + state + " " + country;
     }
 
@@ -133,6 +148,18 @@ public class Patient implements Serializable{
 
     public String getPatientContactNo(){
         return patientContactNo;
+    }
+
+    public String getEmergencyName(){
+        return emergencyName;
+    }
+
+    public String getEmergencyRelationship(){
+        return emergencyRelationship;
+    }
+
+    public String getEmergencyContactNo(){
+        return emergencyContactNo;
     }
 
     public String getEmergencyInfo(){

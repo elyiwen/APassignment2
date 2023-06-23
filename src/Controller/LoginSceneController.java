@@ -41,21 +41,21 @@ public class LoginSceneController implements Initializable{
     private static Pharmacist newPharmacist;
     private static Nurse newNurse;
 
-    public static String user;
+    public static String accountType;
     public static String userID;
 
     @FXML
     void btnLogInClicked(ActionEvent event) throws IOException{
         // Get User Input
         try{
-        user = cbAccountType.getValue();
+        accountType = cbAccountType.getValue();
         userID = tfUsername.getText();
         String password = tfPassword.getText();
 
-        switch (user){
+        switch (accountType){
             case "Doctor":
-                if (Clinician.loginAuthentication(user, userID, password) == true){
-                    newDoctor = (Doctor)Clinician.login(user, userID, password);
+                if (Clinician.loginAuthentication(accountType, userID, password) == true){
+                    newDoctor = (Doctor)Clinician.login(accountType, userID, password);
                     loginInfo(true, event);
                 }
                 else {
@@ -64,8 +64,8 @@ public class LoginSceneController implements Initializable{
                 break;
                 
             case "Pharmacist":
-                if (Clinician.loginAuthentication(user, userID, password) == true){
-                    newPharmacist = (Pharmacist)Clinician.login(user, userID, password);
+                if (Clinician.loginAuthentication(accountType, userID, password) == true){
+                    newPharmacist = (Pharmacist)Clinician.login(accountType, userID, password);
                     loginInfo(true, event);
                 }
                 else {
@@ -74,8 +74,8 @@ public class LoginSceneController implements Initializable{
                 break;
 
             case "Nurse": 
-                if (Clinician.loginAuthentication(user, userID, password) == true){
-                    newNurse = (Nurse)Clinician.login(user, userID, password);
+                if (Clinician.loginAuthentication(accountType, userID, password) == true){
+                    newNurse = (Nurse)Clinician.login(accountType, userID, password);
                     loginInfo(true, event);
                 }
                 else {

@@ -52,13 +52,13 @@ public class MainSceneController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        if (LoginSceneController.user.equals("Doctor")){
+        if (LoginSceneController.accountType.equals("Doctor")){
             user = LoginSceneController.getDoctor();
         }
-        else if (LoginSceneController.user.equals("Pharmacist")){
+        else if (LoginSceneController.accountType.equals("Pharmacist")){
             user = LoginSceneController.getPharmacist();
         }
-        else if (LoginSceneController.user.equals("Nurse")){
+        else if (LoginSceneController.accountType.equals("Nurse")){
             user = LoginSceneController.getNurse();
         }      
 
@@ -124,5 +124,9 @@ public class MainSceneController implements Initializable{
         refreshPane();
         Parent root = FXMLLoader.load(getClass().getResource("/Scene/" + scene + ".fxml"));
         borderPane.setCenter(root); 
+    }
+
+    public static Clinician getUser(){
+        return user;
     }
 }

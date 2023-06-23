@@ -2,9 +2,12 @@ package code;
 
 import java.util.ArrayList;
 
+import Patient.Candidate;
+import Patient.Inpatient;
+import Patient.Outpatient;
 import Patient.Patient;
 
-public class Clinician {
+public abstract class Clinician {
     
     private String clinicianID;
     private String clinicianName;  
@@ -51,20 +54,41 @@ public class Clinician {
         return null;
     }
 
-    public void addPatient(){
-
+    public Patient addPatient(String status){
+        if (status.equals("Candidate")){
+            Candidate newPatient = new Candidate("Awaiting Triage Result");
+            return newPatient;
+        }
+        else if (status.equals("Outpatient")){
+            Outpatient newPatient = new Outpatient();
+            return newPatient;
+        }
+        else if (status.equals("Inpatient")){
+            Inpatient newPatient = new Inpatient("B103");
+            return newPatient;
+        }
+        else {
+            return null;
+        }
     }
 
-    public void deletePatient(){
-
+    public void deletePatient(Patient selectedPatient){
+        ArrayList<Patient> patientList = Patient.getPatientList();
+        for (Patient p : patientList){
+            if (p.equals(selectedPatient)){
+                patientList.remove(p);
+                break;
+            }
+        }
     }
 
-    public void editPatient(){
-
-    }
-
-    public void viewPatient(){
-        
+    public void editPatient(Patient selectedPatient){
+        ArrayList<Patient> patientList = Patient.getPatientList();
+        for (Patient p : patientList){
+            if (p.equals(selectedPatient)){
+                
+            }
+        }
     }
 
     //Setter

@@ -5,7 +5,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import Patient.Inpatient;
 import Patient.Patient;
+import code.Clinician;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,6 +45,9 @@ public class PatientFormController implements Initializable{
     private ChoiceBox<String> chbMaritalStatus;
 
     @FXML
+    private ChoiceBox<String> chbStatus;
+
+    @FXML
     private TextField tfAddress;
 
     @FXML
@@ -75,6 +80,9 @@ public class PatientFormController implements Initializable{
     @FXML
     private Button btnSave;
 
+    private static Clinician user;
+    private Patient selectedPatient;
+
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
  
@@ -96,8 +104,9 @@ public class PatientFormController implements Initializable{
         String patientEmergencyName = tfEmergencyName.getText();
         String patientEmergencyRelationship = tfEmergencyRelationship.getText();
         String patientEmergencyContactNo = tfEmergencyContactNo.getText();
+        String status = chbStatus.getValue();
 
-        if (patientIdentityNo.isEmpty() || patientName.isEmpty() || patientDoB == null){
+        if (patientIdentityNo.isEmpty() || patientName.isEmpty() || patientDoB == null || chbStatus.getValue() == null){
 
             Alert alertisEmpty = new Alert(AlertType.INFORMATION, "Please Fill In Required Details", ButtonType.OK);
             alertisEmpty.setHeaderText("NOTIFICATION");
@@ -110,20 +119,30 @@ public class PatientFormController implements Initializable{
             alertExit.setTitle("ALERT");
 
             if(alertExit.showAndWait().get() == ButtonType.YES){
-                // Add Patient 
-                Patient newPatient = new Patient();
-                newPatient.setPatientBiodata(patientName, patientIdentityNo, patientDoB, patientRace_Ethnicity, patientGender, patientPrefLanguage, patientMaritalStatus);
-                newPatient.setPatientContactInfo(patientAddress, patientCountry, patientState, patientCity, patientZipCode, patientEmail, patientContactNo, patientEmergencyContactNo, patientEmergencyName, patientEmergencyRelationship);
-                Patient.getPatientList().add(newPatient);
-                
-                PatientPageController.scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml")));
-                PatientPageController.stagePatientForm.setScene(PatientPageController.scenePatientForm);
+                selectedPatient = PatientPageController.getSelectedPatient();
+                if (selectedPatient == null){
+                    Patient newPatient = user.addPatient(status);
+                    newPatient.setPatientBiodata(patientName, patientIdentityNo, patientDoB, patientRace_Ethnicity, patientGender, patientPrefLanguage, patientMaritalStatus, status);
+                    newPatient.setPatientContactInfo(patientAddress, patientCountry, patientState, patientCity, patientZipCode, patientEmail, patientContactNo, patientEmergencyContactNo, patientEmergencyName, patientEmergencyRelationship);
+                    Patient.getPatientList().add(newPatient);
+                    
+                    PatientPageController.scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml")));
+                    PatientPageController.stagePatientForm.setScene(PatientPageController.scenePatientForm);
+                }
+                else {
+                    selectedPatient.setPatientBiodata(patientName, patientIdentityNo, patientDoB, patientRace_Ethnicity, patientGender, patientPrefLanguage, patientMaritalStatus, status);
+                    selectedPatient.setPatientContactInfo(patientAddress, patientCountry, patientState, patientCity, patientZipCode, patientEmail, patientContactNo, patientEmergencyContactNo, patientEmergencyName, patientEmergencyRelationship);
+                    
+                    PatientPageController.scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml")));
+                    PatientPageController.stagePatientForm.setScene(PatientPageController.scenePatientForm);
+                }
             }
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        user = MainSceneController.getUser();
         
         chbPreferredLanguage.getItems().removeAll(chbPreferredLanguage.getItems());
         chbPreferredLanguage.getItems().addAll("English", "Bahasa Melayu", "Chinese", "None");
@@ -136,5 +155,33 @@ public class PatientFormController implements Initializable{
         chbMaritalStatus.getItems().removeAll(chbMaritalStatus.getItems());
         chbMaritalStatus.getItems().addAll("Single", "Married", "None");
         chbMaritalStatus.getSelectionModel().select("None");
+
+        chbStatus.getItems().removeAll(chbStatus.getItems());
+        chbStatus.getItems().addAll("Outpatient", "Inpatient", "Candidate");
+        chbStatus.getSelectionModel().select("Candidate");
+    }
+
+    public void editBiodata(String patientName, String identitfyNo, LocalDate doB, String race_ethnicity, String gender, String prefLanguage, String maritalStatus, String status){
+        tfPatientName.setText(patientName);
+        tfIdentityNo.setText(identitfyNo);
+        dpDob.setValue(doB);
+        tfRace_Ethnicity.setText(race_ethnicity);
+        chbGender.setValue(gender);
+        chbPreferredLanguage.setValue(prefLanguage);
+        chbMaritalStatus.setValue(maritalStatus);
+        chbStatus.setValue(status);
+    }
+
+    public void editContactInfo(String address, String city, String state, String zip, String country, String email, String contactNo, String emergencyName, String emergencyRelationship, String emergencyContactNo){
+        tfAddress.setText(address);
+        tfCity.setText(city);
+        tfState.setText(state);
+        tfZip.setText(zip);
+        tfCountry.setText(country);
+        tfEmail.setText(email);
+        tfContactNo.setText(contactNo);
+        tfEmergencyName.setText(emergencyName);
+        tfEmergencyRelationship.setText(emergencyRelationship);
+        tfEmergencyContactNo.setText(emergencyContactNo);
     }
 }

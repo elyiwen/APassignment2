@@ -89,6 +89,12 @@
                                     <FontAwesomeIcon fill="#e11c1c" glyphName="STAR" layoutX="20.0" layoutY="52.0" />
                                     <FontAwesomeIcon fill="#e11c1c" glyphName="STAR" layoutX="20.0" layoutY="127.0" />
                                     <FontAwesomeIcon fill="#e11c1c" glyphName="STAR" layoutX="495.0" layoutY="49.0" />
+                                    <ChoiceBox fx:id="chbStatus" layoutX="509.0" layoutY="297.0" prefHeight="25.0" prefWidth="104.0" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="374.0" layoutY="297.0" prefHeight="27.0" prefWidth="112.0" text="Status">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </Pane>
                            </center>

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Patient.Patient;
+import code.Clinician;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -41,6 +42,9 @@ public class PatientPageController implements Initializable{
     private Button btnView;
 
     @FXML
+    private Button btnEdit;
+
+    @FXML
     private TextField tfSearch;
 
     @FXML
@@ -58,21 +62,33 @@ public class PatientPageController implements Initializable{
     @FXML
     private TableColumn<Patient, String> tcPatientContactNo;
 
+    @FXML
+    private TableColumn<Patient, String> tcStatus;
+
     private ObservableList<Patient> patientObservableList = FXCollections.observableArrayList();
 
     public static Stage stagePatientForm;
     public static Scene scenePatientForm;
 
     private static Patient selectedPatient;
+    private static Clinician user;
 
     @FXML
     void btnAddClicked(ActionEvent event) throws IOException {
-        stagePatientForm = new Stage();
-        scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml")));
-        stagePatientForm.setTitle("Patient Registration Form");
-        stagePatientForm.setScene(scenePatientForm);
-        stagePatientForm.setResizable(false);
-        stagePatientForm.show();
+        if (user.getAccountType().equals("Doctor") || user.getAccountType().equals("Nurse")){
+            stagePatientForm = new Stage();
+            scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml")));
+            stagePatientForm.setTitle("Patient Registration Form");
+            stagePatientForm.setScene(scenePatientForm);
+            stagePatientForm.setResizable(false);
+            stagePatientForm.show();
+        }
+        else {
+            Alert alert = new Alert(AlertType.CONFIRMATION, "This Function is Not Allowed", ButtonType.OK);
+            alert.setHeaderText("NOTIFICATION");
+            alert.setTitle("ALERT");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -92,6 +108,7 @@ public class PatientPageController implements Initializable{
         try{
             Patient deletePatient = tableView.getSelectionModel().getSelectedItem();
             tableView.getItems().remove(deletePatient);
+            user.deletePatient(deletePatient);
         }
         catch (NullPointerException npe){
             Alert alert = new Alert(AlertType.CONFIRMATION, "Please Select A Patient to Remove", ButtonType.OK);
@@ -123,12 +140,55 @@ public class PatientPageController implements Initializable{
         }
     }
 
+    @FXML
+    void btnEditClicked(ActionEvent event) throws IOException{
+        selectedPatient = tableView.getSelectionModel().getSelectedItem();
+        if (selectedPatient == null){
+            Alert alert = new Alert(AlertType.CONFIRMATION, "Please Select A Patient to Edit", ButtonType.OK);
+            alert.setHeaderText("NOTIFICATION");
+            alert.setTitle("ALERT");
+            alert.showAndWait();
+        }
+        else{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/PatientForm.fxml"));
+            Parent root = loader.load();
+
+            PatientFormController pfc = loader.getController();
+            pfc.editBiodata(selectedPatient.getPatientName(),
+                            selectedPatient.getPatientIdentityNo(),
+                            selectedPatient.getPatientDoB(),
+                            selectedPatient.getRace_Ethinicity(),
+                            selectedPatient.getGender(),
+                            selectedPatient.getPrefLanguage(),
+                            selectedPatient.getMaritalStatus(),
+                            selectedPatient.getStatus());
+            
+            pfc.editContactInfo(selectedPatient.getAddress(),
+                                selectedPatient.getCity(),
+                                selectedPatient.getState(),
+                                selectedPatient.getZipCode(),
+                                selectedPatient.getCountry(),
+                                selectedPatient.getPatientEmail(),
+                                selectedPatient.getPatientContactNo(),
+                                selectedPatient.getEmergencyName(),
+                                selectedPatient.getEmergencyRelationship(),
+                                selectedPatient.getEmergencyContactNo());
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
     @Override
-    public void initialize(URL location, ResourceBundle resources) { 
+    public void initialize(URL location, ResourceBundle resources) {
+        user = MainSceneController.getUser();
 
         tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
         tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
-        tcPatientContactNo.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientContactNo"));   
+        tcPatientContactNo.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientContactNo")); 
+        tcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));  
 
         patientObservableList.clear();
         patientObservableList.addAll(Patient.getPatientList());
