@@ -84,12 +84,7 @@ public class PatientPageController implements Initializable{
 
     @FXML
     void btnSaveRecord(ActionEvent event) throws IOException{
-        Alert alert = new Alert(AlertType.CONFIRMATION, "Save Progress?");
-        alert.setHeaderText("NOTIFICATION");
-        alert.setTitle("ALERT");
-        if (alert.showAndWait().get() == ButtonType.OK){
-            Patient.writeRecord();
-        }
+        
     }
 
     @FXML

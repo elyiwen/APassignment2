@@ -41,7 +41,6 @@ public class Patient implements Serializable{
     private String emergencyRelationship;
 
     //Patient List
-    private static File patientFile = new File("patient.txt");
     private static ArrayList<Patient> patientList = new ArrayList<>();
 
     public void setPatientBiodata(String patientName, String patientIdentityNo, LocalDate doB, String race_ethnicity, String gender, String prefLanguage, String maritalStatus) throws IOException{
@@ -88,40 +87,11 @@ public class Patient implements Serializable{
         return ageS;
     }
 
-    public static void writeRecord() throws IOException{
-        patientFile.createNewFile();
-        FileOutputStream fos = new FileOutputStream(patientFile);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        for (Patient p : patientList){
-            oos.writeObject(p);
-        }
-        oos.close();
-    }
-    
-    public static void readRecord() throws IOException, ClassNotFoundException{
-        FileInputStream fis = new FileInputStream(patientFile);
-        if (fis.available() == 0){
-            Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setTitle("ALERT");
-            alert.setHeaderText("NOTIFICATION");
-            alert.setContentText("No Patient Record Found! Please Add New Patient");
-        }
-        else{
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            while (fis.available() > 0){
-                Patient p = (Patient)ois.readObject();
-                patientList.add(p);
-            }
-            ois.close();
-        }
-    }
-
     public static void deletePatient(Patient deletePatient) throws IOException{
         boolean check = false;
         for (Patient p : patientList){
             if (p.patientID.equals(deletePatient.patientID)){
                 patientList.remove(p);
-                Patient.writeRecord();
                 check = true;
                 break;
             }
@@ -144,10 +114,6 @@ public class Patient implements Serializable{
 
     public String getPatientIdentityNo(){
         return patientIdentityNo;
-    }
-
-    public static File getPatientFile(){
-        return patientFile;
     }
 
     public LocalDate getPatientDoB(){
@@ -179,7 +145,7 @@ public class Patient implements Serializable{
     }
 
     public String getAddress(){
-        return address + "\n" + city + " " + zipCode + "\n" + state + "," + country;
+        return address + "\n" + city + " " + zipCode + "\n" + state + " " + country;
     }
 
     public String getPatientEmail(){

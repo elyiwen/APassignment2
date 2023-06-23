@@ -79,7 +79,6 @@ public class MainSceneController implements Initializable{
             alertLogOut.setHeaderText("NOTIFICATION");
             alertLogOut.setTitle("ALERT");
             if (alertLogOut.showAndWait().get() == ButtonType.YES){
-                Patient.writeRecord();
                 Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 Parent root = FXMLLoader.load(getClass().getResource("/Scene/LoginScene.fxml"));
                 Scene loginScene = new Scene(root);
