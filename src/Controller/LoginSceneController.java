@@ -47,6 +47,7 @@ public class LoginSceneController implements Initializable{
     @FXML
     void btnLogInClicked(ActionEvent event) throws IOException{
         // Get User Input
+        try{
         user = cbAccountType.getValue();
         userID = tfUsername.getText();
         String password = tfPassword.getText();
@@ -80,7 +81,14 @@ public class LoginSceneController implements Initializable{
                 else {
                     loginInfo(false, event);
                 }
-                break;
+                break;               
+        }
+        }
+        catch (NullPointerException npe){
+            Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Please Select Account Type", ButtonType.OK);
+            alertSuccess.setHeaderText("NOTIFICATION");
+            alertSuccess.setTitle("ALERT");
+            alertSuccess.showAndWait();
         }
     }
 
@@ -117,7 +125,7 @@ public class LoginSceneController implements Initializable{
 
     public void loginInfo(boolean authentication, ActionEvent event) throws IOException{
         if (authentication == true){
-                Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Login Success! Welcome Admin", ButtonType.OK);
+                Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Login Success", ButtonType.OK);
                 alertSuccess.setHeaderText("NOTIFICATION");
                 alertSuccess.setTitle("ALERT");
                 if (alertSuccess.showAndWait().get() == ButtonType.OK){

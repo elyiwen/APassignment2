@@ -22,7 +22,7 @@ public class Main extends Application{
         primaryStage.setOnCloseRequest(event -> {
             event.consume();
             try {
-                Alert alertExit = new Alert(AlertType.CONFIRMATION, "Do You Want To Exit", ButtonType.OK);
+                Alert alertExit = new Alert(AlertType.CONFIRMATION, "Do You Want To Exit", ButtonType.OK, ButtonType.CANCEL);
                 alertExit.setHeaderText("You Are About To Exit");
                 alertExit.setTitle("EXIT");
 
