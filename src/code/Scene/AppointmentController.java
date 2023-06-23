@@ -10,7 +10,7 @@ import java.io.*;
 import java.time.LocalDate;
 
 
-public class AppointmentController {
+public class AppointmentController{
 
     @FXML
     private TextField nameTextField;
@@ -66,11 +66,6 @@ public class AppointmentController {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error opening appointments file for editing: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
-
-    @FXML
-    public void refreshAppointment() {
-
     }
 }
 

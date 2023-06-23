@@ -55,6 +55,12 @@ public class CalendarController implements Initializable {
         drawCalendar();
     }
 
+    @FXML
+    public void refreshCalendar() {
+        calendar.getChildren().clear();
+        drawCalendar();
+    }
+
     private void drawCalendar() {
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));
@@ -206,5 +212,4 @@ public class CalendarController implements Initializable {
 
         return calendarActivityMap;
     }
-
 }

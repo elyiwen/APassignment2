@@ -40,5 +40,6 @@
             <Insets right="9.0" />
         </padding>
     </HBox>
+   <Button layoutX="632.0" layoutY="24.0" mnemonicParsing="false" onAction="#refreshCalendar" text="Refresh" />
 
 </AnchorPane>

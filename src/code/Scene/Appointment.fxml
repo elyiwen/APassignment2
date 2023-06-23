@@ -25,7 +25,6 @@
 
     <Button onAction="#makeAppointment" text="Make Appointment" GridPane.columnIndex="1" GridPane.rowIndex="4" />
     <Button onAction="#editAppointments" text="Edit" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-   <Button mnemonicParsing="false" onAction="#refreshAppointment" text="Refresh" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
     <columnConstraints>
         <ColumnConstraints />
