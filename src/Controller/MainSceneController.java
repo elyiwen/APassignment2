@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ResourceBundle;
 
 import code.Clinician;
-import Patient.Patient;
 
 import java.net.URL;
 

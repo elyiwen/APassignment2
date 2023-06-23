@@ -2,6 +2,8 @@ package code;
 
 import java.util.ArrayList;
 
+import Patient.Patient;
+
 public class Clinician {
     
     private String clinicianID;

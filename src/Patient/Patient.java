@@ -1,19 +1,12 @@
 package Patient;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Random;
-
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 public class Patient implements Serializable{
     
@@ -42,6 +35,9 @@ public class Patient implements Serializable{
 
     //Patient List
     private static ArrayList<Patient> patientList = new ArrayList<>();
+
+    //Patient File
+    private static File patientFile = new File("patient.txt");
 
     public void setPatientBiodata(String patientName, String patientIdentityNo, LocalDate doB, String race_ethnicity, String gender, String prefLanguage, String maritalStatus) throws IOException{
         this.patientName = patientName;
@@ -85,23 +81,6 @@ public class Patient implements Serializable{
         int age = yearNow - yearDoB;
         String ageS = Integer.toString(age);
         return ageS;
-    }
-
-    public static void deletePatient(Patient deletePatient) throws IOException{
-        boolean check = false;
-        for (Patient p : patientList){
-            if (p.patientID.equals(deletePatient.patientID)){
-                patientList.remove(p);
-                check = true;
-                break;
-            }
-        }
-        if (check == false){
-            Alert alertNotFound = new Alert(AlertType.CONFIRMATION, "No Patient Recorded");
-            alertNotFound.setHeaderText("NOTIFICATION");
-            alertNotFound.setTitle("ALERT");
-            alertNotFound.showAndWait();
-        }
     }
 
     public String getPatientID(){
@@ -157,6 +136,6 @@ public class Patient implements Serializable{
     }
 
     public String getEmergencyInfo(){
-        return "Name: " + emergencyName + "\n" + "Relationship: " + emergencyRelationship + "\n" + "ContactNo: " + emergencyContactNo;
+        return emergencyName + "\n" + emergencyRelationship + "\n" + emergencyContactNo;
     }
 }

@@ -115,6 +115,7 @@ public class PatientFormController implements Initializable{
                 newPatient.setPatientBiodata(patientName, patientIdentityNo, patientDoB, patientRace_Ethnicity, patientGender, patientPrefLanguage, patientMaritalStatus);
                 newPatient.setPatientContactInfo(patientAddress, patientCountry, patientState, patientCity, patientZipCode, patientEmail, patientContactNo, patientEmergencyContactNo, patientEmergencyName, patientEmergencyRelationship);
                 Patient.getPatientList().add(newPatient);
+                
                 PatientPageController.scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml")));
                 PatientPageController.stagePatientForm.setScene(PatientPageController.scenePatientForm);
             }

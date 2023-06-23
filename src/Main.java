@@ -1,6 +1,5 @@
 import java.io.IOException;
 
-import Patient.Patient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

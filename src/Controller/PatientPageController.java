@@ -92,7 +92,6 @@ public class PatientPageController implements Initializable{
         try{
             Patient deletePatient = tableView.getSelectionModel().getSelectedItem();
             tableView.getItems().remove(deletePatient);
-            Patient.deletePatient(deletePatient);
         }
         catch (NullPointerException npe){
             Alert alert = new Alert(AlertType.CONFIRMATION, "Please Select A Patient to Remove", ButtonType.OK);
