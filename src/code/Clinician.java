@@ -81,7 +81,7 @@ public abstract class Clinician {
         oos.close();
     }
 
-    public void readRecord() throws IOException, ClassNotFoundException{
+    public static void readRecord() throws IOException, ClassNotFoundException{
         FileInputStream fis = new FileInputStream(patientFile);
         ObjectInputStream ois = new ObjectInputStream(fis);
         while(fis.available() > 0){

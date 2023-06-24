@@ -1,0 +1,15 @@
+Ward Number: 
+Movement Means: 
+Attending Physician: 
+Major Complication: 
+Treatment Results: 
+Special Comments: 
+History ID: 2
+----------Previous History----------
+Ward Number: B102
+Movement Means: None
+Attending Physician: Dr. Sulaiman
+Major Complication: None
+Treatment Results: Awaiting Result
+Special Comments: None
+History ID: 1

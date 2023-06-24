@@ -135,10 +135,10 @@ public class TreatmentCoursePageController implements Initializable{
         labelGender.setText("Gender: " + selectedPatient.getGender());
         labelPrefLanguage.setText("Preferred Language: " + selectedPatient.getPrefLanguage());
         labelMaritalStatus.setText("Marital Status: " + selectedPatient.getMaritalStatus());
-        labelAddress.setText("Address: " + "\n" + selectedPatient.getAddress());
+        labelAddress.setText("Address: " + selectedPatient.getFullAddress());
         labelEmail.setText("Email: " + selectedPatient.getPatientEmail());
         labelContactNo.setText("Contact No: " + selectedPatient.getPatientContactNo());
-        labeEmergency.setText("Emergency Info: " + "\n" + selectedPatient.getEmergencyInfo());
+        labeEmergency.setText("Emergency Info: " + selectedPatient.getEmergencyInfo());
         readPatientHistory();
     }
 

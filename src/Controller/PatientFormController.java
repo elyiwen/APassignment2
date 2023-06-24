@@ -10,7 +10,10 @@ import code.Clinician;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -102,6 +105,11 @@ public class PatientFormController implements Initializable{
         newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
         user.addPatient(newPatient);
         user.writeRecord();
+
+        Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
+        alertSuccess.setHeaderText("NOTIFICATION");
+        alertSuccess.setTitle("ALERT");
+
     }
 
     @Override

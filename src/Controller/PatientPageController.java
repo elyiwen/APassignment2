@@ -17,7 +17,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -71,21 +74,47 @@ public class PatientPageController implements Initializable{
 
     private static ObservableList<Patient> tbPatientList = FXCollections.observableArrayList();
 
+    public Stage stage;
+    public Scene scene;
+
     @FXML
     void btnAddClicked(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if (user.getAccountType().equals("Pharmacist")){
+            Alert alertError = new Alert(AlertType.CONFIRMATION, "No Privilege To Add Patient", ButtonType.OK, ButtonType.CANCEL);
+            alertError.setHeaderText("NOTIFICATION");
+            alertError.setTitle("ALERT");
+            alertError.showAndWait();
+        }
+        else{
+            Parent root = FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml"));
+            stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     @FXML
     void btnDeleteClicked(ActionEvent event) throws IOException {
-        selectedPatient = tableView.getSelectionModel().getSelectedItem();
-        tableView.getItems().remove(selectedPatient);
-        user.deletePatient(selectedPatient);
-        user.writeRecord();
+        if (user.getAccountType().equals("Pharmacist")){
+            Alert alertError = new Alert(AlertType.CONFIRMATION, "No Privilege To Delete Patient", ButtonType.OK, ButtonType.CANCEL);
+            alertError.setHeaderText("NOTIFICATION");
+            alertError.setTitle("ALERT");
+            alertError.showAndWait();
+        }
+        else{
+            try{
+                selectedPatient = tableView.getSelectionModel().getSelectedItem();
+            } catch (NullPointerException npe){
+                Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Select A Patient", ButtonType.OK, ButtonType.CANCEL);
+                alertError.setHeaderText("NOTIFICATION");
+                alertError.setTitle("ALERT");
+                alertError.showAndWait();
+            }
+            tableView.getItems().remove(selectedPatient);
+            user.deletePatient(selectedPatient);
+            user.writeRecord();
+        }
     }
 
     @FXML
@@ -96,7 +125,14 @@ public class PatientPageController implements Initializable{
 
     @FXML
     void btnViewClicked(ActionEvent event) throws IOException {
-        selectedPatient = tableView.getSelectionModel().getSelectedItem();
+        try{
+            selectedPatient = tableView.getSelectionModel().getSelectedItem();
+        } catch (NullPointerException npe){
+            Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Select A Patient", ButtonType.OK, ButtonType.CANCEL);
+            alertError.setHeaderText("NOTIFICATION");
+            alertError.setTitle("ALERT");
+            alertError.showAndWait();
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/MainScene.fxml"));
         Parent root = loader.load();
         MainSceneController msc = loader.getController();
