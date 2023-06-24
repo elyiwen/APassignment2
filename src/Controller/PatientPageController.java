@@ -141,23 +141,23 @@ public class PatientPageController implements Initializable{
 
     @FXML
     void btnViewClicked(ActionEvent event) throws IOException {
-        try{
             selectedPatient = tableView.getSelectionModel().getSelectedItem();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/MainScene.fxml"));
-            Parent root = loader.load();
-            MainSceneController msc = loader.getController();
-            msc.switchScene("TreatmentCoursePage");
-            Stage primaryStage = ((Stage) ((Node) event.getSource()).getScene().getWindow());
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } 
-        catch (NullPointerException npe){
-            Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Select A Patient", ButtonType.OK, ButtonType.CANCEL);
-            alertError.setHeaderText("NOTIFICATION");
-            alertError.setTitle("ALERT");
-            alertError.showAndWait();
-        }
+            if (selectedPatient == null){
+                Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Select A Patient", ButtonType.OK, ButtonType.CANCEL);
+                alertError.setHeaderText("NOTIFICATION");
+                alertError.setTitle("ALERT");
+                alertError.showAndWait();
+            }
+            else{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/MainScene.fxml"));
+                Parent root = loader.load();
+                MainSceneController msc = loader.getController();
+                msc.switchScene("TreatmentCoursePage");
+                Stage primaryStage = ((Stage) ((Node) event.getSource()).getScene().getWindow());
+                Scene scene = new Scene(root);
+                primaryStage.setScene(scene);
+                primaryStage.show();
+            }
     }
 
     @FXML
