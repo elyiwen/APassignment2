@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -64,6 +65,8 @@ public class PatientPageController implements Initializable{
     @FXML
     private TextField tfSearch;
 
+    private static Patient selectedPatient;
+
     private static Clinician user = MainSceneController.getUser();
 
     @FXML
@@ -77,7 +80,7 @@ public class PatientPageController implements Initializable{
 
     @FXML
     void btnDeleteClicked(ActionEvent event) throws IOException {
-        Patient selectedPatient = tableView.getSelectionModel().getSelectedItem();
+        selectedPatient = tableView.getSelectionModel().getSelectedItem();
         tableView.getItems().remove(selectedPatient);
         user.deletePatient(selectedPatient);
         user.writeRecord();
@@ -96,8 +99,16 @@ public class PatientPageController implements Initializable{
     }
 
     @FXML
-    void btnViewClicked(ActionEvent event) {
-
+    void btnViewClicked(ActionEvent event) throws IOException {
+        selectedPatient = tableView.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/MainScene.fxml"));
+        Parent root = loader.load();
+        MainSceneController msc = loader.getController();
+        msc.switchScene("TreatmentCoursePage");
+        Stage primaryStage = ((Stage) ((Node) event.getSource()).getScene().getWindow());
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     @Override
@@ -109,4 +120,8 @@ public class PatientPageController implements Initializable{
         tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
         tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
     }
+
+    public static Patient getSelectedPatient(){
+        return selectedPatient; }
+
 }

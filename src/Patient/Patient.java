@@ -2,11 +2,12 @@ package Patient;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
 
-public class Patient{
+public class Patient implements Serializable {
     
     // Biodata
     private String patientID;
@@ -205,6 +206,10 @@ public class Patient{
     public String getSpecialComments(){ return specialComments; }
 
     public String getHistoryID(){ return historyID; }
+
+    public static File getPatientFile(){
+        return patientFile;
+    }
 
 
 }
