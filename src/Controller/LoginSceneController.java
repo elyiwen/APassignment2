@@ -37,52 +37,51 @@ public class LoginSceneController implements Initializable{
     @FXML
     private TextField tfUsername;
 
-    private static Doctor newDoctor;
-    private static Pharmacist newPharmacist;
-    private static Nurse newNurse;
+    private static Clinician user;
 
     public static String accountType;
     public static String userID;
 
     @FXML
-    void btnLogInClicked(ActionEvent event) throws IOException{
+    void btnLogInClicked(ActionEvent event) throws IOException, ClassNotFoundException{
         // Get User Input
         try{
         accountType = cbAccountType.getValue();
         userID = tfUsername.getText();
         String password = tfPassword.getText();
 
-        switch (accountType){
-            case "Doctor":
-                if (Clinician.loginAuthentication(accountType, userID, password) == true){
-                    newDoctor = (Doctor)Clinician.login(accountType, userID, password);
-                    loginInfo(true, event);
-                }
-                else {
-                    loginInfo(false, event);
-                }
-                break;
-                
-            case "Pharmacist":
-                if (Clinician.loginAuthentication(accountType, userID, password) == true){
-                    newPharmacist = (Pharmacist)Clinician.login(accountType, userID, password);
-                    loginInfo(true, event);
-                }
-                else {
-                    loginInfo(false, event);
-                }
-                break;
+            switch (accountType){
+                case "Doctor":
+                    if (Clinician.loginAuthentication(accountType, userID, password) == true){
+                        user = (Doctor)Clinician.login(accountType, userID, password);
+                        loginInfo(true, event);
+                    }
+                    else {
+                        loginInfo(false, event);
+                    }
+                    break;
+                    
+                case "Pharmacist":
+                    if (Clinician.loginAuthentication(accountType, userID, password) == true){
+                        user = (Pharmacist)Clinician.login(accountType, userID, password);
+                        loginInfo(true, event);
+                    }
+                    else {
+                        loginInfo(false, event);
+                    }
+                    break;
 
-            case "Nurse": 
-                if (Clinician.loginAuthentication(accountType, userID, password) == true){
-                    newNurse = (Nurse)Clinician.login(accountType, userID, password);
-                    loginInfo(true, event);
-                }
-                else {
-                    loginInfo(false, event);
-                }
-                break;               
-        }
+                case "Nurse": 
+                    if (Clinician.loginAuthentication(accountType, userID, password) == true){
+                        user = (Nurse)Clinician.login(accountType, userID, password);
+                        loginInfo(true, event);
+                    }
+                    else {
+                        loginInfo(false, event);
+                    }
+                    break;                              
+            }
+            user.readRecord(); 
         }
         catch (NullPointerException npe){
             Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Please Select Account Type", ButtonType.OK);
@@ -95,7 +94,7 @@ public class LoginSceneController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        newDoctor = new Doctor("doctor", 
+        Clinician newDoctor = new Doctor("doctor", 
         "Alpha", 
         "0112223333", 
         "998877665544", 
@@ -103,7 +102,7 @@ public class LoginSceneController implements Initializable{
         "Neurologist", 
         "Neurology");
 
-        newPharmacist = new Pharmacist("pharmacist",
+        Clinician newPharmacist = new Pharmacist("pharmacist",
         "Beta",
         "0998887777",
         "112233445566",
@@ -111,7 +110,7 @@ public class LoginSceneController implements Initializable{
         "Bachelor of Pharmacy, NAPLEX Licensed",
         "Hospital Pharmacist");
 
-        newNurse = new Nurse("nurse",
+        Clinician newNurse = new Nurse("nurse",
         "Gamma",
         "0223334444",
         "223344556677",
@@ -153,13 +152,7 @@ public class LoginSceneController implements Initializable{
     }
 
     //Getter
-    public static Doctor getDoctor(){
-        return newDoctor;
-    }
-    public static Pharmacist getPharmacist(){
-        return newPharmacist;
-    }
-    public static Nurse getNurse(){
-        return newNurse;
+    public static Clinician getUser(){
+        return user;
     }
 }

@@ -1,10 +1,13 @@
 package code;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import Patient.Candidate;
-import Patient.Inpatient;
-import Patient.Outpatient;
 import Patient.Patient;
 
 public abstract class Clinician {
@@ -18,6 +21,9 @@ public abstract class Clinician {
     private String clinicianPassword;
 
     private static ArrayList<Clinician> clinicianList = new ArrayList<>();
+
+    private static ArrayList<Patient> patientList = Patient.getPatientList();
+    private static File patientFile = Patient.getPatientFile();
 
     public Clinician(String clinicianID, String clinicianName, String clinicianContactNo, String clinicianRNIC, String clinicianPassword){
         this.clinicianID = clinicianID;
@@ -54,32 +60,36 @@ public abstract class Clinician {
         return null;
     }
 
-    public Patient addPatient(String status){
-        if (status.equals("Candidate")){
-            Candidate newPatient = new Candidate("Awaiting Triage Result");
-            return newPatient;
-        }
-        else if (status.equals("Outpatient")){
-            Outpatient newPatient = new Outpatient();
-            return newPatient;
-        }
-        else if (status.equals("Inpatient")){
-            Inpatient newPatient = new Inpatient("B103");
-            return newPatient;
-        }
-        else {
-            return null;
-        }
+    public void addPatient(Patient newPatient){
+        patientList.add(newPatient);
     }
 
-    public void deletePatient(Patient selectedPatient){
-        ArrayList<Patient> patientList = Patient.getPatientList();
+    public void deletePatient(Patient selectedPatient) throws IOException{
         for (Patient p : patientList){
             if (p.equals(selectedPatient)){
                 patientList.remove(p);
                 break;
             }
         }
+    }
+
+    public void writeRecord() throws IOException{
+        FileOutputStream fos = new FileOutputStream(patientFile);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        for (Patient p : patientList){
+            oos.writeObject(p);
+        }
+        oos.close();
+    }
+
+    public void readRecord() throws IOException, ClassNotFoundException{
+        FileInputStream fis = new FileInputStream(patientFile);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        while(fis.available() > 0){
+            Patient p = (Patient)ois.readObject();
+            patientList.add(p);
+        }
+        ois.close();
     }
 
     //Setter
