@@ -256,7 +256,7 @@
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button layoutX="200.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
+            <Button fx:id="btnViewPatientHistory" layoutX="200.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewPatientHistoryClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>

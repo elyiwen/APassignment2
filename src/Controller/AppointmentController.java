@@ -67,6 +67,8 @@ public class AppointmentController{
             JOptionPane.showMessageDialog(null, "Error opening appointments file for editing: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+
 }
 
 

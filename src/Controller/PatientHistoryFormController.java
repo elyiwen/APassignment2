@@ -3,20 +3,18 @@ package Controller;
 import Patient.Patient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
-import java.util.ResourceBundle;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-public class PatientHistoryFormController implements Initializable{
+public class PatientHistoryFormController{
 
     @FXML
     private TextField tfWardNumber;
@@ -84,7 +82,4 @@ public class PatientHistoryFormController implements Initializable{
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
 }

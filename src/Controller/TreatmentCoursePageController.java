@@ -2,6 +2,7 @@ package Controller;
 
 import Patient.Patient;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 
 public class TreatmentCoursePageController implements Initializable{
 
@@ -86,6 +89,9 @@ public class TreatmentCoursePageController implements Initializable{
     @FXML
     private Button btnBack;
 
+    @FXML
+    private Button btnViewPatientHistoryClicked;
+
     public static Stage stagePatientHistoryForm;
     public static Scene scenePatientHistoryForm;
 
@@ -125,6 +131,25 @@ public class TreatmentCoursePageController implements Initializable{
         stagePatientHistoryForm.show();
     }
 
+    @FXML
+    void btnViewPatientHistoryClicked(ActionEvent event)throws IOException{
+        String folderPath = "PatientHistory";
+        String filename = selectedPatient.getPatientID() + " History.txt";
+        String filePath = folderPath + File.separator + filename;
+
+        File file = new File(filePath);
+
+        if (file.exists()) {
+            try {
+                Desktop.getDesktop().edit(file);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error opening file for editing: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "File does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         labelPatientID.setText("Patient ID: " + selectedPatient.getPatientID());
@@ -142,7 +167,7 @@ public class TreatmentCoursePageController implements Initializable{
         readPatientHistory();
     }
 
-    public void readPatientHistory(){
+    public void readPatientHistory() {
         String folderPath = "PatientHistory";
         String filename = selectedPatient.getPatientID() + " History.txt";
         String filePath = folderPath + File.separator + filename;
@@ -153,42 +178,81 @@ public class TreatmentCoursePageController implements Initializable{
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 String line;
                 int lineCount = 0;
+                boolean wardNumberDisplayed = false;
+                boolean movementMeansDisplayed = false;
+                boolean attendingPhysicianDisplayed = false;
+                boolean majorComplicationDisplayed = false;
+                boolean treatmentResultsDisplayed = false;
+                boolean specialCommentsDisplayed = false;
+                boolean historyIDDisplayed = false;
+
                 while ((line = reader.readLine()) != null && lineCount < 7) {
+                    line = line.trim();
+
                     String[] parts = line.split(": ");
                     if (parts.length == 2) {
                         String fieldName = parts[0].trim();
                         String fieldValue = parts[1].trim();
+
                         switch (fieldName) {
                             case "Ward Number":
-                                labelWardNumber.setText("Ward Number: " + fieldValue);
+                                if (!wardNumberDisplayed) {
+                                    labelWardNumber.setText("Ward Number: " + fieldValue);
+                                    wardNumberDisplayed = true;
+                                    lineCount++;
+                                }
                                 break;
                             case "Movement Means":
-                                labelMovementMeans.setText("Movement Means: " + fieldValue);
+                                if (!movementMeansDisplayed) {
+                                    labelMovementMeans.setText("Movement Means: " + fieldValue);
+                                    movementMeansDisplayed = true;
+                                    lineCount++;
+                                }
                                 break;
                             case "Attending Physician":
-                                labelAttendingPhysician.setText("Attending Physician: " + fieldValue);
+                                if (!attendingPhysicianDisplayed) {
+                                    labelAttendingPhysician.setText("Attending Physician: " + fieldValue);
+                                    attendingPhysicianDisplayed = true;
+                                    lineCount++;
+                                }
                                 break;
                             case "Major Complication":
-                                labelMajorComplications.setText("Major Complications: " + fieldValue);
+                                if (!majorComplicationDisplayed) {
+                                    labelMajorComplications.setText("Major Complications: " + fieldValue);
+                                    majorComplicationDisplayed = true;
+                                    lineCount++;
+                                }
                                 break;
                             case "Treatment Results":
-                                labelTreatmentResults.setText("Treatment Results: " + fieldValue);
+                                if (!treatmentResultsDisplayed) {
+                                    labelTreatmentResults.setText("Treatment Results: " + fieldValue);
+                                    treatmentResultsDisplayed = true;
+                                    lineCount++;
+                                }
                                 break;
                             case "Special Comments":
-                                labelSpecialComments.setText("Special Comments: " + fieldValue);
+                                if (!specialCommentsDisplayed) {
+                                    labelSpecialComments.setText("Special Comments: " + fieldValue);
+                                    specialCommentsDisplayed = true;
+                                    lineCount++;
+                                }
                                 break;
                             case "History ID":
-                                labelHistoryID.setText("History ID: " + fieldValue);
+                                if (!historyIDDisplayed) {
+                                    labelHistoryID.setText("History ID: " + fieldValue);
+                                    historyIDDisplayed = true;
+                                    lineCount++;
+                                }
                                 break;
                             default:
                                 break;
                         }
-                        lineCount++;
                     }
                 }
+
                 reader.close();
             } catch (IOException e) {
-                System.out.println("An error occurred while reading the file: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "An error occurred while reading the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
