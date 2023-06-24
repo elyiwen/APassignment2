@@ -1,8 +1,13 @@
 package Controller;
 
 import Patient.Patient;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -123,8 +128,25 @@ public class TreatmentCoursePageController implements Initializable{
         stagePatientHistoryForm.show();
     }
 
+    private String readHistoryContent(String filename) {
+        try {
+            File file = new File(filename);
+            if (file.exists()) {
+                String content = new String(Files.readAllBytes(file.toPath()));
+                int startIndex = content.indexOf("Latest History") + 14;
+                int endIndex = content.indexOf("Previous History");
+                if (startIndex >= 0 && endIndex >= 0) {
+                    return content.substring(startIndex, endIndex).trim();
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file: " + e.getMessage());
+        }
+        return "";
+    }
+
     @Override
-    public void initialize(URL location, ResourceBundle resources){
+    public void initialize(URL location, ResourceBundle resources) {
         labelPatientID.setText("Patient ID: " + selectedPatient.getPatientID());
         labelPatientName.setText("Patient Name: " + selectedPatient.getPatientName());
         labelPatientAge.setText("Age: " + selectedPatient.getPatientAge());
@@ -137,13 +159,56 @@ public class TreatmentCoursePageController implements Initializable{
         labelEmail.setText("Email: " + selectedPatient.getPatientEmail());
         labelContactNo.setText("Contact No: " + selectedPatient.getPatientContactNo());
         labeEmergency.setText("Emergency Info: " + "\n" + selectedPatient.getEmergencyInfo());
-        labelWardNumber.setText("Ward Number: " + selectedPatient.getWardNumber());
-        labelMovementMeans.setText("Movement Means: " + selectedPatient.getMovementMeans());
-        labelAttendingPhysician.setText("Attending Physician: " + selectedPatient.getAttendingPhysician());
-        labelMajorComplications.setText("Major Complications: " + selectedPatient.getMajorComplications());
-        labelTreatmentResults.setText("Treatment Results: " + selectedPatient.getTreatmentResults());
-        labelSpecialComments.setText("Special Comments: " + selectedPatient.getSpecialComments());
-        labelHistoryID.setText("History ID: " + selectedPatient.getHistoryID());
-    }
+        String folderPath = "PatientHistory";
+        String filename = selectedPatient.getPatientID() + " History.txt";
+        String filePath = folderPath + File.separator + filename;
 
+        File file = new File(filePath);
+        if (file.exists()) {
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader(file));
+                String line;
+                int lineCount = 0;
+                while ((line = reader.readLine()) != null && lineCount < 7) {
+                    String[] parts = line.split(": ");
+                    if (parts.length == 2) {
+                        String fieldName = parts[0].trim();
+                        String fieldValue = parts[1].trim();
+                        switch (fieldName) {
+                            case "Ward Number":
+                                labelWardNumber.setText("Ward Number: " + fieldValue);
+                                break;
+                            case "Movement Means":
+                                labelMovementMeans.setText("Movement Means: " + fieldValue);
+                                break;
+                            case "Attending Physician":
+                                labelAttendingPhysician.setText("Attending Physician: " + fieldValue);
+                                break;
+                            case "Major Complication":
+                                labelMajorComplications.setText("Major Complications: " + fieldValue);
+                                break;
+                            case "Treatment Results":
+                                labelTreatmentResults.setText("Treatment Results: " + fieldValue);
+                                break;
+                            case "Special Comments":
+                                labelSpecialComments.setText("Special Comments: " + fieldValue);
+                                break;
+                            case "History ID":
+                                labelHistoryID.setText("History ID: " + fieldValue);
+                                break;
+                            default:
+                                // Handle unrecognized field if needed
+                                break;
+                        }
+                        lineCount++;
+                    }
+                }
+                reader.close();
+            } catch (IOException e) {
+                System.out.println("An error occurred while reading the file: " + e.getMessage());
+            }
+        }
+    }
 }
+
+
