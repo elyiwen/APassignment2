@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainSceneController">
+   <children>
+      <BorderPane fx:id="borderPane" layoutX="35.0" layoutY="125.0" prefHeight="655.0" prefWidth="1465.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="125.0" />
+      <HBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="1550.0" style="-fx-background-color: #0794A3;">
+         <children>
+            <ImageView fitHeight="69.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <image>
+                  <Image url="@/Image/EMRLogoS.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </ImageView>
+            <Button fx:id="btnHome" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnHomeClicked" prefHeight="53.0" prefWidth="91.0" style="-fx-background-color: #0794A3;" text="Home" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="400.0" right="30.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon glyphName="HOME" size="30" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnSchedule" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnScheduleClicked" prefHeight="75.0" prefWidth="102.0" style="-fx-background-color: #0794A3;" text="Schedule" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="-10.0" right="30.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontAwesomeIcon glyphName="TABLE" size="30" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnPatient" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnPatientClicked" prefHeight="75.0" prefWidth="111.0" style="-fx-background-color: #0794A3;" text="PatientList" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="-10.0" right="30.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontAwesomeIcon glyphName="USERS" size="30" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnAdmin" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnAdminClicked" prefHeight="75.0" prefWidth="111.0" style="-fx-background-color: #0794A3;" text="Admin" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon glyphName="KEY" size="30" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="-10.0" />
+               </HBox.margin>
+            </Button>
+            <ImageView fx:id="imageIcon" fitHeight="47.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="250.0" />
+               </HBox.margin>
+            </ImageView>
+            <ComboBox fx:id="cbProfile" onAction="#cbProfileClicked" prefHeight="84.0" prefWidth="165.0" style="-fx-background-color: #0794A3; -fx-font-size: 13pt;" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></ComboBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+   </children>
+</AnchorPane>

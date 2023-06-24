@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PatientHistoryFormController">
+   <top>
+      <AnchorPane prefHeight="31.0" prefWidth="606.0" style="-fx-background-color: #274D62;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="28.0" layoutY="1.0" prefHeight="27.0" prefWidth="196.0" text="Patient History Form" textFill="#dfdfdf">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="369.0" prefWidth="956.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="tfTreatmentResults" layoutX="197.0" layoutY="277.0" prefHeight="25.0" prefWidth="272.0" />
+            <TextField fx:id="tfMovementMeans" layoutX="197.0" layoutY="76.0" prefHeight="25.0" prefWidth="272.0" />
+            <Label alignment="CENTER_RIGHT" layoutX="475.0" layoutY="36.0" prefHeight="27.0" prefWidth="189.0" text="Special Comments">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="854.0" layoutY="303.0" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="30.0" prefWidth="94.0" text="SAVE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <TextField fx:id="tfWardNumber" layoutX="197.0" layoutY="37.0" prefHeight="25.0" prefWidth="272.0" />
+            <Label alignment="CENTER_RIGHT" layoutX="9.0" layoutY="115.0" prefHeight="27.0" prefWidth="168.0" text="Attending Physician">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfAttendingPhysician" layoutX="197.0" layoutY="116.0" prefHeight="25.0" prefWidth="272.0" />
+            <Label alignment="CENTER_RIGHT" layoutX="9.0" layoutY="75.0" prefHeight="27.0" prefWidth="168.0" text="Movement Means">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="9.0" layoutY="36.0" prefHeight="27.0" prefWidth="168.0" text="Ward Number">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="9.0" layoutY="152.0" prefHeight="27.0" prefWidth="168.0" text="Major Complication">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="9.0" layoutY="276.0" prefHeight="27.0" prefWidth="168.0" text="Treatment Results">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="509.0" layoutY="218.0" prefHeight="27.0" prefWidth="155.0" text="History ID">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfHistoryID" layoutX="676.0" layoutY="219.0" prefHeight="25.0" prefWidth="272.0" />
+            <TextField fx:id="tfMajorComplication" layoutX="197.0" layoutY="153.0" prefHeight="109.0" prefWidth="272.0" />
+            <TextField fx:id="tfSpecialComments" layoutX="676.0" layoutY="34.0" prefHeight="158.0" prefWidth="272.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
