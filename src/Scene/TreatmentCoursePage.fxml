@@ -42,78 +42,6 @@
 
 <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="620.0" prefWidth="1415.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TreatmentCoursePageController">
    <children>
-      <Pane layoutX="17.0" layoutY="129.0" prefHeight="358.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">
-         <children>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="124.0" style="-fx-background-color: #35637D;" text="Medical History" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane layoutX="17.0" layoutY="506.0" prefHeight="112.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">
-         <children>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="96.0" style="-fx-background-color: #35637D;" text="Encounters" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane layoutX="726.0" layoutY="130.0" prefHeight="487.0" prefWidth="671.0" style="-fx-background-color: white; -fx-border-color: grey;">
-         <children>
-            <Pane layoutX="31.0" layoutY="26.0" prefHeight="154.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: grey;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="84.0" style="-fx-background-color: #8FC8E8;" text="Diagnosis" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="329.0" layoutY="21.0" prefHeight="154.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Analysis/Test" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="23.0" layoutY="191.0" prefHeight="291.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: grey;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Procedure" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="357.0" layoutY="191.0" prefHeight="291.0" prefWidth="297.0" style="-fx-background-color: white; -fx-border-color: grey;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="90.0" style="-fx-background-color: #8FC8E8;" text="Medication" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="131.0" style="-fx-background-color: #35637D;" text="Treatment Course" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane layoutX="381.0" layoutY="392.0" prefHeight="227.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: grey;">
-         <children>
-            <Label alignment="CENTER" prefHeight="20.0" prefWidth="78.0" style="-fx-background-color: #35637D;" text="Events" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
       <AnchorPane prefHeight="100.0" prefWidth="1415.0">
          <children>
             <Label fx:id="labelPatientName" layoutX="100.0" layoutY="-5.0" prefHeight="30.0" prefWidth="168.0" text="Name" textFill="#252121">
@@ -186,20 +114,96 @@
                   <Insets top="5.0" />
                </padding>
             </Label>
+            <Button fx:id="btnRefresh" layoutX="1325.0" layoutY="54.0" mnemonicParsing="false" onAction="#btnRefreshClicked" prefHeight="30.0" prefWidth="60.0" text="Refresh" />
          </children>
       </AnchorPane>
-      <Pane layoutX="381.0" layoutY="130.0" prefHeight="242.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: grey;">
+      <Pane layoutX="17.0" layoutY="129.0" prefHeight="358.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">
          <children>
-            <Label alignment="CENTER" prefHeight="20.0" prefWidth="84.0" style="-fx-background-color: #35637D;" text="Patient History" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="124.0" style="-fx-background-color: #35637D;" text="Medical History" textFill="WHITE">
                <font>
-                  <Font size="10.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="17.0" layoutY="506.0" prefHeight="112.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">
+         <children>
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="96.0" style="-fx-background-color: #35637D;" text="Encounters" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="726.0" layoutY="130.0" prefHeight="487.0" prefWidth="671.0" style="-fx-background-color: white; -fx-border-color: grey;">
+         <children>
+            <Pane layoutX="31.0" layoutY="26.0" prefHeight="154.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: grey;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="84.0" style="-fx-background-color: #8FC8E8;" text="Diagnosis" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="329.0" layoutY="21.0" prefHeight="154.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Analysis/Test" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="23.0" layoutY="191.0" prefHeight="291.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: grey;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Procedure" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="357.0" layoutY="191.0" prefHeight="291.0" prefWidth="297.0" style="-fx-background-color: white; -fx-border-color: grey;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="90.0" style="-fx-background-color: #8FC8E8;" text="Medication" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="131.0" style="-fx-background-color: #35637D;" text="Treatment Course" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="381.0" layoutY="392.0" prefHeight="227.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: grey;">
+         <children>
+            <Label alignment="CENTER" prefHeight="20.0" prefWidth="78.0" style="-fx-background-color: #35637D;" text="Events" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="381.0" layoutY="130.0" prefHeight="242.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: grey;">
+         <children>
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="118.0" style="-fx-background-color: #35637D;" text="Patient History" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
+            <Label fx:id="labelWardNumber" layoutX="20.0" layoutY="36.0" prefHeight="17.0" prefWidth="269.0" text="Ward Number" />
+            <Label fx:id="labelMovementMeans" layoutX="20.0" layoutY="61.0" prefHeight="17.0" prefWidth="269.0" text="Movement Means" />
+            <Label fx:id="labelAttendingPhysician" layoutX="20.0" layoutY="86.0" prefHeight="17.0" prefWidth="269.0" text="Attending Physician" />
+            <Label fx:id="labelMajorComplications" layoutX="20.0" layoutY="111.0" prefHeight="17.0" prefWidth="269.0" text="Major Complications" />
+            <Label fx:id="labelTreatmentResults" layoutX="20.0" layoutY="136.0" prefHeight="17.0" prefWidth="269.0" text="Treatment Results" />
+            <Label fx:id="labelSpecialComments" layoutX="20.0" layoutY="161.0" prefHeight="17.0" prefWidth="269.0" text="Special Comments" />
+            <Label fx:id="labelHistoryID" layoutX="20.0" layoutY="186.0" prefHeight="17.0" prefWidth="269.0" text="History ID" />
+            <Button fx:id="btnEditPatientHistory" layoutX="252.0" layoutY="1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnEditPatientHistoryClicked" prefHeight="30.0" prefWidth="53.0" text="Edit" textAlignment="CENTER" textFill="WHITE" />
          </children>
       </Pane>
    </children>

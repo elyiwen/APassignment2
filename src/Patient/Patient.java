@@ -32,6 +32,15 @@ public class Patient{
     private String emergencyName;
     private String emergencyRelationship;
 
+    //Patient History
+    private String wardNumber;
+    private String movementMeans;
+    private String attendingPhysician;
+    private String majorComplications;
+    private String treatmentResults;
+    private String specialComments;
+    private String historyID;
+
     //Patient List
     private static ArrayList<Patient> patientList = new ArrayList<>();
 
@@ -62,6 +71,16 @@ public class Patient{
         this.emergencyContactNo = emergencyContactNo;
         this.emergencyName = emergencyName;
         this.emergencyRelationship = emergencyRelationship;
+    }
+
+    public void setPatientHistory(String wardNumber, String movementMeans, String attendingPhysician, String majorComplications, String treatmentResults, String specialComments, String historyID){
+        this.wardNumber = wardNumber;
+        this.movementMeans = movementMeans;
+        this.attendingPhysician = attendingPhysician;
+        this.majorComplications = majorComplications;
+        this.treatmentResults = treatmentResults;
+        this.specialComments = specialComments;
+        this.historyID = historyID;
     }
 
     public String generateID(){
@@ -172,4 +191,20 @@ public class Patient{
     public String getEmergencyInfo(){
         return emergencyName + "\n" + emergencyRelationship + "\n" + emergencyContactNo;
     }
+
+    public String getWardNumber(){ return wardNumber; }
+
+    public String getMovementMeans(){ return movementMeans; }
+
+    public String getAttendingPhysician(){ return attendingPhysician; }
+
+    public String getMajorComplications(){ return majorComplications; }
+
+    public String getTreatmentResults(){ return treatmentResults; }
+
+    public String getSpecialComments(){ return specialComments; }
+
+    public String getHistoryID(){ return historyID; }
+
+
 }
