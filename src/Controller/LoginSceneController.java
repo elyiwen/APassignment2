@@ -50,38 +50,35 @@ public class LoginSceneController implements Initializable{
         userID = tfUsername.getText();
         String password = tfPassword.getText();
 
-            switch (accountType){
+            switch (accountType) {
                 case "Doctor":
-                    if (Clinician.loginAuthentication(accountType, userID, password) == true){
-                        user = (Doctor)Clinician.login(accountType, userID, password);
+                    if (Clinician.loginAuthentication(accountType, userID, password) == true) {
+                        user = (Doctor) Clinician.login(accountType, userID, password);
                         loginInfo(true, event);
-                    }
-                    else {
-                        loginInfo(false, event);
-                    }
-                    break;
-                    
-                case "Pharmacist":
-                    if (Clinician.loginAuthentication(accountType, userID, password) == true){
-                        user = (Pharmacist)Clinician.login(accountType, userID, password);
-                        loginInfo(true, event);
-                    }
-                    else {
+                    } else {
                         loginInfo(false, event);
                     }
                     break;
 
-                case "Nurse": 
-                    if (Clinician.loginAuthentication(accountType, userID, password) == true){
-                        user = (Nurse)Clinician.login(accountType, userID, password);
+                case "Pharmacist":
+                    if (Clinician.loginAuthentication(accountType, userID, password) == true) {
+                        user = (Pharmacist) Clinician.login(accountType, userID, password);
                         loginInfo(true, event);
-                    }
-                    else {
+                    } else {
                         loginInfo(false, event);
                     }
-                    break;                              
+                    break;
+
+                case "Nurse":
+                    if (Clinician.loginAuthentication(accountType, userID, password) == true) {
+                        user = (Nurse) Clinician.login(accountType, userID, password);
+                        loginInfo(true, event);
+                    } else {
+                        loginInfo(false, event);
+                    }
+                    break;
             }
-            user.readRecord(); 
+            user.readRecord();
         }
         catch (NullPointerException npe){
             Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Please Select Account Type", ButtonType.OK);

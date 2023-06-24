@@ -2,11 +2,9 @@ package Controller;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
-
 import code.Clinician;
-
+import Patient.Patient;
 import java.net.URL;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -70,6 +68,7 @@ public class MainSceneController implements Initializable{
             alertLogOut.setHeaderText("NOTIFICATION");
             alertLogOut.setTitle("ALERT");
             if (alertLogOut.showAndWait().get() == ButtonType.YES){
+                Patient.getPatientList().clear();
                 Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 Parent root = FXMLLoader.load(getClass().getResource("/Scene/LoginScene.fxml"));
                 Scene loginScene = new Scene(root);
