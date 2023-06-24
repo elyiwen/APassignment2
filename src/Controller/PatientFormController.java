@@ -5,6 +5,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import Patient.Candidate;
 import Patient.Inpatient;
 import Patient.Patient;
 import code.Clinician;
@@ -125,17 +126,17 @@ public class PatientFormController implements Initializable{
                     newPatient.setPatientBiodata(patientName, patientIdentityNo, patientDoB, patientRace_Ethnicity, patientGender, patientPrefLanguage, patientMaritalStatus, status);
                     newPatient.setPatientContactInfo(patientAddress, patientCountry, patientState, patientCity, patientZipCode, patientEmail, patientContactNo, patientEmergencyContactNo, patientEmergencyName, patientEmergencyRelationship);
                     Patient.getPatientList().add(newPatient);
-                    
-                    PatientPageController.scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml")));
-                    PatientPageController.stagePatientForm.setScene(PatientPageController.scenePatientForm);
                 }
+
                 else {
-                    selectedPatient.setPatientBiodata(patientName, patientIdentityNo, patientDoB, patientRace_Ethnicity, patientGender, patientPrefLanguage, patientMaritalStatus, status);
-                    selectedPatient.setPatientContactInfo(patientAddress, patientCountry, patientState, patientCity, patientZipCode, patientEmail, patientContactNo, patientEmergencyContactNo, patientEmergencyName, patientEmergencyRelationship);
-                    
-                    PatientPageController.scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml")));
-                    PatientPageController.stagePatientForm.setScene(PatientPageController.scenePatientForm);
+                    Patient updatedPatient = user.addPatient(status);
+                    updatedPatient.setPatientBiodata(patientName, patientIdentityNo, patientDoB, patientRace_Ethnicity, patientGender, patientPrefLanguage, patientMaritalStatus, status);
+                    updatedPatient.setPatientContactInfo(patientAddress, patientCountry, patientState, patientCity, patientZipCode, patientEmail, patientContactNo, patientEmergencyContactNo, patientEmergencyName, patientEmergencyRelationship);
+                    user.deletePatient(selectedPatient);
+                    Patient.getPatientList().add(updatedPatient);
                 }
+                PatientPageController.scenePatientForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml")));
+                PatientPageController.stagePatientForm.setScene(PatientPageController.scenePatientForm);
             }
         }
     }

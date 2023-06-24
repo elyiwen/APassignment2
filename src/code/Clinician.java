@@ -82,15 +82,6 @@ public abstract class Clinician {
         }
     }
 
-    public void editPatient(Patient selectedPatient){
-        ArrayList<Patient> patientList = Patient.getPatientList();
-        for (Patient p : patientList){
-            if (p.equals(selectedPatient)){
-                
-            }
-        }
-    }
-
     //Setter
     public void setClinicianID(String clinicianID){
         this.clinicianID = clinicianID;

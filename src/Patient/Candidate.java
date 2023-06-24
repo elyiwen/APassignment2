@@ -8,7 +8,6 @@ public class Candidate extends Patient{
         this.newStatus = newStatus;
     }
 
-    @Override
     public String generateID() {
         String idFirst = "C";
         char[] patientNameChar = getPatientName().toCharArray();

@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
 
-public abstract class Patient{
+public class Patient{
     
     // Biodata
     private String patientID;
@@ -64,7 +64,14 @@ public abstract class Patient{
         this.emergencyRelationship = emergencyRelationship;
     }
 
-    public abstract String generateID();
+    public String generateID(){
+        String idFirst = "P";
+        char[] patientNameChar = getPatientName().toCharArray();
+        String idMid = patientNameChar[0] + "-" + patientNameChar[1];
+        String idLast = getPatientIdentityNo().substring(getPatientIdentityNo().length() - 4);
+        String patientID = idFirst + idMid.toUpperCase() + idLast;
+        return patientID;
+    };
 
     public String calAge(LocalDate doB){
         int yearDoB = doB.getYear();

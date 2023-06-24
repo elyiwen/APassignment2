@@ -7,7 +7,6 @@ public class Outpatient extends Patient{
 
     }
 
-    @Override
     public String generateID() {
         String idFirst = "OP";
         char[] patientNameChar = getPatientName().toCharArray();

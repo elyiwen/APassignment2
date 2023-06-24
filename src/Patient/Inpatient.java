@@ -8,7 +8,6 @@ public class Inpatient extends Patient{
         this.wardNo = wardNo;
     }
 
-    @Override
     public String generateID() {
         String idFirst = "IP";
         char[] patientNameChar = getPatientName().toCharArray();
@@ -26,10 +25,5 @@ public class Inpatient extends Patient{
     //Getter
     public String getWardNo(){
         return wardNo;
-    }
-
-    @Override
-    public String toString(){
-        return "Patient Name: " + getPatientName() + "\n" + "Patient ID: " + getPatientID() + "\n" + "Patient Ward No: " + getWardNo();
     }
 }
