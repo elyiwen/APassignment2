@@ -16,9 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -159,6 +157,10 @@ public class TreatmentCoursePageController implements Initializable{
         labelEmail.setText("Email: " + selectedPatient.getPatientEmail());
         labelContactNo.setText("Contact No: " + selectedPatient.getPatientContactNo());
         labeEmergency.setText("Emergency Info: " + "\n" + selectedPatient.getEmergencyInfo());
+        readPatientHistory();
+    }
+
+    public void readPatientHistory(){
         String folderPath = "PatientHistory";
         String filename = selectedPatient.getPatientID() + " History.txt";
         String filePath = folderPath + File.separator + filename;
@@ -197,7 +199,6 @@ public class TreatmentCoursePageController implements Initializable{
                                 labelHistoryID.setText("History ID: " + fieldValue);
                                 break;
                             default:
-                                // Handle unrecognized field if needed
                                 break;
                         }
                         lineCount++;
