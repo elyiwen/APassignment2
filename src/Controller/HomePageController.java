@@ -6,7 +6,6 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

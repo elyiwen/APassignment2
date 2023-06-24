@@ -73,7 +73,7 @@ public class PatientPageController implements Initializable{
 
     private static Patient selectedPatient;
 
-    private static Clinician user = MainSceneController.getUser();
+    private static Clinician user;
 
     private static ObservableList<Patient> tbPatientList = FXCollections.observableArrayList();
 
@@ -108,28 +108,28 @@ public class PatientPageController implements Initializable{
         else{
             try{
                 selectedPatient = tableView.getSelectionModel().getSelectedItem();
+                tableView.getItems().remove(selectedPatient);
+                user.deletePatient(selectedPatient);
+                String folderPath = "PatientHistory";
+                String filename = selectedPatient.getPatientID() + " History.txt";
+                String filePath = folderPath + File.separator + filename;
+                File file = new File(filePath);
+                if (file.exists()) {
+                    if (file.delete()) { // Attempt to delete the file
+                        JOptionPane.showMessageDialog(null, "File deleted successfully.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to delete the file.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "File does not exist.");
+                }
+                user.writeRecord();
             } catch (NullPointerException npe){
                 Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Select A Patient", ButtonType.OK, ButtonType.CANCEL);
                 alertError.setHeaderText("NOTIFICATION");
                 alertError.setTitle("ALERT");
                 alertError.showAndWait();
             }
-            tableView.getItems().remove(selectedPatient);
-            user.deletePatient(selectedPatient);
-            String folderPath = "PatientHistory";
-            String filename = selectedPatient.getPatientID() + " History.txt";
-            String filePath = folderPath + File.separator + filename;
-            File file = new File(filePath);
-            if (file.exists()) {
-                if (file.delete()) { // Attempt to delete the file
-                    JOptionPane.showMessageDialog(null, "File deleted successfully.");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to delete the file.");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "File does not exist.");
-            }
-            user.writeRecord();
         }
     }
 
@@ -143,20 +143,21 @@ public class PatientPageController implements Initializable{
     void btnViewClicked(ActionEvent event) throws IOException {
         try{
             selectedPatient = tableView.getSelectionModel().getSelectedItem();
-        } catch (NullPointerException npe){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/MainScene.fxml"));
+            Parent root = loader.load();
+            MainSceneController msc = loader.getController();
+            msc.switchScene("TreatmentCoursePage");
+            Stage primaryStage = ((Stage) ((Node) event.getSource()).getScene().getWindow());
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } 
+        catch (NullPointerException npe){
             Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Select A Patient", ButtonType.OK, ButtonType.CANCEL);
             alertError.setHeaderText("NOTIFICATION");
             alertError.setTitle("ALERT");
             alertError.showAndWait();
         }
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/MainScene.fxml"));
-        Parent root = loader.load();
-        MainSceneController msc = loader.getController();
-        msc.switchScene("TreatmentCoursePage");
-        Stage primaryStage = ((Stage) ((Node) event.getSource()).getScene().getWindow());
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
     }
 
     @FXML
@@ -190,6 +191,10 @@ public class PatientPageController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        user = MainSceneController.getUser();
+        System.out.println(user.getAccountType());
+
         tbPatientList = tableView.getItems();
         tbPatientList.setAll(Patient.getPatientList());
         tableView.setItems(tbPatientList);
