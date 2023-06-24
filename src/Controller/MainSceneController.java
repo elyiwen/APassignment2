@@ -52,15 +52,7 @@ public class MainSceneController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        if (LoginSceneController.accountType.equals("Doctor")){
-            user = LoginSceneController.getDoctor();
-        }
-        else if (LoginSceneController.accountType.equals("Pharmacist")){
-            user = LoginSceneController.getPharmacist();
-        }
-        else if (LoginSceneController.accountType.equals("Nurse")){
-            user = LoginSceneController.getNurse();
-        }      
+        user = LoginSceneController.getUser();   
 
         Image img = new Image("/Image/" + user.getAccountType() + "Icon.png");
         imageIcon.setImage(img);

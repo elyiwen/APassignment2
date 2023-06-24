@@ -2,11 +2,12 @@ package Patient;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
 
-public class Patient{
+public class Patient implements Serializable{
     
     // Biodata
     private String patientID;
@@ -32,10 +33,8 @@ public class Patient{
     private String emergencyName;
     private String emergencyRelationship;
 
-    //Patient List
     private static ArrayList<Patient> patientList = new ArrayList<>();
 
-    //Patient File
     private static File patientFile = new File("patient.json");
 
     public void setPatientBiodata(String patientName, String patientIdentityNo, LocalDate doB, String race_ethnicity, String gender, String prefLanguage, String maritalStatus, String status) throws IOException{
@@ -123,6 +122,10 @@ public class Patient{
 
     public static ArrayList<Patient> getPatientList(){
         return patientList;
+    }
+
+    public static File getPatientFile(){
+        return patientFile;
     }
 
     public String getAddress(){

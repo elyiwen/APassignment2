@@ -116,19 +116,19 @@
       </Pane>
       <AnchorPane prefHeight="100.0" prefWidth="1415.0">
          <children>
-            <Label fx:id="labelPatientName" layoutX="100.0" layoutY="-5.0" prefHeight="30.0" prefWidth="168.0" text="Name" textFill="#252121">
+            <Label fx:id="labelPatientName" layoutX="105.0" layoutY="19.0" prefHeight="19.0" prefWidth="168.0" text="Name" textFill="#252121">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelPatientID" layoutX="100.0" layoutY="24.0" prefHeight="30.0" prefWidth="178.0" text="ID" textFill="#252121">
+            <Label fx:id="labelPatientID" layoutX="105.0" layoutY="37.0" prefHeight="13.0" prefWidth="178.0" text="ID" textFill="#252121">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
             <ImageView fitHeight="65.0" fitWidth="68.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="btnBack" layoutX="1325.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBackClicked" text="Back" />
-            <Label fx:id="labelPatientAge" layoutX="100.0" layoutY="54.0" prefHeight="30.0" prefWidth="112.0" text="Age" textFill="#252121">
+            <Label fx:id="labelPatientAge" layoutX="105.0" layoutY="59.0" prefHeight="19.0" prefWidth="112.0" text="Age" textFill="#252121">
                <font>
                   <Font size="13.0" />
                </font>
@@ -138,47 +138,47 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="labelPatientDoB" layoutX="100.0" layoutY="85.0" prefHeight="30.0" prefWidth="158.0" text="DoB" textFill="#252121">
+            <Label fx:id="labelPatientDoB" layoutX="105.0" layoutY="80.0" prefHeight="19.0" prefWidth="158.0" text="DoB" textFill="#252121">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelRace_Ethnicity" layoutX="297.0" layoutY="-5.0" prefHeight="30.0" prefWidth="158.0" text="Race/Ethnicity" textFill="#252121">
+            <Label fx:id="labelRace_Ethnicity" layoutX="292.0" layoutY="17.0" prefHeight="19.0" prefWidth="158.0" text="Race/Ethnicity" textFill="#252121">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelGender" layoutX="297.0" layoutY="24.0" prefHeight="30.0" prefWidth="158.0" text="Gender" textFill="#252121">
+            <Label fx:id="labelGender" layoutX="292.0" layoutY="37.0" prefHeight="19.0" prefWidth="158.0" text="Gender" textFill="#252121">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelPrefLanguage" layoutX="297.0" layoutY="54.0" prefHeight="30.0" prefWidth="202.0" text="Preferred Language" textFill="#252121">
+            <Label fx:id="labelPrefLanguage" layoutX="292.0" layoutY="59.0" prefHeight="19.0" prefWidth="202.0" text="Preferred Language" textFill="#252121">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelMaritalStatus" layoutX="297.0" layoutY="85.0" prefHeight="30.0" prefWidth="158.0" text="Marital Status" textFill="#252121">
+            <Label fx:id="labelMaritalStatus" layoutX="292.0" layoutY="80.0" prefHeight="0.0" prefWidth="158.0" text="Marital Status" textFill="#252121">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelAddress" layoutX="516.0" layoutY="-1.0" prefHeight="80.0" prefWidth="222.0" text="Address" textFill="#252121">
+            <Label fx:id="labelAddress" layoutX="482.0" layoutY="22.0" prefHeight="65.0" prefWidth="222.0" text="Address" textFill="#252121">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelEmail" layoutX="516.0" layoutY="85.0" prefHeight="30.0" prefWidth="222.0" text="Email" textFill="#252121">
+            <Label fx:id="labelEmail" layoutX="482.0" layoutY="80.0" prefHeight="20.0" prefWidth="222.0" text="Email" textFill="#252121">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelContactNo" layoutX="738.0" layoutY="-5.0" prefHeight="30.0" prefWidth="222.0" text="Contact No" textFill="#252121">
+            <Label fx:id="labelContactNo" layoutX="738.0" layoutY="17.0" prefHeight="19.0" prefWidth="222.0" text="Contact No" textFill="#252121">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labeEmergency" layoutX="738.0" layoutY="29.0" prefHeight="80.0" prefWidth="188.0" text="Emergency Info">
+            <Label fx:id="labeEmergency" layoutX="738.0" layoutY="35.0" prefHeight="66.0" prefWidth="188.0" text="Emergency Info">
                <font>
                   <Font size="13.0" />
                </font>
