@@ -6,7 +6,10 @@ import java.util.ResourceBundle;
 
 import Patient.Patient;
 import code.Clinician;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,9 +31,6 @@ public class PatientPageController implements Initializable{
 
     @FXML
     private Button btnDelete;
-
-    @FXML
-    private Button btnEdit;
 
     @FXML
     private Button btnRefresh;
@@ -69,6 +69,8 @@ public class PatientPageController implements Initializable{
 
     private static Clinician user = MainSceneController.getUser();
 
+    private static ObservableList<Patient> tbPatientList = FXCollections.observableArrayList();
+
     @FXML
     void btnAddClicked(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml"));
@@ -87,13 +89,7 @@ public class PatientPageController implements Initializable{
     }
 
     @FXML
-    void btnEditClicked(ActionEvent event) {
-        
-    }
-
-    @FXML
     void btnRefreshClicked(ActionEvent event) {
-        ObservableList<Patient> tbPatientList = tableView.getItems();
         tbPatientList.setAll(Patient.getPatientList());
         tableView.setItems(tbPatientList);
     }
@@ -111,9 +107,38 @@ public class PatientPageController implements Initializable{
         primaryStage.show();
     }
 
+    @FXML
+    void btnSearchClicked(ActionEvent event){
+        FilteredList<Patient> patientFilteredData = new FilteredList<>(tbPatientList, b -> true);
+
+        tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            patientFilteredData.setPredicate(patient -> {
+                if (newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (patient.getPatientName().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }
+                else if (patient.getPatientID().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
+        }
+        );
+
+        SortedList<Patient> patientSortedData = new SortedList<>(patientFilteredData);
+        patientSortedData.comparatorProperty().bind(tableView.comparatorProperty());
+        tableView.setItems(patientSortedData);   
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<Patient> tbPatientList = tableView.getItems();
+        tbPatientList = tableView.getItems();
         tbPatientList.setAll(Patient.getPatientList());
         tableView.setItems(tbPatientList);
 
@@ -122,6 +147,6 @@ public class PatientPageController implements Initializable{
     }
 
     public static Patient getSelectedPatient(){
-        return selectedPatient; }
-
+        return selectedPatient; 
+    }
 }

@@ -86,9 +86,20 @@ public class PatientFormController implements Initializable{
         String race_ethnicity = tfRace_Ethnicity.getText();
         String maritalStatus = chbMaritalStatus.getValue();
         String status = chbStatus.getValue();
+        String address = tfAddress.getText();
+        String city = tfCity.getText();
+        String state = tfState.getText();
+        String zipCode = tfZip.getText();
+        String country = tfCountry.getText();
+        String email = tfEmail.getText();
+        String contactNo = tfContactNo.getText();
+        String emergencyName = tfEmergencyName.getText();
+        String emergencyRelationship = tfEmergencyRelationship.getText();
+        String emergencyContactNo = tfEmergencyContactNo.getText();
 
         Patient newPatient = new Patient();
         newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+        newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
         user.addPatient(newPatient);
         user.writeRecord();
     }

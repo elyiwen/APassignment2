@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -124,23 +123,6 @@ public class TreatmentCoursePageController implements Initializable{
         stagePatientHistoryForm.setScene(scenePatientHistoryForm);
         stagePatientHistoryForm.setResizable(false);
         stagePatientHistoryForm.show();
-    }
-
-    private String readHistoryContent(String filename) {
-        try {
-            File file = new File(filename);
-            if (file.exists()) {
-                String content = new String(Files.readAllBytes(file.toPath()));
-                int startIndex = content.indexOf("Latest History") + 14;
-                int endIndex = content.indexOf("Previous History");
-                if (startIndex >= 0 && endIndex >= 0) {
-                    return content.substring(startIndex, endIndex).trim();
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred while reading the file: " + e.getMessage());
-        }
-        return "";
     }
 
     @Override
