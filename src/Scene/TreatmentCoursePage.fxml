@@ -152,7 +152,7 @@
          <children>
             <ScrollPane fx:id="todaysAppointmentScrollPane2" layoutX="305.0" layoutY="65.0" prefHeight="127.0" prefWidth="352.0">
                <content>
-                  <VBox fx:id="todaysAppointmentVBox2" minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="350.0">
+                  <VBox fx:id="analysisVBox" minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="350.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Analysis/Test" textFill="WHITE">
                            <font>
@@ -165,7 +165,7 @@
             </ScrollPane>
             <ScrollPane fx:id="todaysAppointmentScrollPane11" layoutX="303.0" layoutY="202.0" prefHeight="291.0" prefWidth="352.0">
                <content>
-                  <VBox fx:id="todaysAppointmentVBox11" minHeight="0.0" minWidth="0.0" prefHeight="289.0" prefWidth="350.0">
+                  <VBox fx:id="medicationVBox" minHeight="0.0" minWidth="0.0" prefHeight="289.0" prefWidth="350.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="21.0" prefWidth="90.0" style="-fx-background-color: #8FC8E8;" text="Medication" textFill="WHITE">
                            <font>
@@ -178,7 +178,7 @@
             </ScrollPane>
             <ScrollPane fx:id="todaysAppointmentScrollPane" layoutX="23.0" layoutY="65.0" prefHeight="127.0" prefWidth="269.0">
                <content>
-                  <VBox fx:id="todaysAppointmentVBox" minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="257.0">
+                  <VBox fx:id="diagnosisVBox" minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="257.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Diagnosis" textFill="WHITE">
                            <font>
@@ -191,7 +191,7 @@
             </ScrollPane>
             <ScrollPane fx:id="todaysAppointmentScrollPane1" layoutX="23.0" layoutY="202.0" prefHeight="291.0" prefWidth="269.0">
                <content>
-                  <VBox fx:id="todaysAppointmentVBox1" minHeight="0.0" minWidth="0.0" prefHeight="289.0" prefWidth="257.0">
+                  <VBox fx:id="procedureVBox" minHeight="0.0" minWidth="0.0" prefHeight="289.0" prefWidth="257.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Procedure" textFill="WHITE">
                            <font>
@@ -217,9 +217,9 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label layoutX="30.0" layoutY="23.0" prefHeight="18.0" prefWidth="330.0" text="Starting Date:" />
-            <Label layoutX="31.0" layoutY="41.0" prefHeight="18.0" prefWidth="330.0" text="Ending Date:" />
-            <Label layoutX="303.0" layoutY="23.0" prefHeight="18.0" prefWidth="218.0" text="Treatment Course ID:" />
+            <Label fx:id="labelStartingDate" layoutX="30.0" layoutY="23.0" prefHeight="18.0" prefWidth="259.0" text="Starting Date:" />
+            <Label fx:id="labelEndingDate" layoutX="31.0" layoutY="41.0" prefHeight="18.0" prefWidth="253.0" text="Ending Date:" />
+            <Label fx:id="labelTreatmentCourseID" layoutX="303.0" layoutY="23.0" prefHeight="18.0" prefWidth="247.0" text="Treatment Course ID:" />
          </children>
       </Pane>
       <Pane layoutX="381.0" layoutY="130.0" prefHeight="242.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: grey;">
@@ -244,7 +244,7 @@
       </Pane>
       <ScrollPane fx:id="todaysAppointmentScrollPane3" layoutX="381.0" layoutY="385.0" prefHeight="232.0" prefWidth="306.0">
          <content>
-            <VBox fx:id="todaysAppointmentVBox3" minHeight="0.0" minWidth="0.0" prefHeight="229.0" prefWidth="304.0">
+            <VBox fx:id="eventsVBox" minHeight="0.0" minWidth="0.0" prefHeight="229.0" prefWidth="304.0">
                <children>
                   <Label alignment="CENTER" prefHeight="20.0" prefWidth="78.0" style="-fx-background-color: #35637D;" text="Events" textFill="WHITE">
                      <font>
@@ -267,7 +267,7 @@
       </ScrollPane>
       <ScrollPane fx:id="todaysAppointmentScrollPane31" layoutX="17.0" layoutY="494.0" prefHeight="121.0" prefWidth="330.0">
          <content>
-            <VBox fx:id="todaysAppointmentVBox31" minHeight="0.0" minWidth="0.0" prefHeight="119.0" prefWidth="328.0">
+            <VBox fx:id="encountersVBox" minHeight="0.0" minWidth="0.0" prefHeight="119.0" prefWidth="328.0">
                <children>
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="96.0" style="-fx-background-color: #35637D;" text="Encounters" textFill="WHITE">
                      <font>
