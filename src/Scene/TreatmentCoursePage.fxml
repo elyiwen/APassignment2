@@ -138,6 +138,12 @@
                   <Font size="15.0" />
                </font>
             </Button>
+            <Label fx:id="labelFamilyHistory" alignment="TOP_LEFT" layoutX="14.0" layoutY="48.0" prefHeight="45.0" prefWidth="289.0" text="Family History:" />
+            <Label fx:id="labelAllergies" alignment="TOP_LEFT" layoutX="14.0" layoutY="91.0" prefHeight="45.0" prefWidth="289.0" text="Allergies:" />
+            <Label fx:id="labelSmoking" alignment="TOP_LEFT" layoutX="14.0" layoutY="136.0" prefHeight="45.0" prefWidth="289.0" text="Smoking:" />
+            <Label fx:id="labelAlcohol" alignment="TOP_LEFT" layoutX="15.0" layoutY="183.0" prefHeight="45.0" prefWidth="289.0" text="Alcohol:" />
+            <Label fx:id="labelTriageDetails" alignment="TOP_LEFT" layoutX="14.0" layoutY="230.0" prefHeight="45.0" prefWidth="289.0" text="Triage Details:" />
+            <Label fx:id="labelAdditionalComments" alignment="TOP_LEFT" layoutX="14.0" layoutY="276.0" prefHeight="45.0" prefWidth="289.0" text="Additional Comments:" />
          </children>
       </Pane>
       <Pane layoutX="17.0" layoutY="506.0" prefHeight="112.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">
@@ -240,13 +246,13 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="labelWardNumber" layoutX="20.0" layoutY="36.0" prefHeight="17.0" prefWidth="269.0" text="Ward Number" />
-            <Label fx:id="labelMovementMeans" layoutX="20.0" layoutY="61.0" prefHeight="17.0" prefWidth="269.0" text="Movement Means" />
-            <Label fx:id="labelAttendingPhysician" layoutX="20.0" layoutY="86.0" prefHeight="17.0" prefWidth="269.0" text="Attending Physician" />
-            <Label fx:id="labelMajorComplications" layoutX="20.0" layoutY="111.0" prefHeight="17.0" prefWidth="269.0" text="Major Complications" />
-            <Label fx:id="labelTreatmentResults" layoutX="20.0" layoutY="136.0" prefHeight="17.0" prefWidth="269.0" text="Treatment Results" />
-            <Label fx:id="labelSpecialComments" layoutX="20.0" layoutY="161.0" prefHeight="17.0" prefWidth="269.0" text="Special Comments" />
-            <Label fx:id="labelHistoryID" layoutX="20.0" layoutY="186.0" prefHeight="17.0" prefWidth="269.0" text="History ID" />
+            <Label fx:id="labelWardNumber" layoutX="10.0" layoutY="36.0" prefHeight="17.0" prefWidth="269.0" text="Ward Number:" />
+            <Label fx:id="labelMovementMeans" layoutX="10.0" layoutY="64.0" prefHeight="17.0" prefWidth="269.0" text="Movement Means:" />
+            <Label fx:id="labelAttendingPhysician" layoutX="11.0" layoutY="92.0" prefHeight="17.0" prefWidth="269.0" text="Attending Physician:" />
+            <Label fx:id="labelMajorComplications" layoutX="11.0" layoutY="121.0" prefHeight="17.0" prefWidth="269.0" text="Major Complications:" />
+            <Label fx:id="labelTreatmentResults" layoutX="11.0" layoutY="148.0" prefHeight="17.0" prefWidth="269.0" text="Treatment Results:" />
+            <Label fx:id="labelSpecialComments" layoutX="11.0" layoutY="176.0" prefHeight="17.0" prefWidth="269.0" text="Special Comments:" />
+            <Label fx:id="labelHistoryID" layoutX="12.0" layoutY="204.0" prefHeight="17.0" prefWidth="269.0" text="History ID:" />
             <Button fx:id="btnEditPatientHistory" layoutX="253.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnEditPatientHistoryClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Edit" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />

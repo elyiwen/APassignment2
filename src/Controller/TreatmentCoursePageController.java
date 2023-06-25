@@ -2,6 +2,7 @@ package Controller;
 
 import Patient.Patient;
 import Patient.PatientHistory;
+import Patient.MedicalHistory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,7 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 
 public class TreatmentCoursePageController implements Initializable{
 
@@ -81,6 +81,24 @@ public class TreatmentCoursePageController implements Initializable{
     private Label labelHistoryID;
 
     @FXML
+    private Label labelFamilyHistory;
+
+    @FXML
+    private Label labelAllergies;
+
+    @FXML
+    private Label labelSmoking;
+
+    @FXML
+    private Label labelAlcohol;
+
+    @FXML
+    private Label labelTriageDetails;
+
+    @FXML
+    private Label labelAdditionalComments;
+
+    @FXML
     private Button btnBack;
 
     @FXML
@@ -114,6 +132,8 @@ public class TreatmentCoursePageController implements Initializable{
 
     public static Stage stagePatientHistoryForm;
     public static Scene scenePatientHistoryForm;
+    public static Stage stageMedicalHistoryForm;
+    public static Scene sceneMedicalHistoryForm;
 
     @FXML
     void btnBackClicked(ActionEvent event) throws IOException{
@@ -153,7 +173,12 @@ public class TreatmentCoursePageController implements Initializable{
 
     @FXML
     void btnEditMedicalHistoryClicked(ActionEvent event) throws IOException{
-
+        stageMedicalHistoryForm = new Stage();
+        sceneMedicalHistoryForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/MedicalHistoryForm.fxml")));
+        stageMedicalHistoryForm.setTitle("Patient History Form");
+        stageMedicalHistoryForm.setScene(sceneMedicalHistoryForm);
+        stageMedicalHistoryForm.setResizable(false);
+        stageMedicalHistoryForm.show();
     }
 
     @FXML
@@ -202,6 +227,8 @@ public class TreatmentCoursePageController implements Initializable{
         labelContactNo.setText("Contact No: " + selectedPatient.getPatientContactNo());
         labeEmergency.setText("Emergency Info: " + selectedPatient.getEmergencyInfo());
         PatientHistory.readPatientHistory(selectedPatient, labelWardNumber, labelMovementMeans, labelAttendingPhysician, labelMajorComplications, labelTreatmentResults, labelSpecialComments, labelHistoryID);
+        MedicalHistory.readMedicalHistory(selectedPatient, labelFamilyHistory, labelAllergies, labelSmoking, labelAlcohol, labelTriageDetails, labelAdditionalComments);
+
     }
 
 }
