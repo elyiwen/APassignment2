@@ -8,13 +8,17 @@ import javafx.fxml.FXML;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
+import java.util.ResourceBundle;
+
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-public class PatientHistoryFormController{
+public class PatientHistoryFormController implements Initializable {
 
     @FXML
     private TextField tfWardNumber;
@@ -40,6 +44,7 @@ public class PatientHistoryFormController{
     private Patient selectedPatient = PatientPageController.getSelectedPatient();
 
 
+
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
         String wardNumber = tfWardNumber.getText();
@@ -50,9 +55,8 @@ public class PatientHistoryFormController{
         String specialComments =tfSpecialComments.getText();
         String historyID =tfHistoryID.getText();
 
-        selectedPatient.setPatientHistory(wardNumber, movementMeans, attendingPhysician, majorComplication, treatmentResults, specialComments, historyID);
         String folderPath = "PatientHistory";
-        String filename = selectedPatient.getPatientID() + " History.txt";
+        String filename = selectedPatient.getPatientID() + " Patient History.txt";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Ward Number: " + wardNumber + "\n" +
                 "Movement Means: " + movementMeans + "\n" +
@@ -66,7 +70,7 @@ public class PatientHistoryFormController{
         if (file.exists()) {
             try {
                 String existingContent = new String(Files.readAllBytes(file.toPath()));
-                String updatedContent = fileContent + "\n----------Previous History----------\n" + existingContent;
+                String updatedContent = fileContent + "\n----------Patient History----------\n" + existingContent;
                 Files.write(file.toPath(), updatedContent.getBytes());
             } catch (IOException e) {
                 System.out.println("An error occurred while updating the file: " + e.getMessage());
@@ -82,4 +86,8 @@ public class PatientHistoryFormController{
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

@@ -1,11 +1,13 @@
 package Controller;
 
 import Patient.Patient;
+import Patient.PatientHistory;
+import Patient.MedicalHistory;
+import Patient.Encounters;
+import Patient.Events;
 
 import java.awt.*;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,9 +20,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+
+
 
 public class TreatmentCoursePageController implements Initializable{
 
@@ -84,16 +89,69 @@ public class TreatmentCoursePageController implements Initializable{
     private Label labelHistoryID;
 
     @FXML
-    private Button btnEditPatientHistory;
+    private Label labelFamilyHistory;
+
+    @FXML
+    private Label labelAllergies;
+
+    @FXML
+    private Label labelSmoking;
+
+    @FXML
+    private Label labelAlcohol;
+
+    @FXML
+    private Label labelTriageDetails;
+
+    @FXML
+    private Label labelAdditionalComments;
 
     @FXML
     private Button btnBack;
 
     @FXML
-    private Button btnViewPatientHistoryClicked;
+    private Button btnRefresh;
+
+    @FXML
+    private Button btnEditPatientHistory;
+
+    @FXML
+    private Button btnEditMedicalHistory;
+
+    @FXML
+    private Button btnViewEncounters;
+
+    @FXML
+    private Button btnAddEncounters;
+
+    @FXML
+    private Button btnViewEvents;
+
+    @FXML
+    private Button btnAddEvents;
+
+    @FXML
+    private Button btnViewTreatmentCourse;
+
+    @FXML
+    private Button btnAddTreatmentCourse;
+
+    @FXML
+    private VBox encountersVBox;
+
+    @FXML
+    private VBox eventsVBox;
+
+
 
     public static Stage stagePatientHistoryForm;
     public static Scene scenePatientHistoryForm;
+    public static Stage stageMedicalHistoryForm;
+    public static Scene sceneMedicalHistoryForm;
+    public static Stage stageEncounterForm;
+    public static Scene sceneEncounterForm;
+    public static Stage stageEventForm;
+    public static Scene sceneEventForm;
 
     @FXML
     void btnBackClicked(ActionEvent event) throws IOException{
@@ -132,9 +190,48 @@ public class TreatmentCoursePageController implements Initializable{
     }
 
     @FXML
-    void btnViewPatientHistoryClicked(ActionEvent event)throws IOException{
-        String folderPath = "PatientHistory";
-        String filename = selectedPatient.getPatientID() + " History.txt";
+    void btnEditMedicalHistoryClicked(ActionEvent event) throws IOException{
+        stageMedicalHistoryForm = new Stage();
+        sceneMedicalHistoryForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/MedicalHistoryForm.fxml")));
+        stageMedicalHistoryForm.setTitle("Medical History Form");
+        stageMedicalHistoryForm.setScene(sceneMedicalHistoryForm);
+        stageMedicalHistoryForm.setResizable(false);
+        stageMedicalHistoryForm.show();
+    }
+
+    @FXML
+    void btnViewEncountersClicked(ActionEvent event) throws IOException{
+            String folderPath = "Encounter";
+            String filename = selectedPatient.getPatientID() + " Encounter.txt";
+            String filePath = folderPath + File.separator + filename;
+
+            File file = new File(filePath);
+
+            if (file.exists()) {
+                try {
+                    Desktop.getDesktop().edit(file);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Error opening file : " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "File does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+    }
+
+    @FXML
+    void btnAddEncountersClicked(ActionEvent event) throws IOException{
+        stageEncounterForm = new Stage();
+        sceneEncounterForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/EncounterForm.fxml")));
+        stageEncounterForm.setTitle("Encounter Form");
+        stageEncounterForm.setScene(sceneEncounterForm);
+        stageEncounterForm.setResizable(false);
+        stageEncounterForm.show();
+    }
+
+    @FXML
+    void btnViewEventsClicked(ActionEvent event) throws IOException{
+        String folderPath = "Event";
+        String filename = selectedPatient.getPatientID() + " Event.txt";
         String filePath = folderPath + File.separator + filename;
 
         File file = new File(filePath);
@@ -143,12 +240,32 @@ public class TreatmentCoursePageController implements Initializable{
             try {
                 Desktop.getDesktop().edit(file);
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Error opening file for editing: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error opening file : " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "File does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    @FXML
+    void btnAddEventsClicked(ActionEvent event) throws IOException{
+        stageEventForm = new Stage();
+        sceneEventForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/EventForm.fxml")));
+        stageEventForm.setTitle("Event Form");
+        stageEventForm.setScene(sceneEventForm);
+        stageEventForm.setResizable(false);
+        stageEventForm.show();
+    }
+
+    @FXML
+    void btnViewTreatmentCourseClicked(ActionEvent event) throws IOException{
+
+    }
+    @FXML
+    void btnAddTreatmentCourseClicked(ActionEvent event) throws IOException{
+
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -164,98 +281,12 @@ public class TreatmentCoursePageController implements Initializable{
         labelEmail.setText("Email: " + selectedPatient.getPatientEmail());
         labelContactNo.setText("Contact No: " + selectedPatient.getPatientContactNo());
         labeEmergency.setText("Emergency Info: " + selectedPatient.getEmergencyInfo());
-        readPatientHistory();
+        PatientHistory.displayPatientHistory(selectedPatient, labelWardNumber, labelMovementMeans, labelAttendingPhysician, labelMajorComplications, labelTreatmentResults, labelSpecialComments, labelHistoryID);
+        MedicalHistory.displayMedicalHistory(selectedPatient, labelFamilyHistory, labelAllergies, labelSmoking, labelAlcohol, labelTriageDetails, labelAdditionalComments);
+        Encounters.displayAllEncounters(selectedPatient, encountersVBox);
+        Events.displayAllEvents(selectedPatient,eventsVBox);
     }
 
-    public void readPatientHistory() {
-        String folderPath = "PatientHistory";
-        String filename = selectedPatient.getPatientID() + " History.txt";
-        String filePath = folderPath + File.separator + filename;
-
-        File file = new File(filePath);
-        if (file.exists()) {
-            try {
-                BufferedReader reader = new BufferedReader(new FileReader(file));
-                String line;
-                int lineCount = 0;
-                boolean wardNumberDisplayed = false;
-                boolean movementMeansDisplayed = false;
-                boolean attendingPhysicianDisplayed = false;
-                boolean majorComplicationDisplayed = false;
-                boolean treatmentResultsDisplayed = false;
-                boolean specialCommentsDisplayed = false;
-                boolean historyIDDisplayed = false;
-
-                while ((line = reader.readLine()) != null && lineCount < 7) {
-                    line = line.trim();
-
-                    String[] parts = line.split(": ");
-                    if (parts.length == 2) {
-                        String fieldName = parts[0].trim();
-                        String fieldValue = parts[1].trim();
-
-                        switch (fieldName) {
-                            case "Ward Number":
-                                if (!wardNumberDisplayed) {
-                                    labelWardNumber.setText("Ward Number: " + fieldValue);
-                                    wardNumberDisplayed = true;
-                                    lineCount++;
-                                }
-                                break;
-                            case "Movement Means":
-                                if (!movementMeansDisplayed) {
-                                    labelMovementMeans.setText("Movement Means: " + fieldValue);
-                                    movementMeansDisplayed = true;
-                                    lineCount++;
-                                }
-                                break;
-                            case "Attending Physician":
-                                if (!attendingPhysicianDisplayed) {
-                                    labelAttendingPhysician.setText("Attending Physician: " + fieldValue);
-                                    attendingPhysicianDisplayed = true;
-                                    lineCount++;
-                                }
-                                break;
-                            case "Major Complication":
-                                if (!majorComplicationDisplayed) {
-                                    labelMajorComplications.setText("Major Complications: " + fieldValue);
-                                    majorComplicationDisplayed = true;
-                                    lineCount++;
-                                }
-                                break;
-                            case "Treatment Results":
-                                if (!treatmentResultsDisplayed) {
-                                    labelTreatmentResults.setText("Treatment Results: " + fieldValue);
-                                    treatmentResultsDisplayed = true;
-                                    lineCount++;
-                                }
-                                break;
-                            case "Special Comments":
-                                if (!specialCommentsDisplayed) {
-                                    labelSpecialComments.setText("Special Comments: " + fieldValue);
-                                    specialCommentsDisplayed = true;
-                                    lineCount++;
-                                }
-                                break;
-                            case "History ID":
-                                if (!historyIDDisplayed) {
-                                    labelHistoryID.setText("History ID: " + fieldValue);
-                                    historyIDDisplayed = true;
-                                    lineCount++;
-                                }
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }
-
-                reader.close();
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "An error occurred while reading the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
 }
 
 
