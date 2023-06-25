@@ -59,8 +59,8 @@ public class EncounterFormController implements Initializable {
                 System.out.println("An error occurred while updating the file: " + e.getMessage());
             }
         } else {
-            try (FileWriter patientHistory = new FileWriter(file)) {
-                patientHistory.write(fileContent);
+            try (FileWriter patientEncounter = new FileWriter(file)) {
+                patientEncounter.write(fileContent);
             } catch (IOException e) {
                 System.out.println("An error occurred while writing the file: " + e.getMessage());
             }
