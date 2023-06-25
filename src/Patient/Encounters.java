@@ -37,7 +37,7 @@ public class Encounters {
                         String encounter = line.substring(11);
                         String date = reader.readLine().substring(6);
 
-                        Label encounterLabel = new Label("Encounter: " + encounter + " - Date: " + date);
+                        Label encounterLabel = new Label(encounter + "     " + date);
                         encounterLabel.setStyle("-fx-font-size: 12px");
                         VBox.setMargin(encounterLabel, new Insets(5));
 

@@ -1,8 +1,0 @@
-Encounter: asdasd
-Date: 2023-06-10
-Encounter: asdasd
-Date: 2023-06-09
-Encounter: 123123
-Date: 2023-06-15
-Encounter: nono
-Date: 2023-06-15
