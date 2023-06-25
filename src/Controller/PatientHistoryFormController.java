@@ -1,6 +1,7 @@
 package Controller;
 
 import Patient.Patient;
+import Patient.PatientHistory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -40,8 +41,10 @@ public class PatientHistoryFormController{
     private Patient selectedPatient = PatientPageController.getSelectedPatient();
 
 
+
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
+        PatientHistory selectedPatientHistory = new PatientHistory();
         String wardNumber = tfWardNumber.getText();
         String movementMeans =tfMovementMeans.getText();
         String attendingPhysician =tfAttendingPhysician.getText();
@@ -50,7 +53,7 @@ public class PatientHistoryFormController{
         String specialComments =tfSpecialComments.getText();
         String historyID =tfHistoryID.getText();
 
-        selectedPatient.setPatientHistory(wardNumber, movementMeans, attendingPhysician, majorComplication, treatmentResults, specialComments, historyID);
+        selectedPatientHistory.setPatientHistory(wardNumber, movementMeans, attendingPhysician, majorComplication, treatmentResults, specialComments, historyID);
         String folderPath = "PatientHistory";
         String filename = selectedPatient.getPatientID() + " History.txt";
         String filePath = folderPath + File.separator + filename;

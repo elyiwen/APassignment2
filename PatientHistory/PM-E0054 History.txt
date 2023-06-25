@@ -2,19 +2,11 @@ Ward Number:
 Movement Means: 
 Attending Physician: 
 Major Complication: 
-Treatment Results: RAWL
-Special Comments: 
-History ID: 
-----------Patient History----------
-Ward Number: 
-Movement Means: haih
-Attending Physician: 
-Major Complication: 
 Treatment Results: 
-Special Comments: 
+Special Comments: I WANT EAT
 History ID: 
 ----------Patient History----------
-Ward Number: 8
+Ward Number: SIEN AF
 Movement Means: 
 Attending Physician: 
 Major Complication: 
@@ -24,16 +16,16 @@ History ID:
 ----------Patient History----------
 Ward Number: 
 Movement Means: 
-Attending Physician: 6
-Major Complication: 
+Attending Physician: 
+Major Complication: asdasd
 Treatment Results: 
 Special Comments: 
 History ID: 
 ----------Patient History----------
-Ward Number: 1
-Movement Means: 1
-Attending Physician: 1
-Major Complication: 1
-Treatment Results: 1
-Special Comments: 1
-History ID: 1
+Ward Number: asdasd
+Movement Means: asdasd
+Attending Physician: asdasd
+Major Complication: 
+Treatment Results: asdasd
+Special Comments: asdasd
+History ID: asdasd
