@@ -54,7 +54,8 @@ public class AppointmentController{
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Error saving appointment: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
+        } 
+        else {
             JOptionPane.showMessageDialog(null, "Please enter valid values for all fields.", "Invalid Values", JOptionPane.WARNING_MESSAGE);
         }
     }
