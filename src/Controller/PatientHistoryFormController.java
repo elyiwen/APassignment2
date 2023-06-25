@@ -59,7 +59,7 @@ public class PatientHistoryFormController implements Initializable {
 
         selectedPatientHistory.setPatientHistory(wardNumber, movementMeans, attendingPhysician, majorComplication, treatmentResults, specialComments, historyID);
         String folderPath = "PatientHistory";
-        String filename = selectedPatient.getPatientID() + " History.txt";
+        String filename = selectedPatient.getPatientID() + " Patient History.txt";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Ward Number: " + wardNumber + "\n" +
                 "Movement Means: " + movementMeans + "\n" +

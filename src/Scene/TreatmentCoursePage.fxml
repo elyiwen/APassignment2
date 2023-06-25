@@ -1,37 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
-  All rights reserved. Use is subject to license terms.
-
-  This file is available and licensed under the following license:
-
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions
-  are met:
-
-  - Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
-  - Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in
-    the documentation and/or other materials provided with the distribution.
-  - Neither the name of Oracle Corporation nor the names of its
-    contributors may be used to endorse or promote products derived
-    from this software without specific prior written permission.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
--->
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -60,7 +28,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Button fx:id="btnBack" layoutX="1305.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnBackClicked" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #60a3cc;" text="Back">
+            <Button fx:id="btnBack" layoutX="1307.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnBackClicked" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #60a3cc;" text="Back">
                <font>
                   <Font size="15.0" />
                </font></Button>
@@ -122,171 +90,155 @@
                   <Insets top="5.0" />
                </padding>
             </Label>
-            <Button fx:id="btnRefresh" layoutX="1305.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnRefreshClicked" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #60a3cc;" text="Refresh">
+            <Button fx:id="btnRefresh" layoutX="1217.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnRefreshClicked" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #60a3cc;" text="Refresh">
                <font>
                   <Font size="15.0" />
                </font></Button>
          </children>
       </AnchorPane>
-      <Pane layoutX="17.0" layoutY="129.0" prefHeight="358.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">
+      <Pane layoutX="17.0" layoutY="142.0" prefHeight="317.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">
          <children>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="124.0" style="-fx-background-color: #35637D;" text="Medical History" textFill="WHITE">
+            <Label fx:id="labelFamilyHistory" alignment="TOP_LEFT" layoutX="14.0" layoutY="32.0" prefHeight="45.0" prefWidth="289.0" text="Family History:" />
+            <Label fx:id="labelAllergies" alignment="TOP_LEFT" layoutX="14.0" layoutY="75.0" prefHeight="45.0" prefWidth="289.0" text="Allergies:" />
+            <Label fx:id="labelSmoking" alignment="TOP_LEFT" layoutX="14.0" layoutY="120.0" prefHeight="45.0" prefWidth="289.0" text="Smoking:" />
+            <Label fx:id="labelAlcohol" alignment="TOP_LEFT" layoutX="15.0" layoutY="167.0" prefHeight="45.0" prefWidth="289.0" text="Alcohol:" />
+            <Label fx:id="labelTriageDetails" alignment="TOP_LEFT" layoutX="14.0" layoutY="214.0" prefHeight="45.0" prefWidth="289.0" text="Triage Details:" />
+            <Label fx:id="labelAdditionalComments" alignment="TOP_LEFT" layoutX="14.0" layoutY="260.0" prefHeight="45.0" prefWidth="289.0" text="Additional Comments:" />
+         </children>
+      </Pane>
+      <Pane layoutX="726.0" layoutY="142.0" prefHeight="477.0" prefWidth="671.0" style="-fx-background-color: white; -fx-border-color: grey;">
+         <children>
+            <ScrollPane fx:id="analysisScrollPane" layoutX="305.0" layoutY="65.0" prefHeight="115.0" prefWidth="352.0">
+               <content>
+                  <VBox fx:id="analysisVBox" minHeight="0.0" minWidth="0.0" prefHeight="113.0" prefWidth="350.0" />
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="medicationScrollPane" layoutX="303.0" layoutY="202.0" prefHeight="263.0" prefWidth="352.0">
+               <content>
+                  <VBox fx:id="medicationVBox" minHeight="0.0" minWidth="0.0" prefHeight="261.0" prefWidth="350.0" />
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="diagnosisScrollPane" layoutX="23.0" layoutY="65.0" prefHeight="115.0" prefWidth="269.0">
+               <content>
+                  <VBox fx:id="diagnosisVBox" minHeight="0.0" minWidth="0.0" prefHeight="112.0" prefWidth="257.0" />
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="procedureScrollPane" layoutX="23.0" layoutY="202.0" prefHeight="263.0" prefWidth="269.0">
+               <content>
+                  <VBox fx:id="procedureVBox" minHeight="0.0" minWidth="0.0" prefHeight="261.0" prefWidth="257.0" />
+               </content>
+            </ScrollPane>
+            <Label fx:id="labelStartingDate" layoutX="30.0" layoutY="3.0" prefHeight="18.0" prefWidth="259.0" text="Starting Date:" />
+            <Label fx:id="labelEndingDate" layoutX="31.0" layoutY="21.0" prefHeight="18.0" prefWidth="253.0" text="Ending Date:" />
+            <Label fx:id="labelTreatmentCourseID" layoutX="303.0" layoutY="3.0" prefHeight="18.0" prefWidth="247.0" text="Treatment Course ID:" />
+            <Label alignment="CENTER" layoutX="24.0" layoutY="45.0" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Diagnosis" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="btnEditMedicalHistory" layoutX="276.0" layoutY="1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnEditMedicalHistoryClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Edit" textAlignment="CENTER">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Label fx:id="labelFamilyHistory" alignment="TOP_LEFT" layoutX="14.0" layoutY="48.0" prefHeight="45.0" prefWidth="289.0" text="Family History:" />
-            <Label fx:id="labelAllergies" alignment="TOP_LEFT" layoutX="14.0" layoutY="91.0" prefHeight="45.0" prefWidth="289.0" text="Allergies:" />
-            <Label fx:id="labelSmoking" alignment="TOP_LEFT" layoutX="14.0" layoutY="136.0" prefHeight="45.0" prefWidth="289.0" text="Smoking:" />
-            <Label fx:id="labelAlcohol" alignment="TOP_LEFT" layoutX="15.0" layoutY="183.0" prefHeight="45.0" prefWidth="289.0" text="Alcohol:" />
-            <Label fx:id="labelTriageDetails" alignment="TOP_LEFT" layoutX="14.0" layoutY="230.0" prefHeight="45.0" prefWidth="289.0" text="Triage Details:" />
-            <Label fx:id="labelAdditionalComments" alignment="TOP_LEFT" layoutX="14.0" layoutY="276.0" prefHeight="45.0" prefWidth="289.0" text="Additional Comments:" />
-         </children>
-      </Pane>
-      <Pane layoutX="726.0" layoutY="116.0" prefHeight="503.0" prefWidth="671.0" style="-fx-background-color: white; -fx-border-color: grey;">
-         <children>
-            <ScrollPane fx:id="todaysAppointmentScrollPane2" layoutX="305.0" layoutY="65.0" prefHeight="127.0" prefWidth="352.0">
-               <content>
-                  <VBox fx:id="analysisVBox" minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="350.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Analysis/Test" textFill="WHITE">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
-            <ScrollPane fx:id="todaysAppointmentScrollPane11" layoutX="303.0" layoutY="202.0" prefHeight="291.0" prefWidth="352.0">
-               <content>
-                  <VBox fx:id="medicationVBox" minHeight="0.0" minWidth="0.0" prefHeight="289.0" prefWidth="350.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="90.0" style="-fx-background-color: #8FC8E8;" text="Medication" textFill="WHITE">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
-            <ScrollPane fx:id="todaysAppointmentScrollPane" layoutX="23.0" layoutY="65.0" prefHeight="127.0" prefWidth="269.0">
-               <content>
-                  <VBox fx:id="diagnosisVBox" minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="257.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Diagnosis" textFill="WHITE">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
-            <ScrollPane fx:id="todaysAppointmentScrollPane1" layoutX="23.0" layoutY="202.0" prefHeight="291.0" prefWidth="269.0">
-               <content>
-                  <VBox fx:id="procedureVBox" minHeight="0.0" minWidth="0.0" prefHeight="289.0" prefWidth="257.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Procedure" textFill="WHITE">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="131.0" style="-fx-background-color: #35637D;" text="Treatment Course" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="305.0" layoutY="45.0" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Analysis/Test" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="btnAddTreatmentCourse" layoutX="617.0" layoutY="1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnAddTreatmentCourseClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Add" textAlignment="CENTER">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnViewTreatmentCourse" layoutX="564.0" layoutY="1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewTreatmentCourseClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Label fx:id="labelStartingDate" layoutX="30.0" layoutY="23.0" prefHeight="18.0" prefWidth="259.0" text="Starting Date:" />
-            <Label fx:id="labelEndingDate" layoutX="31.0" layoutY="41.0" prefHeight="18.0" prefWidth="253.0" text="Ending Date:" />
-            <Label fx:id="labelTreatmentCourseID" layoutX="303.0" layoutY="23.0" prefHeight="18.0" prefWidth="247.0" text="Treatment Course ID:" />
-         </children>
-      </Pane>
-      <Pane layoutX="381.0" layoutY="130.0" prefHeight="242.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: grey;">
-         <children>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="118.0" style="-fx-background-color: #35637D;" text="Patient History" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="23.0" layoutY="182.0" prefHeight="21.0" prefWidth="103.0" style="-fx-background-color: #8FC8E8;" text="Procedure" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="labelWardNumber" layoutX="10.0" layoutY="36.0" prefHeight="17.0" prefWidth="269.0" text="Ward Number:" />
-            <Label fx:id="labelMovementMeans" layoutX="10.0" layoutY="64.0" prefHeight="17.0" prefWidth="269.0" text="Movement Means:" />
-            <Label fx:id="labelAttendingPhysician" layoutX="11.0" layoutY="92.0" prefHeight="17.0" prefWidth="269.0" text="Attending Physician:" />
-            <Label fx:id="labelMajorComplications" layoutX="11.0" layoutY="121.0" prefHeight="17.0" prefWidth="269.0" text="Major Complications:" />
-            <Label fx:id="labelTreatmentResults" layoutX="11.0" layoutY="148.0" prefHeight="17.0" prefWidth="269.0" text="Treatment Results:" />
-            <Label fx:id="labelSpecialComments" layoutX="11.0" layoutY="176.0" prefHeight="17.0" prefWidth="269.0" text="Special Comments:" />
-            <Label fx:id="labelHistoryID" layoutX="12.0" layoutY="204.0" prefHeight="17.0" prefWidth="269.0" text="History ID:" />
-            <Button fx:id="btnEditPatientHistory" layoutX="252.0" layoutY="1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnEditPatientHistoryClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Edit" textAlignment="CENTER">
+            <Label alignment="CENTER" layoutX="304.0" layoutY="182.0" prefHeight="21.0" prefWidth="90.0" style="-fx-background-color: #8FC8E8;" text="Medication" textFill="WHITE">
                <font>
                   <Font size="15.0" />
-               </font></Button>
+               </font>
+            </Label>
          </children>
       </Pane>
-      <ScrollPane fx:id="todaysAppointmentScrollPane3" layoutX="381.0" layoutY="385.0" prefHeight="232.0" prefWidth="306.0">
+      <Pane layoutX="381.0" layoutY="142.0" prefHeight="224.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: grey;">
+         <children>
+            <Label fx:id="labelWardNumber" layoutX="10.0" layoutY="20.0" prefHeight="17.0" prefWidth="269.0" text="Ward Number:" />
+            <Label fx:id="labelMovementMeans" layoutX="10.0" layoutY="48.0" prefHeight="17.0" prefWidth="269.0" text="Movement Means:" />
+            <Label fx:id="labelAttendingPhysician" layoutX="11.0" layoutY="76.0" prefHeight="17.0" prefWidth="269.0" text="Attending Physician:" />
+            <Label fx:id="labelMajorComplications" layoutX="11.0" layoutY="105.0" prefHeight="17.0" prefWidth="269.0" text="Major Complications:" />
+            <Label fx:id="labelTreatmentResults" layoutX="11.0" layoutY="132.0" prefHeight="17.0" prefWidth="269.0" text="Treatment Results:" />
+            <Label fx:id="labelSpecialComments" layoutX="11.0" layoutY="160.0" prefHeight="17.0" prefWidth="269.0" text="Special Comments:" />
+            <Label fx:id="labelHistoryID" layoutX="12.0" layoutY="188.0" prefHeight="17.0" prefWidth="269.0" text="History ID:" />
+         </children>
+      </Pane>
+      <ScrollPane fx:id="eventsScrollPane" layoutX="381.0" layoutY="405.0" prefHeight="212.0" prefWidth="306.0">
          <content>
-            <VBox fx:id="eventsVBox" minHeight="0.0" minWidth="0.0" prefHeight="229.0" prefWidth="304.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="78.0" style="-fx-background-color: #35637D;" text="Events" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="btnViewEvents" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewEventsClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnAddEvents" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnAddEventsClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Add" textAlignment="CENTER">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
+            <VBox fx:id="eventsVBox" minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="304.0" />
          </content>
       </ScrollPane>
-      <ScrollPane fx:id="todaysAppointmentScrollPane31" layoutX="17.0" layoutY="494.0" prefHeight="121.0" prefWidth="330.0">
+      <ScrollPane fx:id="encountersScrollPane" fitToHeight="true" fitToWidth="true" layoutX="17.0" layoutY="494.0" prefHeight="121.0" prefWidth="330.0">
          <content>
-            <VBox fx:id="encountersVBox" minHeight="0.0" minWidth="0.0" prefHeight="119.0" prefWidth="328.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="96.0" style="-fx-background-color: #35637D;" text="Encounters" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="btnAddEncounters" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnAddEncountersClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Add" textAlignment="CENTER">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnViewEncounters" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewEncountersClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
+            <VBox fx:id="encounterVBox" prefHeight="119.0" prefWidth="328.0" />
          </content>
       </ScrollPane>
+      <Button fx:id="btnViewEncounters" layoutX="239.0" layoutY="465.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewEncountersClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAddEncounters" layoutX="293.0" layoutY="465.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnAddEncountersClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Add" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="17.0" layoutY="465.0" prefHeight="30.0" prefWidth="96.0" style="-fx-background-color: #35637D;" text="Encounters" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="17.0" layoutY="112.0" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #35637D;" text="Medical History" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnEditMedicalHistory" layoutX="293.0" layoutY="112.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnEditMedicalHistoryClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Edit" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="381.0" layoutY="112.0" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #35637D;" text="Patient History" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnEditPatientHistory" layoutX="633.0" layoutY="112.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnEditPatientHistoryClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Edit" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="381.0" layoutY="378.0" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: #35637D;" text="Events" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnViewEvents" layoutX="579.0" layoutY="375.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewEventsClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAddEvents" layoutX="633.0" layoutY="375.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnAddEventsClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Add" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="726.0" layoutY="113.0" prefHeight="30.0" prefWidth="131.0" style="-fx-background-color: #35637D;" text="Treatment Course" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnAddTreatmentCourse" layoutX="1343.0" layoutY="112.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnAddTreatmentCourseClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Add" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnViewTreatmentCourse" layoutX="1289.0" layoutY="112.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewTreatmentCourseClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+
    </children>
 </AnchorPane>

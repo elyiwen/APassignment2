@@ -56,7 +56,7 @@ public class MedicalHistoryFormController implements Initializable {
 
         selectedMedicalHistory.setPatientHistory(familyHistory, allergies, smoking, alcohol, triageDetails, additionalComments);
         String folderPath = "MedicalHistory";
-        String filename = selectedPatient.getPatientID() + " History.txt";
+        String filename = selectedPatient.getPatientID() + " Medical History.txt";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Family History: " + familyHistory + "\n" +
                 "Allergies: " + allergies + "\n" +

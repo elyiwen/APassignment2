@@ -3,7 +3,10 @@ package Controller;
 import Patient.Patient;
 import Patient.PatientHistory;
 import Patient.MedicalHistory;
+import Patient.Encounters;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,7 +19,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import javax.swing.*;
+
 
 
 public class TreatmentCoursePageController implements Initializable{
@@ -128,12 +135,17 @@ public class TreatmentCoursePageController implements Initializable{
     @FXML
     private Button btnAddTreatmentCourse;
 
+    @FXML
+    private VBox encounterVBox;
+
 
 
     public static Stage stagePatientHistoryForm;
     public static Scene scenePatientHistoryForm;
     public static Stage stageMedicalHistoryForm;
     public static Scene sceneMedicalHistoryForm;
+    public static Stage stageEncounterForm;
+    public static Scene sceneEncounterForm;
 
     @FXML
     void btnBackClicked(ActionEvent event) throws IOException{
@@ -175,7 +187,7 @@ public class TreatmentCoursePageController implements Initializable{
     void btnEditMedicalHistoryClicked(ActionEvent event) throws IOException{
         stageMedicalHistoryForm = new Stage();
         sceneMedicalHistoryForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/MedicalHistoryForm.fxml")));
-        stageMedicalHistoryForm.setTitle("Patient History Form");
+        stageMedicalHistoryForm.setTitle("Medical History Form");
         stageMedicalHistoryForm.setScene(sceneMedicalHistoryForm);
         stageMedicalHistoryForm.setResizable(false);
         stageMedicalHistoryForm.show();
@@ -183,12 +195,31 @@ public class TreatmentCoursePageController implements Initializable{
 
     @FXML
     void btnViewEncountersClicked(ActionEvent event) throws IOException{
+            String folderPath = "Encounter";
+            String filename = selectedPatient.getPatientID() + " Encounter.txt";
+            String filePath = folderPath + File.separator + filename;
 
+            File file = new File(filePath);
+
+            if (file.exists()) {
+                try {
+                    Desktop.getDesktop().edit(file);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Error opening file : " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "File does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
     }
 
     @FXML
     void btnAddEncountersClicked(ActionEvent event) throws IOException{
-
+        stageEncounterForm = new Stage();
+        sceneEncounterForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/EncounterForm.fxml")));
+        stageEncounterForm.setTitle("Encounter Form");
+        stageEncounterForm.setScene(sceneEncounterForm);
+        stageEncounterForm.setResizable(false);
+        stageEncounterForm.show();
     }
 
     @FXML
@@ -211,7 +242,6 @@ public class TreatmentCoursePageController implements Initializable{
     }
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         labelPatientID.setText("Patient ID: " + selectedPatient.getPatientID());
@@ -228,8 +258,9 @@ public class TreatmentCoursePageController implements Initializable{
         labeEmergency.setText("Emergency Info: " + selectedPatient.getEmergencyInfo());
         PatientHistory.readPatientHistory(selectedPatient, labelWardNumber, labelMovementMeans, labelAttendingPhysician, labelMajorComplications, labelTreatmentResults, labelSpecialComments, labelHistoryID);
         MedicalHistory.readMedicalHistory(selectedPatient, labelFamilyHistory, labelAllergies, labelSmoking, labelAlcohol, labelTriageDetails, labelAdditionalComments);
-
+        Encounters.displayAllEncounters(selectedPatient, encounterVBox);
     }
+
 
 }
 
