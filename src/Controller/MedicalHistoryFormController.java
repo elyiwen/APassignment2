@@ -1,7 +1,6 @@
 package Controller;
 
 import Patient.Patient;
-import Patient.MedicalHistory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -46,7 +45,6 @@ public class MedicalHistoryFormController implements Initializable {
 
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
-        MedicalHistory selectedMedicalHistory = new MedicalHistory();
         String familyHistory = tfFamilyHistory.getText();
         String allergies = tfAllergies.getText();
         String smoking = tfSmoking.getText();
@@ -54,7 +52,6 @@ public class MedicalHistoryFormController implements Initializable {
         String triageDetails = tfTriageDetails.getText();
         String additionalComments = tfAdditionalComments.getText();
 
-        selectedMedicalHistory.setPatientHistory(familyHistory, allergies, smoking, alcohol, triageDetails, additionalComments);
         String folderPath = "MedicalHistory";
         String filename = selectedPatient.getPatientID() + " Medical History.txt";
         String filePath = folderPath + File.separator + filename;
@@ -63,7 +60,7 @@ public class MedicalHistoryFormController implements Initializable {
                 "Smoking: " + smoking + "\n" +
                 "Alcohol: " + alcohol + "\n" +
                 "Triage Details: " + triageDetails + "\n" +
-                "Additional Comments: " + additionalComments + "\n";
+                "Additional Comments: " + additionalComments;
 
         File file = new File(filePath);
         if (file.exists()) {

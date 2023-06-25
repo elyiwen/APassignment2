@@ -1,11 +1,16 @@
 package Controller;
 
-import java.io.File;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import Patient.Patient;
+import Patient.PatientHistory;
+import Patient.MedicalHistory;
+import Patient.Events;
+import Patient.Encounters;
+import Patient.TreatmentCourse;
 import code.Clinician;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -110,20 +115,16 @@ public class PatientPageController implements Initializable{
                 selectedPatient = tableView.getSelectionModel().getSelectedItem();
                 tableView.getItems().remove(selectedPatient);
                 user.deletePatient(selectedPatient);
-                String folderPath = "PatientHistory";
-                String filename = selectedPatient.getPatientID() + " History.txt";
-                String filePath = folderPath + File.separator + filename;
-                File file = new File(filePath);
-                if (file.exists()) {
-                    if (file.delete()) { // Attempt to delete the file
-                        JOptionPane.showMessageDialog(null, "File deleted successfully.");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Failed to delete the file.");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "File does not exist.");
-                }
                 user.writeRecord();
+                PatientHistory ph = new PatientHistory();
+                ph.deletePatientHistoryFile();
+                MedicalHistory mh = new MedicalHistory();
+                mh.deleteMedicalHistoryFile();
+                Encounters e = new Encounters();
+                e.deleteEncountersFile();
+                Events ev = new Events();
+                ev.deleteEventFile();
+
             } catch (NullPointerException npe){
                 Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Select A Patient", ButtonType.OK, ButtonType.CANCEL);
                 alertError.setHeaderText("NOTIFICATION");

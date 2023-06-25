@@ -164,14 +164,14 @@
             <Label fx:id="labelHistoryID" layoutX="12.0" layoutY="188.0" prefHeight="17.0" prefWidth="269.0" text="History ID:" />
          </children>
       </Pane>
-      <ScrollPane fx:id="eventsScrollPane" layoutX="381.0" layoutY="405.0" prefHeight="212.0" prefWidth="306.0">
-         <content>
-            <VBox fx:id="eventsVBox" minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="304.0" />
-         </content>
-      </ScrollPane>
       <ScrollPane fx:id="encountersScrollPane" fitToHeight="true" fitToWidth="true" layoutX="17.0" layoutY="494.0" prefHeight="121.0" prefWidth="330.0">
          <content>
-            <VBox fx:id="encounterVBox" prefHeight="119.0" prefWidth="328.0" />
+            <VBox fx:id="encountersVBox" prefHeight="200.0" prefWidth="100.0" />
+         </content>
+      </ScrollPane>
+      <ScrollPane fx:id="eventsScrollPane" fitToHeight="true" fitToWidth="true" layoutX="381.0" layoutY="406.0" prefHeight="208.0" prefWidth="306.0">
+         <content>
+            <VBox fx:id="eventsVBox" prefHeight="200.0" prefWidth="100.0" />
          </content>
       </ScrollPane>
       <Button fx:id="btnViewEncounters" layoutX="239.0" layoutY="465.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewEncountersClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">

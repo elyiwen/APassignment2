@@ -1,48 +1,35 @@
 package Patient;
 
 import javax.swing.*;
+
+import Controller.PatientPageController;
 import javafx.scene.control.Label;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+
 public class PatientHistory {
 
-    private String wardNumber;
-    private String movementMeans;
-    private String attendingPhysician;
-    private String majorComplications;
-    private String treatmentResults;
-    private String specialComments;
-    private String historyID;
-
-
-    public void setPatientHistory(String wardNumber, String movementMeans, String attendingPhysician, String majorComplications, String treatmentResults, String specialComments, String historyID){
-        this.wardNumber = wardNumber;
-        this.movementMeans = movementMeans;
-        this.attendingPhysician = attendingPhysician;
-        this.majorComplications = majorComplications;
-        this.treatmentResults = treatmentResults;
-        this.specialComments = specialComments;
-        this.historyID = historyID;
-    }
-
-    public static void readPatientHistory(Patient selectedPatient, Label labelWardNumber, Label labelMovementMeans, Label labelAttendingPhysician, Label labelMajorComplications, Label labelTreatmentResults, Label labelSpecialComments, Label labelHistoryID) {
+    private Patient selectedPatient = PatientPageController.getSelectedPatient();
+    public static void displayPatientHistory(Patient selectedPatient, Label labelWardNumber, Label labelMovementMeans,
+                                             Label labelAttendingPhysician, Label labelMajorComplications,
+                                             Label labelTreatmentResults, Label labelSpecialComments,
+                                             Label labelHistoryID) {
         String folderPath = "PatientHistory";
-        String filename = selectedPatient.getPatientID() + " History.txt";
+        String filename = selectedPatient.getPatientID() + " Patient History.txt";
         String filePath = folderPath + File.separator + filename;
 
         File file = new File(filePath);
         if (file.exists()) {
-            try {
-                BufferedReader reader = new BufferedReader(new FileReader(file));
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String line;
                 int lineCount = 0;
                 boolean wardNumberDisplayed = false;
                 boolean movementMeansDisplayed = false;
                 boolean attendingPhysicianDisplayed = false;
-                boolean majorComplicationDisplayed = false;
+                boolean majorComplicationsDisplayed = false;
                 boolean treatmentResultsDisplayed = false;
                 boolean specialCommentsDisplayed = false;
                 boolean historyIDDisplayed = false;
@@ -78,9 +65,9 @@ public class PatientHistory {
                                 }
                                 break;
                             case "Major Complication":
-                                if (!majorComplicationDisplayed) {
+                                if (!majorComplicationsDisplayed) {
                                     labelMajorComplications.setText("Major Complications: " + fieldValue);
-                                    majorComplicationDisplayed = true;
+                                    majorComplicationsDisplayed = true;
                                     lineCount++;
                                 }
                                 break;
@@ -110,24 +97,22 @@ public class PatientHistory {
                         }
                     }
                 }
-
-                reader.close();
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "An error occurred while reading the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                System.err.println("An error occurred while reading the file: " + e.getMessage());
             }
         }
     }
-    public String getWardNumber(){ return wardNumber; }
 
-    public String getMovementMeans(){ return movementMeans; }
-
-    public String getAttendingPhysician(){ return attendingPhysician; }
-
-    public String getMajorComplications(){ return majorComplications; }
-
-    public String getTreatmentResults(){ return treatmentResults; }
-
-    public String getSpecialComments(){ return specialComments; }
-
-    public String getHistoryID(){ return historyID; }
+    public void deletePatientHistoryFile() {
+        String folderPath = "PatientHistory";
+        String filename = selectedPatient.getPatientID() + " Patient History.txt";
+        String filePath = folderPath + File.separator + filename;
+        File patientHistory = new File(filePath);
+        if (patientHistory.exists()) {
+            patientHistory.delete();
+        }
+    }
 }
+
+
+

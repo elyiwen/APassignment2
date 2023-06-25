@@ -1,11 +1,11 @@
 package Patient;
 
-
 import Controller.PatientPageController;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,15 +13,7 @@ import java.io.IOException;
 
 public class Encounters {
 
-    private String encounter;
-    private String date;
-
     private Patient selectedPatient = PatientPageController.getSelectedPatient();
-
-    public void setPatientHistory(String encounter, String date) {
-        this.encounter = encounter;
-        this.date = date;
-    }
 
     public static void displayAllEncounters(Patient selectedPatient, VBox encounterVBox) {
         String folderPath = "Encounter";
@@ -50,8 +42,14 @@ public class Encounters {
         }
     }
 
-    public String getEncounter(){ return encounter; }
-
-    public String getdate(){ return date; }
+    public void deleteEncountersFile() {
+        String folderPath = "Encounter";
+        String filename = selectedPatient.getPatientID() + " Encounter.txt";
+        String filePath = folderPath + File.separator + filename;
+        File encounter = new File(filePath);
+        if (encounter.exists()) {
+            encounter.delete();
+        }
+    }
 }
 

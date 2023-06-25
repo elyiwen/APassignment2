@@ -4,6 +4,7 @@ import Patient.Patient;
 import Patient.PatientHistory;
 import Patient.MedicalHistory;
 import Patient.Encounters;
+import Patient.Events;
 
 import java.awt.*;
 import java.io.File;
@@ -136,7 +137,10 @@ public class TreatmentCoursePageController implements Initializable{
     private Button btnAddTreatmentCourse;
 
     @FXML
-    private VBox encounterVBox;
+    private VBox encountersVBox;
+
+    @FXML
+    private VBox eventsVBox;
 
 
 
@@ -146,6 +150,8 @@ public class TreatmentCoursePageController implements Initializable{
     public static Scene sceneMedicalHistoryForm;
     public static Stage stageEncounterForm;
     public static Scene sceneEncounterForm;
+    public static Stage stageEventForm;
+    public static Scene sceneEventForm;
 
     @FXML
     void btnBackClicked(ActionEvent event) throws IOException{
@@ -224,12 +230,31 @@ public class TreatmentCoursePageController implements Initializable{
 
     @FXML
     void btnViewEventsClicked(ActionEvent event) throws IOException{
+        String folderPath = "Event";
+        String filename = selectedPatient.getPatientID() + " Event.txt";
+        String filePath = folderPath + File.separator + filename;
 
+        File file = new File(filePath);
+
+        if (file.exists()) {
+            try {
+                Desktop.getDesktop().edit(file);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error opening file : " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "File does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML
     void btnAddEventsClicked(ActionEvent event) throws IOException{
-
+        stageEventForm = new Stage();
+        sceneEventForm = new Scene(FXMLLoader.load(getClass().getResource("/Scene/EventForm.fxml")));
+        stageEventForm.setTitle("Event Form");
+        stageEventForm.setScene(sceneEventForm);
+        stageEventForm.setResizable(false);
+        stageEventForm.show();
     }
 
     @FXML
@@ -256,11 +281,11 @@ public class TreatmentCoursePageController implements Initializable{
         labelEmail.setText("Email: " + selectedPatient.getPatientEmail());
         labelContactNo.setText("Contact No: " + selectedPatient.getPatientContactNo());
         labeEmergency.setText("Emergency Info: " + selectedPatient.getEmergencyInfo());
-        PatientHistory.readPatientHistory(selectedPatient, labelWardNumber, labelMovementMeans, labelAttendingPhysician, labelMajorComplications, labelTreatmentResults, labelSpecialComments, labelHistoryID);
-        MedicalHistory.readMedicalHistory(selectedPatient, labelFamilyHistory, labelAllergies, labelSmoking, labelAlcohol, labelTriageDetails, labelAdditionalComments);
-        Encounters.displayAllEncounters(selectedPatient, encounterVBox);
+        PatientHistory.displayPatientHistory(selectedPatient, labelWardNumber, labelMovementMeans, labelAttendingPhysician, labelMajorComplications, labelTreatmentResults, labelSpecialComments, labelHistoryID);
+        MedicalHistory.displayMedicalHistory(selectedPatient, labelFamilyHistory, labelAllergies, labelSmoking, labelAlcohol, labelTriageDetails, labelAdditionalComments);
+        Encounters.displayAllEncounters(selectedPatient, encountersVBox);
+        Events.displayAllEvents(selectedPatient,eventsVBox);
     }
-
 
 }
 

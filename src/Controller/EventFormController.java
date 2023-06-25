@@ -17,26 +17,29 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 
 
-public class EncounterFormController implements Initializable {
+public class EventFormController implements Initializable {
 
     @FXML
-    private TextField tfEncounter;
+    private TextField tfEvent;
+
+    @FXML
+    private TextField tfTime;
 
     @FXML
     private DatePicker dpDate;
-
-
 
     private Patient selectedPatient = PatientPageController.getSelectedPatient();
 
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
-        String encounter = tfEncounter.getText();
+        String events = tfEvent.getText();
+        String time = tfTime.getText();
         String date = null;
 
-        if (encounter.isEmpty()) {
+        if (events.isEmpty() || time.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Incomplete Fields");
             alert.setHeaderText(null);
@@ -57,10 +60,11 @@ public class EncounterFormController implements Initializable {
             return;
         }
 
-        String folderPath = "Encounter";
-        String filename = selectedPatient.getPatientID() + " Encounter.txt";
+        String folderPath = "Event";
+        String filename = selectedPatient.getPatientID() + " Event.txt";
         String filePath = folderPath + File.separator + filename;
-        String fileContent = "Encounter: " + encounter + "\n" +
+        String fileContent = "Event: " + events + "\n" +
+                "Time: " + time + "\n" +
                 "Date: " + date + "\n";
 
         File file = new File(filePath);
@@ -69,14 +73,14 @@ public class EncounterFormController implements Initializable {
                 String existingContent = new String(Files.readAllBytes(file.toPath()));
                 String updatedContent = fileContent + existingContent;
                 Files.write(file.toPath(), updatedContent.getBytes());
-            } catch (IOException e) {
-                System.out.println("An error occurred while updating the file: " + e.getMessage());
+            } catch (IOException ex) {
+                System.out.println("An error occurred while updating the file: " + ex.getMessage());
             }
         } else {
             try (FileWriter patientEncounter = new FileWriter(file)) {
                 patientEncounter.write(fileContent);
-            } catch (IOException e) {
-                System.out.println("An error occurred while writing the file: " + e.getMessage());
+            } catch (IOException ex) {
+                System.out.println("An error occurred while writing the file: " + ex.getMessage());
             }
         }
 

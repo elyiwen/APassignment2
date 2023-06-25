@@ -1,5 +1,6 @@
 package Patient;
 
+import Controller.PatientPageController;
 import javafx.scene.control.Label;
 
 import javax.swing.*;
@@ -7,36 +8,23 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MedicalHistory {
 
-    private String familyHistory;
-    private String allergies;
-    private String smoking;
-    private String alcohol;
-    private String triageDetails;
-    private String additionalComments;
+    private Patient selectedPatient = PatientPageController.getSelectedPatient();
 
-
-
-    public void setPatientHistory(String familyHistory, String allergies, String smoking, String alcohol, String triageDetails, String additionalComments){
-        this.familyHistory = familyHistory;
-        this.allergies = allergies;
-        this.smoking = smoking;
-        this.alcohol = alcohol;
-        this.triageDetails = triageDetails;
-        this.additionalComments = additionalComments;
-    }
-
-    public static void readMedicalHistory(Patient selectedPatient, Label labelFamilyHistory, Label labelAllergies, Label labelSmoking, Label labelAlcohol, Label labelTriageDetails, Label labelAdditionalComments) {
+    public static void displayMedicalHistory(Patient selectedPatient, Label labelFamilyHistory, Label labelAllergies,
+                                             Label labelSmoking, Label labelAlcohol, Label labelTriageDetails,
+                                             Label labelAdditionalComments) {
         String folderPath = "MedicalHistory";
-        String filename = selectedPatient.getPatientID() + " History.txt";
+        String filename = selectedPatient.getPatientID() + " Medical History.txt";
         String filePath = folderPath + File.separator + filename;
 
         File file = new File(filePath);
         if (file.exists()) {
-            try {
-                BufferedReader reader = new BufferedReader(new FileReader(file));
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String line;
                 int lineCount = 0;
                 boolean familyHistoryDisplayed = false;
@@ -77,16 +65,16 @@ public class MedicalHistory {
                                 }
                                 break;
                             case "Alcohol":
-                                if (!triageDetailsDisplayed) {
+                                if (!alcoholDisplayed) {
                                     labelAlcohol.setText("Alcohol: " + fieldValue);
-                                    triageDetailsDisplayed = true;
+                                    alcoholDisplayed = true;
                                     lineCount++;
                                 }
                                 break;
                             case "Triage Details":
-                                if (!alcoholDisplayed) {
+                                if (!triageDetailsDisplayed) {
                                     labelTriageDetails.setText("Triage Details: " + fieldValue);
-                                    alcoholDisplayed = true;
+                                    triageDetailsDisplayed = true;
                                     lineCount++;
                                 }
                                 break;
@@ -102,23 +90,19 @@ public class MedicalHistory {
                         }
                     }
                 }
-
-                reader.close();
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "An error occurred while reading the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
-    public String getFamilyHistory(){ return familyHistory; }
 
-    public String getMovementMeans(){ return allergies; }
-
-    public String getAttendingPhysician(){ return smoking; }
-
-    public String getAlcohol(){ return alcohol; }
-
-    public String getTriageDetails(){ return triageDetails; }
-
-    public String getAdditionalComments(){ return additionalComments; }
-
+    public void deleteMedicalHistoryFile() {
+        String folderPath = "MedicalHistory";
+        String filename = selectedPatient.getPatientID() + " Medical History.txt";
+        String filePath = folderPath + File.separator + filename;
+        File medicalHistory = new File(filePath);
+        if (medicalHistory.exists()) {
+            medicalHistory.delete();
+        }
+    }
 }
