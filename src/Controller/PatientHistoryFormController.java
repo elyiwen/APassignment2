@@ -9,13 +9,17 @@ import javafx.fxml.FXML;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
+import java.util.ResourceBundle;
+
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-public class PatientHistoryFormController{
+public class PatientHistoryFormController implements Initializable {
 
     @FXML
     private TextField tfWardNumber;
@@ -85,4 +89,8 @@ public class PatientHistoryFormController{
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
