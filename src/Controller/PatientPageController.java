@@ -193,7 +193,6 @@ public class PatientPageController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
         user = MainSceneController.getUser();
-        System.out.println(user.getAccountType());
 
         tbPatientList = tableView.getItems();
         tbPatientList.setAll(Patient.getPatientList());
