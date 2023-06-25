@@ -75,8 +75,8 @@ public class MedicalHistoryFormController implements Initializable {
                 System.out.println("An error occurred while updating the file: " + e.getMessage());
             }
         } else {
-            try (FileWriter patientHistory = new FileWriter(file)) {
-                patientHistory.write(fileContent);
+            try (FileWriter medicalHistory = new FileWriter(file)) {
+                medicalHistory.write(fileContent);
             } catch (IOException e) {
                 System.out.println("An error occurred while writing the file: " + e.getMessage());
             }
