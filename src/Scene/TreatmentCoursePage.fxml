@@ -133,12 +133,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button layoutX="277.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Edit" textAlignment="CENTER">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button layoutX="224.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
+            <Button fx:id="btnEditMedicalHistory" layoutX="277.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnEditMedicalHistoryClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Edit" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
@@ -152,12 +147,12 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button layoutX="277.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Edit" textAlignment="CENTER">
+            <Button fx:id="btnAddEncounters" layoutX="277.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnAddEncountersClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Add" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="224.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
+            <Button fx:id="btnViewEncounters" layoutX="224.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewEncountersClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
@@ -207,12 +202,12 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button layoutX="618.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Edit" textAlignment="CENTER">
+            <Button fx:id="btnAddTreatmentCourse" layoutX="618.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnAddTreatmentCourseClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Add" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="565.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
+            <Button fx:id="btnViewTreatmentCourse" layoutX="565.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewTreatmentCourseClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
@@ -226,12 +221,12 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button layoutX="253.0" layoutY="-4.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Edit" textAlignment="CENTER">
+            <Button fx:id="btnAddEvents" layoutX="253.0" layoutY="-4.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnAddEventsClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Add" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="200.0" layoutY="-4.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
+            <Button fx:id="btnViewEvents" layoutX="200.0" layoutY="-4.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewEventsClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
@@ -256,11 +251,6 @@
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button fx:id="btnViewPatientHistory" layoutX="200.0" layoutY="-1.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnViewPatientHistoryClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="View" textAlignment="CENTER">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
          </children>
       </Pane>
       <Label alignment="CENTER" layoutX="21.0" layoutY="-23.0" prefHeight="22.0" prefWidth="157.0" style="-fx-background-color: #35637D;" text="Patient Information" textFill="WHITE">

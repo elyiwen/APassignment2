@@ -66,7 +66,7 @@ public class PatientHistoryFormController{
         if (file.exists()) {
             try {
                 String existingContent = new String(Files.readAllBytes(file.toPath()));
-                String updatedContent = fileContent + "\n----------Previous History----------\n" + existingContent;
+                String updatedContent = fileContent + "\n----------Patient History----------\n" + existingContent;
                 Files.write(file.toPath(), updatedContent.getBytes());
             } catch (IOException e) {
                 System.out.println("An error occurred while updating the file: " + e.getMessage());

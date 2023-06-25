@@ -84,13 +84,36 @@ public class TreatmentCoursePageController implements Initializable{
     private Label labelHistoryID;
 
     @FXML
-    private Button btnEditPatientHistory;
-
-    @FXML
     private Button btnBack;
 
     @FXML
-    private Button btnViewPatientHistoryClicked;
+    private Button btnRefresh;
+
+    @FXML
+    private Button btnEditPatientHistory;
+
+    @FXML
+    private Button btnEditMedicalHistory;
+
+    @FXML
+    private Button btnViewEncounters;
+
+    @FXML
+    private Button btnAddEncounters;
+
+    @FXML
+    private Button btnViewEvents;
+
+    @FXML
+    private Button btnAddEvents;
+
+    @FXML
+    private Button btnViewTreatmentCourse;
+
+    @FXML
+    private Button btnAddTreatmentCourse;
+
+
 
     public static Stage stagePatientHistoryForm;
     public static Scene scenePatientHistoryForm;
@@ -132,23 +155,40 @@ public class TreatmentCoursePageController implements Initializable{
     }
 
     @FXML
-    void btnViewPatientHistoryClicked(ActionEvent event)throws IOException{
-        String folderPath = "PatientHistory";
-        String filename = selectedPatient.getPatientID() + " History.txt";
-        String filePath = folderPath + File.separator + filename;
+    void btnEditMedicalHistoryClicked(ActionEvent event) throws IOException{
 
-        File file = new File(filePath);
-
-        if (file.exists()) {
-            try {
-                Desktop.getDesktop().edit(file);
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Error opening file for editing: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "File does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }
+
+    @FXML
+    void btnViewEncountersClicked(ActionEvent event) throws IOException{
+
+    }
+
+    @FXML
+    void btnAddEncountersClicked(ActionEvent event) throws IOException{
+
+    }
+
+    @FXML
+    void btnViewEventsClicked(ActionEvent event) throws IOException{
+
+    }
+
+    @FXML
+    void btnAddEventsClicked(ActionEvent event) throws IOException{
+
+    }
+
+    @FXML
+    void btnViewTreatmentCourseClicked(ActionEvent event) throws IOException{
+
+    }
+    @FXML
+    void btnAddTreatmentCourseClicked(ActionEvent event) throws IOException{
+
+    }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
