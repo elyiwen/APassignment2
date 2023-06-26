@@ -10,7 +10,6 @@ import Patient.PatientHistory;
 import Patient.MedicalHistory;
 import Patient.Events;
 import Patient.Encounters;
-import Patient.TreatmentCourse;
 import code.Clinician;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

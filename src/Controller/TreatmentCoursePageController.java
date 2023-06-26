@@ -295,9 +295,6 @@ public class TreatmentCoursePageController implements Initializable{
         Encounters.displayAllEncounters(selectedPatient, encountersVBox);
         Events.displayAllEvents(selectedPatient,eventsVBox);
     }
-    public void setSelectedPatient(Patient selectedPatient){
-        this.selectedPatient = selectedPatient;
-    }
 }
 
 

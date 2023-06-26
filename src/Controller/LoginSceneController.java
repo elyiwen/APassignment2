@@ -93,7 +93,7 @@ public class LoginSceneController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        Clinician newDoctor = new Doctor("doctor", 
+        new Doctor("doctor", 
         "Alpha", 
         "0112223333", 
         "998877665544", 
@@ -101,7 +101,7 @@ public class LoginSceneController implements Initializable{
         "Neurologist", 
         "Neurology");
 
-        Clinician newPharmacist = new Pharmacist("pharmacist",
+        new Pharmacist("pharmacist",
         "Beta",
         "0998887777",
         "112233445566",
@@ -109,7 +109,7 @@ public class LoginSceneController implements Initializable{
         "Bachelor of Pharmacy, NAPLEX Licensed",
         "Hospital Pharmacist");
 
-        Clinician newNurse = new Nurse("nurse",
+        new Nurse("nurse",
         "Gamma",
         "0223334444",
         "223344556677",

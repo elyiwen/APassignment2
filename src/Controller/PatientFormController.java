@@ -175,7 +175,4 @@ public class PatientFormController implements Initializable{
         this.tfEmergencyRelationship.setText(emergencyRelationship);
         this.tfEmergencyContactNo.setText(emergencyContactNo);
     }
-    public void setSelectedPatient(Patient selectedPatient){
-        this.selectedPatient = selectedPatient;
-    }
 }

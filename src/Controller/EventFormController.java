@@ -17,8 +17,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-
 
 public class EventFormController implements Initializable {
 

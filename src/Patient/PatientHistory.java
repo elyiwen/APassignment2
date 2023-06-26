@@ -1,7 +1,5 @@
 package Patient;
 
-import javax.swing.*;
-
 import Controller.PatientPageController;
 import javafx.scene.control.Label;
 import java.io.BufferedReader;
