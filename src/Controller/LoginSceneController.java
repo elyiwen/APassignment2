@@ -44,7 +44,7 @@ public class LoginSceneController implements Initializable{
 
     @FXML
     void btnLogInClicked(ActionEvent event) throws IOException, ClassNotFoundException{
-        // Get User Input
+        
         try{
         accountType = cbAccountType.getValue();
         userID = tfUsername.getText();
@@ -55,6 +55,7 @@ public class LoginSceneController implements Initializable{
                     if (Clinician.loginAuthentication(accountType, userID, password) == true) {
                         user = (Doctor) Clinician.login(accountType, userID, password);
                         loginInfo(true, event);
+                        user.readRecord();
                     } else {
                         loginInfo(false, event);
                     }
@@ -64,6 +65,7 @@ public class LoginSceneController implements Initializable{
                     if (Clinician.loginAuthentication(accountType, userID, password) == true) {
                         user = (Pharmacist) Clinician.login(accountType, userID, password);
                         loginInfo(true, event);
+                        user.readRecord();
                     } else {
                         loginInfo(false, event);
                     }
@@ -73,12 +75,12 @@ public class LoginSceneController implements Initializable{
                     if (Clinician.loginAuthentication(accountType, userID, password) == true) {
                         user = (Nurse) Clinician.login(accountType, userID, password);
                         loginInfo(true, event);
+                        user.readRecord();
                     } else {
                         loginInfo(false, event);
                     }
                     break;
             }
-            user.readRecord();
         }
         catch (NullPointerException npe){
             Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Please Select Account Type", ButtonType.OK);
@@ -121,7 +123,7 @@ public class LoginSceneController implements Initializable{
 
     public void loginInfo(boolean authentication, ActionEvent event) throws IOException{
         if (authentication == true){
-                Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Login Success", ButtonType.OK);
+                Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Login Success", ButtonType.OK, ButtonType.CANCEL);
                 alertSuccess.setHeaderText("NOTIFICATION");
                 alertSuccess.setTitle("ALERT");
                 if (alertSuccess.showAndWait().get() == ButtonType.OK){
@@ -129,7 +131,7 @@ public class LoginSceneController implements Initializable{
                 }
             }
             else{
-                Alert alertFailed = new Alert(AlertType.CONFIRMATION, "Login Failed", ButtonType.OK);
+                Alert alertFailed = new Alert(AlertType.CONFIRMATION, "Login Failed", ButtonType.OK, ButtonType.CANCEL);
                 alertFailed.setHeaderText("NOTIFICATION");
                 alertFailed.setTitle("ALERT");
                 if (alertFailed.showAndWait().get() == ButtonType.OK){

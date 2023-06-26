@@ -9,7 +9,10 @@ import Patient.Patient;
 import code.Clinician;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -100,30 +103,38 @@ public class PatientFormController implements Initializable{
         String emergencyName = tfEmergencyName.getText();
         String emergencyRelationship = tfEmergencyRelationship.getText();
         String emergencyContactNo = tfEmergencyContactNo.getText();
+
         if (selectedPatient == null){
             Patient newPatient = new Patient();
             newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
             newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
             user.addPatient(newPatient);
             user.writeRecord();
+
+            Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
+            alertSuccess.setHeaderText("NOTIFICATION");
+            alertSuccess.setTitle("ALERT");
+            alertSuccess.showAndWait();
+
+            Parent root = FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml"));
+            Scene scene = new Scene(root);
+            PatientPageController.stage.setScene(scene);
         }
         else {
-            Patient.getPatientList().remove(selectedPatient);
-            Patient newPatient = new Patient();
-            newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
-            newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
-            user.addPatient(newPatient);
+            selectedPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+            selectedPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
             user.writeRecord();
+
+            Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Edited Successfully", ButtonType.OK, ButtonType.CANCEL);
+            alertSuccess.setHeaderText("NOTIFICATION");
+            alertSuccess.setTitle("ALERT");
+            alertSuccess.showAndWait();
         }
-
-        Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
-        alertSuccess.setHeaderText("NOTIFICATION");
-        alertSuccess.setTitle("ALERT");
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    
         chbGender.getItems().removeAll(chbGender.getItems());
         chbGender.getItems().addAll("Male", "Female", "None");
         chbGender.setValue("None");
@@ -150,5 +161,21 @@ public class PatientFormController implements Initializable{
         this.tfRace_Ethnicity.setText(race_ethinicity);
         this.chbMaritalStatus.setValue(maritalStatus);
         this.chbStatus.setValue(status);
+    }
+
+    public void setContactInfo(String address, String city, String state, String zip, String country, String email, String contactNo, String emergencyName, String emergencyRelationship, String emergencyContactNo){
+        this.tfAddress.setText(address);
+        this.tfCity.setText(city);
+        this.tfState.setText(state);
+        this.tfZip.setText(zip);
+        this.tfCountry.setText(country);
+        this.tfEmail.setText(email);
+        this.tfContactNo.setText(contactNo);
+        this.tfEmergencyName.setText(emergencyName);
+        this.tfEmergencyRelationship.setText(emergencyRelationship);
+        this.tfEmergencyContactNo.setText(emergencyContactNo);
+    }
+    public void setSelectedPatient(Patient selectedPatient){
+        this.selectedPatient = selectedPatient;
     }
 }

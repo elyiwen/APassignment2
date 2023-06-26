@@ -83,9 +83,13 @@ public abstract class Clinician {
         Parent root = loader.load();
 
         PatientFormController pfc = loader.getController();
+        
         pfc.setBiodata(selectedPatient.getPatientName(), selectedPatient.getPatientIdentityNo(), selectedPatient.getPrefLanguage(), selectedPatient.getGender(), 
                         selectedPatient.getPatientDoB(), selectedPatient.getRace_Ethinicity(), selectedPatient.getMaritalStatus(), selectedPatient.getStatus());
-
+        
+        pfc.setContactInfo(selectedPatient.getAddress(), selectedPatient.getCity(), selectedPatient.getState(), selectedPatient.getZipCode(),
+                            selectedPatient.getCountry(), selectedPatient.getPatientEmail(), selectedPatient.getPatientContactNo(), 
+                            selectedPatient.getEmergencyName(), selectedPatient.getEmergencyRelationship(), selectedPatient.getEmergencyContactNo());
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);

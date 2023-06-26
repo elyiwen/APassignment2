@@ -30,7 +30,8 @@ import javax.swing.*;
 
 public class TreatmentCoursePageController implements Initializable{
 
-    private Patient selectedPatient = PatientPageController.getSelectedPatient();
+    private static Patient selectedPatient = PatientPageController.getSelectedPatient();
+
     private static Clinician user = MainSceneController.getUser();
 
     @FXML
@@ -294,7 +295,9 @@ public class TreatmentCoursePageController implements Initializable{
         Encounters.displayAllEncounters(selectedPatient, encountersVBox);
         Events.displayAllEvents(selectedPatient,eventsVBox);
     }
-
+    public void setSelectedPatient(Patient selectedPatient){
+        this.selectedPatient = selectedPatient;
+    }
 }
 
 

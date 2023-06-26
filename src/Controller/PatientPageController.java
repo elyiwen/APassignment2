@@ -82,8 +82,8 @@ public class PatientPageController implements Initializable{
 
     private static ObservableList<Patient> tbPatientList = FXCollections.observableArrayList();
 
-    public Stage stage;
-    public Scene scene;
+    public static Stage stage;
+    public static Scene scene;
 
     @FXML
     void btnAddClicked(ActionEvent event) throws IOException {
@@ -152,8 +152,10 @@ public class PatientPageController implements Initializable{
             else{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/MainScene.fxml"));
                 Parent root = loader.load();
+
                 MainSceneController msc = loader.getController();
                 msc.switchScene("TreatmentCoursePage");
+                
                 Stage primaryStage = ((Stage) ((Node) event.getSource()).getScene().getWindow());
                 Scene scene = new Scene(root);
                 primaryStage.setScene(scene);
@@ -201,6 +203,8 @@ public class PatientPageController implements Initializable{
 
         tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
         tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
+        tcPatientContactNo.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientContactNo"));
+        tcStatus.setCellValueFactory(new PropertyValueFactory<Patient, String>("status"));
     }
 
     public static Patient getSelectedPatient(){

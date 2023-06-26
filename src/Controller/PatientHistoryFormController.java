@@ -3,7 +3,7 @@ package Controller;
 import Patient.Patient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
+import javafx.fxml.FXMLLoader;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -41,9 +42,7 @@ public class PatientHistoryFormController implements Initializable {
     @FXML
     private TextField tfHistoryID;
 
-    private Patient selectedPatient = PatientPageController.getSelectedPatient();
-
-
+    private static Patient selectedPatient = PatientPageController.getSelectedPatient();
 
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
@@ -88,6 +87,6 @@ public class PatientHistoryFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        
     }
 }
