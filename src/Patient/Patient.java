@@ -179,6 +179,4 @@ public class Patient implements Serializable {
     public static File getPatientFile(){
         return patientFile;
     }
-
-
 }

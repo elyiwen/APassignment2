@@ -48,6 +48,7 @@ public class PatientHistoryFormController implements Initializable {
 
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
+        Patient p = new Patient();
         String wardNumber = tfWardNumber.getText();
         String movementMeans = tfMovementMeans.getText();
         String attendingPhysician = tfAttendingPhysician.getText();

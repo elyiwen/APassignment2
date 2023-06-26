@@ -25,9 +25,8 @@ public class MedicalHistory {
         if (file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String line;
-                int lineCount = 0;
 
-                while ((line = reader.readLine()) != null && lineCount < 6) {
+                while ((line = reader.readLine()) != null) {
                     line = line.trim();
 
                     String[] parts = line.split(": ");
@@ -38,27 +37,21 @@ public class MedicalHistory {
                         switch (fieldName) {
                             case "Family History":
                                 labelFamilyHistory.setText("Family History: " + fieldValue);
-                                lineCount++;
                                 break;
                             case "Allergies":
                                 labelAllergies.setText("Allergies: " + fieldValue);
-                                lineCount++;
                                 break;
                             case "Smoking":
                                 labelSmoking.setText("Smoking: " + fieldValue);
-                                lineCount++;
                                 break;
                             case "Alcohol":
                                 labelAlcohol.setText("Alcohol: " + fieldValue);
-                                lineCount++;
                                 break;
                             case "Triage Details":
                                 labelTriageDetails.setText("Triage Details: " + fieldValue);
-                                lineCount++;
                                 break;
                             case "Additional Comments":
                                 labelAdditionalComments.setText("Additional Comments: " + fieldValue);
-                                lineCount++;
                                 break;
                             default:
                                 break;
@@ -68,7 +61,7 @@ public class MedicalHistory {
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "An error occurred while reading the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-        }else {
+        } else {
             labelFamilyHistory.setText("Family History: None");
             labelAllergies.setText("Allergies: None");
             labelSmoking.setText("Smoking: None");
@@ -78,15 +71,6 @@ public class MedicalHistory {
         }
     }
 
-    public void deleteMedicalHistoryFile() {
-        String folderPath = "MedicalHistory";
-        String filename = selectedPatient.getPatientID() + " Medical History.json";
-        String filePath = folderPath + File.separator + filename;
-        File medicalHistory = new File(filePath);
-        if (medicalHistory.exists()) {
-            medicalHistory.delete();
-        }
-    }
 
     public static void setTextField(Patient selectedPatient, TextField tfFamilyHistory, TextField tfAllergies,
                                     TextField tfSmoking, TextField tfAlcohol,
@@ -99,9 +83,8 @@ public class MedicalHistory {
         if (file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String line;
-                int lineCount = 0;
 
-                while ((line = reader.readLine()) != null && lineCount < 6) {
+                while ((line = reader.readLine()) != null) {
                     line = line.trim();
 
                     String[] parts = line.split(": ");
@@ -112,27 +95,21 @@ public class MedicalHistory {
                         switch (fieldName) {
                             case "Family History":
                                 tfFamilyHistory.setText(fieldValue);
-                                lineCount++;
                                 break;
                             case "Allergies":
                                 tfAllergies.setText(fieldValue);
-                                lineCount++;
                                 break;
                             case "Smoking":
                                 tfSmoking.setText(fieldValue);
-                                lineCount++;
                                 break;
                             case "Alcohol":
                                 tfAlcohol.setText(fieldValue);
-                                lineCount++;
                                 break;
                             case "Triage Details":
                                 tfTriageDetails.setText(fieldValue);
-                                lineCount++;
                                 break;
                             case "Additional Comments":
                                 tfAdditionalComments.setText(fieldValue);
-                                lineCount++;
                                 break;
                             default:
                                 break;
@@ -142,6 +119,17 @@ public class MedicalHistory {
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "An error occurred while reading the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
+        }
+    }
+
+
+    public void deleteMedicalHistoryFile() {
+        String folderPath = "MedicalHistory";
+        String filename = selectedPatient.getPatientID() + " Medical History.json";
+        String filePath = folderPath + File.separator + filename;
+        File medicalHistory = new File(filePath);
+        if (medicalHistory.exists()) {
+            medicalHistory.delete();
         }
     }
 }
