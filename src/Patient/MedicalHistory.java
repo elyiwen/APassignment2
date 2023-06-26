@@ -17,7 +17,7 @@ public class MedicalHistory {
                                              Label labelSmoking, Label labelAlcohol, Label labelTriageDetails,
                                              Label labelAdditionalComments) {
         String folderPath = "MedicalHistory";
-        String filename = selectedPatient.getPatientID() + " Medical History.txt";
+        String filename = selectedPatient.getPatientID() + " Medical History.json";
         String filePath = folderPath + File.separator + filename;
 
         File file = new File(filePath);
@@ -96,7 +96,7 @@ public class MedicalHistory {
 
     public void deleteMedicalHistoryFile() {
         String folderPath = "MedicalHistory";
-        String filename = selectedPatient.getPatientID() + " Medical History.txt";
+        String filename = selectedPatient.getPatientID() + " Medical History.json";
         String filePath = folderPath + File.separator + filename;
         File medicalHistory = new File(filePath);
         if (medicalHistory.exists()) {

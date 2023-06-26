@@ -53,7 +53,7 @@ public class MedicalHistoryFormController implements Initializable {
         String additionalComments = tfAdditionalComments.getText();
 
         String folderPath = "MedicalHistory";
-        String filename = selectedPatient.getPatientID() + " Medical History.txt";
+        String filename = selectedPatient.getPatientID() + " Medical History.json";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Family History: " + familyHistory + "\n" +
                 "Allergies: " + allergies + "\n" +

@@ -14,7 +14,7 @@
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="1415.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aceaea" height="100.0" layoutX="765.0" stroke="BLACK" strokeType="INSIDE" width="253.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aceaea" height="100.0" layoutX="765.0" stroke="BLACK" strokeType="INSIDE" width="306.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aceaea" height="100.0" layoutX="518.0" stroke="BLACK" strokeType="INSIDE" width="247.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aceaea" height="100.0" layoutX="241.0" stroke="BLACK" strokeType="INSIDE" width="289.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aceaea" height="100.0" layoutX="26.0" stroke="BLACK" strokeType="INSIDE" width="218.0" />
@@ -94,6 +94,11 @@
                <font>
                   <Font size="15.0" />
                </font></Button>
+            <Button fx:id="btnEditInfo" layoutX="1017.0" layoutY="70.0" minHeight="21.0" minWidth="53.0" mnemonicParsing="false" onAction="#btnEditInfoClicked" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #60a3cc;" text="Edit" textAlignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <Pane layoutX="17.0" layoutY="142.0" prefHeight="317.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: grey;">

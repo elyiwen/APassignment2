@@ -16,7 +16,7 @@ public class PatientHistory {
                                              Label labelTreatmentResults, Label labelSpecialComments,
                                              Label labelHistoryID) {
         String folderPath = "PatientHistory";
-        String filename = selectedPatient.getPatientID() + " Patient History.txt";
+        String filename = selectedPatient.getPatientID() + " Patient History.json";
         String filePath = folderPath + File.separator + filename;
 
         File file = new File(filePath);
@@ -103,7 +103,7 @@ public class PatientHistory {
 
     public void deletePatientHistoryFile() {
         String folderPath = "PatientHistory";
-        String filename = selectedPatient.getPatientID() + " Patient History.txt";
+        String filename = selectedPatient.getPatientID() + " Patient History.json";
         String filePath = folderPath + File.separator + filename;
         File patientHistory = new File(filePath);
         if (patientHistory.exists()) {

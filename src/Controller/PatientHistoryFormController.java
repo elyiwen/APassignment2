@@ -53,7 +53,7 @@ public class PatientHistoryFormController implements Initializable {
         String historyID =tfHistoryID.getText();
 
         String folderPath = "PatientHistory";
-        String filename = selectedPatient.getPatientID() + " Patient History.txt";
+        String filename = selectedPatient.getPatientID() + " Patient History.json";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Ward Number: " + wardNumber + "\n" +
                 "Movement Means: " + movementMeans + "\n" +

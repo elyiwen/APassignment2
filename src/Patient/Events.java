@@ -16,7 +16,7 @@ public class Events {
 
     public static void displayAllEvents(Patient selectedPatient, VBox eventVBox) {
         String folderPath = "Event";
-        String filename = selectedPatient.getPatientID() + " Event.txt";
+        String filename = selectedPatient.getPatientID() + " Event.json";
         String filePath = folderPath + File.separator + filename;
         File file = new File(filePath);
 
@@ -50,7 +50,7 @@ public class Events {
 
     public void deleteEventFile() {
         String folderPath = "Event";
-        String filename = selectedPatient.getPatientID() + " Event.txt";
+        String filename = selectedPatient.getPatientID() + " Event.json";
         String filePath = folderPath + File.separator + filename;
         File event = new File(filePath);
         if (event.exists()) {

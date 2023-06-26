@@ -211,7 +211,7 @@ public class TreatmentCoursePageController implements Initializable{
     @FXML
     void btnViewEncountersClicked(ActionEvent event) throws IOException{
             String folderPath = "Encounter";
-            String filename = selectedPatient.getPatientID() + " Encounter.txt";
+            String filename = selectedPatient.getPatientID() + " Encounter.json";
             String filePath = folderPath + File.separator + filename;
 
             File file = new File(filePath);
@@ -240,7 +240,7 @@ public class TreatmentCoursePageController implements Initializable{
     @FXML
     void btnViewEventsClicked(ActionEvent event) throws IOException{
         String folderPath = "Event";
-        String filename = selectedPatient.getPatientID() + " Event.txt";
+        String filename = selectedPatient.getPatientID() + " Event.json";
         String filePath = folderPath + File.separator + filename;
 
         File file = new File(filePath);
