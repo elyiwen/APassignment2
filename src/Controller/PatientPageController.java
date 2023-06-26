@@ -32,8 +32,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-
 public class PatientPageController implements Initializable{
     
     @FXML
