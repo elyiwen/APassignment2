@@ -17,7 +17,7 @@ public class MedicalHistory {
     public static void displayMedicalHistory(Patient selectedPatient, Label labelFamilyHistory, Label labelAllergies,
                                              Label labelSmoking, Label labelAlcohol, Label labelTriageDetails,
                                              Label labelAdditionalComments) {
-        String folderPath = "MedicalHistory";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Medical History.json";
         String filePath = folderPath + File.separator + filename;
 
@@ -75,7 +75,7 @@ public class MedicalHistory {
     public static void setTextField(Patient selectedPatient, TextField tfFamilyHistory, TextField tfAllergies,
                                     TextField tfSmoking, TextField tfAlcohol,
                                     TextField tfTriageDetails, TextField tfAdditionalComments) {
-        String folderPath = "MedicalHistory";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Medical History.json";
         String filePath = folderPath + File.separator + filename;
 
@@ -124,7 +124,7 @@ public class MedicalHistory {
 
 
     public void deleteMedicalHistoryFile() {
-        String folderPath = "MedicalHistory";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Medical History.json";
         String filePath = folderPath + File.separator + filename;
         File medicalHistory = new File(filePath);

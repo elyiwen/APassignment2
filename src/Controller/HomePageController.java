@@ -84,7 +84,7 @@ public class HomePageController implements Initializable {
     private void displayTodayAppointments() {
         LocalDate today = LocalDate.now();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("appointments.json"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("File/appointments.json"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("Date: ")) {

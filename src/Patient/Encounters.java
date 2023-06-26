@@ -15,7 +15,7 @@ public class Encounters {
     private Patient selectedPatient = PatientPageController.getSelectedPatient();
 
     public static void displayAllEncounters(Patient selectedPatient, VBox encounterVBox) {
-        String folderPath = "Encounter";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Encounter.json";
         String filePath = folderPath + File.separator + filename;
         File file = new File(filePath);
@@ -42,7 +42,7 @@ public class Encounters {
     }
 
     public void deleteEncountersFile() {
-        String folderPath = "Encounter";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Encounter.json";
         String filePath = folderPath + File.separator + filename;
         File encounter = new File(filePath);

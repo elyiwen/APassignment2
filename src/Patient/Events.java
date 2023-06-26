@@ -15,7 +15,7 @@ public class Events {
     private Patient selectedPatient = PatientPageController.getSelectedPatient();
 
     public static void displayAllEvents(Patient selectedPatient, VBox eventVBox) {
-        String folderPath = "Event";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Event.json";
         String filePath = folderPath + File.separator + filename;
         File file = new File(filePath);
@@ -49,7 +49,7 @@ public class Events {
     }
 
     public void deleteEventFile() {
-        String folderPath = "Event";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Event.json";
         String filePath = folderPath + File.separator + filename;
         File event = new File(filePath);

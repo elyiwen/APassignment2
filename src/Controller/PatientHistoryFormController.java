@@ -60,7 +60,7 @@ public class PatientHistoryFormController implements Initializable {
 
         selectedPatient.setPatientEssential(wardNumber, attendingPhysician, specialComments);
         user.writeRecord();
-        String folderPath = "PatientHistory";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Patient History.json";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Ward Number: " + wardNumber + "\n" +
@@ -92,7 +92,7 @@ public class PatientHistoryFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String folderPath = "PatientHistory";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Patient History.json";
         String filePath = folderPath + File.separator + filename;
         File file = new File(filePath);

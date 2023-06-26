@@ -19,7 +19,7 @@ public class PatientHistory {
                                              Label labelAttendingPhysician, Label labelMajorComplications,
                                              Label labelTreatmentResults, Label labelSpecialComments,
                                              Label labelHistoryID) {
-        String folderPath = "PatientHistory";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Patient History.json";
         String filePath = folderPath + File.separator + filename;
 
@@ -82,7 +82,7 @@ public class PatientHistory {
                                     TextField tfAttendingPhysician, TextField tfMajorComplications,
                                     TextField tfTreatmentResults, TextField tfSpecialComments,
                                     TextField tfHistoryID) {
-        String folderPath = "PatientHistory";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Patient History.json";
         String filePath = folderPath + File.separator + filename;
 
@@ -133,7 +133,7 @@ public class PatientHistory {
     }
 
     public void deletePatientHistoryFile() {
-        String folderPath = "PatientHistory";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Patient History.json";
         String filePath = folderPath + File.separator + filename;
         File patientHistory = new File(filePath);

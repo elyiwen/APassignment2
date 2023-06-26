@@ -56,7 +56,7 @@ public class MedicalHistoryFormController implements Initializable {
         String triageDetails = tfTriageDetails.getText();
         String additionalComments = tfAdditionalComments.getText();
 
-        String folderPath = "MedicalHistory";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Medical History.json";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Family History: " + familyHistory + "\n" +
@@ -87,7 +87,7 @@ public class MedicalHistoryFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String folderPath = "MedicalHistory";
+        String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Medical History.json";
         String filePath = folderPath + File.separator + filename;
         File file = new File(filePath);
