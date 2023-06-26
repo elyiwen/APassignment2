@@ -16,7 +16,7 @@ public class Encounters {
 
     public static void displayAllEncounters(Patient selectedPatient, VBox encounterVBox) {
         String folderPath = "Encounter";
-        String filename = selectedPatient.getPatientID() + " Encounter.json";
+        String filename = selectedPatient.getPatientID() + " Encounter.txt";
         String filePath = folderPath + File.separator + filename;
         File file = new File(filePath);
 

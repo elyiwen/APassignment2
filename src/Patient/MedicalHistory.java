@@ -2,6 +2,7 @@ package Patient;
 
 import Controller.PatientPageController;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -25,12 +26,6 @@ public class MedicalHistory {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String line;
                 int lineCount = 0;
-                boolean familyHistoryDisplayed = false;
-                boolean allergiesDisplayed = false;
-                boolean smokingDisplayed = false;
-                boolean alcoholDisplayed = false;
-                boolean triageDetailsDisplayed = false;
-                boolean additionalCommentsDisplayed = false;
 
                 while ((line = reader.readLine()) != null && lineCount < 6) {
                     line = line.trim();
@@ -42,46 +37,28 @@ public class MedicalHistory {
 
                         switch (fieldName) {
                             case "Family History":
-                                if (!familyHistoryDisplayed) {
-                                    labelFamilyHistory.setText("Family History: " + fieldValue);
-                                    familyHistoryDisplayed = true;
-                                    lineCount++;
-                                }
+                                labelFamilyHistory.setText("Family History: " + fieldValue);
+                                lineCount++;
                                 break;
                             case "Allergies":
-                                if (!allergiesDisplayed) {
-                                    labelAllergies.setText("Allergies: " + fieldValue);
-                                    allergiesDisplayed = true;
-                                    lineCount++;
-                                }
+                                labelAllergies.setText("Allergies: " + fieldValue);
+                                lineCount++;
                                 break;
                             case "Smoking":
-                                if (!smokingDisplayed) {
-                                    labelSmoking.setText("Smoking: " + fieldValue);
-                                    smokingDisplayed = true;
-                                    lineCount++;
-                                }
+                                labelSmoking.setText("Smoking: " + fieldValue);
+                                lineCount++;
                                 break;
                             case "Alcohol":
-                                if (!alcoholDisplayed) {
-                                    labelAlcohol.setText("Alcohol: " + fieldValue);
-                                    alcoholDisplayed = true;
-                                    lineCount++;
-                                }
+                                labelAlcohol.setText("Alcohol: " + fieldValue);
+                                lineCount++;
                                 break;
                             case "Triage Details":
-                                if (!triageDetailsDisplayed) {
-                                    labelTriageDetails.setText("Triage Details: " + fieldValue);
-                                    triageDetailsDisplayed = true;
-                                    lineCount++;
-                                }
+                                labelTriageDetails.setText("Triage Details: " + fieldValue);
+                                lineCount++;
                                 break;
                             case "Additional Comments":
-                                if (!additionalCommentsDisplayed) {
-                                    labelAdditionalComments.setText("Additional Comments: " + fieldValue);
-                                    additionalCommentsDisplayed = true;
-                                    lineCount++;
-                                }
+                                labelAdditionalComments.setText("Additional Comments: " + fieldValue);
+                                lineCount++;
                                 break;
                             default:
                                 break;
@@ -91,6 +68,13 @@ public class MedicalHistory {
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "An error occurred while reading the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
+        }else {
+            labelFamilyHistory.setText("Family History: None");
+            labelAllergies.setText("Allergies: None");
+            labelSmoking.setText("Smoking: None");
+            labelAlcohol.setText("Alcohol: None");
+            labelTriageDetails.setText("Triage Details: None");
+            labelAdditionalComments.setText("Additional Comments: None");
         }
     }
 
@@ -101,6 +85,63 @@ public class MedicalHistory {
         File medicalHistory = new File(filePath);
         if (medicalHistory.exists()) {
             medicalHistory.delete();
+        }
+    }
+
+    public static void setTextField(Patient selectedPatient, TextField tfFamilyHistory, TextField tfAllergies,
+                                    TextField tfSmoking, TextField tfAlcohol,
+                                    TextField tfTriageDetails, TextField tfAdditionalComments) {
+        String folderPath = "MedicalHistory";
+        String filename = selectedPatient.getPatientID() + " Medical History.json";
+        String filePath = folderPath + File.separator + filename;
+
+        File file = new File(filePath);
+        if (file.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String line;
+                int lineCount = 0;
+
+                while ((line = reader.readLine()) != null && lineCount < 6) {
+                    line = line.trim();
+
+                    String[] parts = line.split(": ");
+                    if (parts.length == 2) {
+                        String fieldName = parts[0].trim();
+                        String fieldValue = parts[1].trim();
+
+                        switch (fieldName) {
+                            case "Family History":
+                                tfFamilyHistory.setText(fieldValue);
+                                lineCount++;
+                                break;
+                            case "Allergies":
+                                tfAllergies.setText(fieldValue);
+                                lineCount++;
+                                break;
+                            case "Smoking":
+                                tfSmoking.setText(fieldValue);
+                                lineCount++;
+                                break;
+                            case "Alcohol":
+                                tfAlcohol.setText(fieldValue);
+                                lineCount++;
+                                break;
+                            case "Triage Details":
+                                tfTriageDetails.setText(fieldValue);
+                                lineCount++;
+                                break;
+                            case "Additional Comments":
+                                tfAdditionalComments.setText(fieldValue);
+                                lineCount++;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "An error occurred while reading the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 }

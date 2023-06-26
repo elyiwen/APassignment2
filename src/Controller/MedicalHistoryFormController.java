@@ -1,6 +1,7 @@
 package Controller;
 
 import Patient.Patient;
+import Patient.MedicalHistory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -10,12 +11,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 
 
 public class MedicalHistoryFormController implements Initializable {
@@ -65,17 +69,16 @@ public class MedicalHistoryFormController implements Initializable {
         File file = new File(filePath);
         if (file.exists()) {
             try {
-                String existingContent = new String(Files.readAllBytes(file.toPath()));
-                String updatedContent = fileContent + "\n----------Medical History----------\n" + existingContent;
-                Files.write(file.toPath(), updatedContent.getBytes());
+                Files.newBufferedWriter(file.toPath(), StandardOpenOption.TRUNCATE_EXISTING).close();
+                Files.write(file.toPath(), fileContent.getBytes());
             } catch (IOException e) {
-                System.out.println("An error occurred while updating the file: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "An error occurred while updating the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            try (FileWriter medicalHistory = new FileWriter(file)) {
-                medicalHistory.write(fileContent);
+            try (FileWriter patientHistory = new FileWriter(file)) {
+                patientHistory.write(fileContent);
             } catch (IOException e) {
-                System.out.println("An error occurred while writing the file: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "An error occurred while writing the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -84,6 +87,19 @@ public class MedicalHistoryFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        String folderPath = "MedicalHistory";
+        String filename = selectedPatient.getPatientID() + " Medical History.json";
+        String filePath = folderPath + File.separator + filename;
+        File file = new File(filePath);
+        if(file.exists()){
+            MedicalHistory.setTextField(selectedPatient, tfFamilyHistory, tfAllergies, tfSmoking, tfAlcohol, tfTriageDetails, tfAdditionalComments);
+        }else {
+            tfFamilyHistory.setText("None");
+            tfAllergies.setText("None");
+            tfSmoking.setText("None");
+            tfAlcohol.setText("None");
+            tfTriageDetails.setText("None");
+            tfAdditionalComments.setText("None");
+        }
     }
 }
