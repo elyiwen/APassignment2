@@ -30,7 +30,7 @@ import javax.swing.*;
 
 public class TreatmentCoursePageController implements Initializable{
 
-    private static Patient selectedPatient = PatientPageController.getSelectedPatient();
+    private Patient selectedPatient = PatientPageController.getSelectedPatient();
 
     private static Clinician user = MainSceneController.getUser();
 

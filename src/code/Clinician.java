@@ -83,6 +83,7 @@ public abstract class Clinician {
         Parent root = loader.load();
 
         PatientFormController pfc = loader.getController();
+        pfc.setEditedPatient(selectedPatient);
         
         pfc.setBiodata(selectedPatient.getPatientName(), selectedPatient.getPatientIdentityNo(), selectedPatient.getPrefLanguage(), selectedPatient.getGender(), 
                         selectedPatient.getPatientDoB(), selectedPatient.getRace_Ethinicity(), selectedPatient.getMaritalStatus(), selectedPatient.getStatus());
