@@ -2,6 +2,7 @@ package Controller;
 
 import Patient.Patient;
 import Patient.PatientHistory;
+import code.Clinician;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -44,11 +45,11 @@ public class PatientHistoryFormController implements Initializable {
     @FXML
     private TextField tfHistoryID;
 
-    private static Patient selectedPatient = PatientPageController.getSelectedPatient();
+    private Patient selectedPatient = PatientPageController.getSelectedPatient();
+    private static Clinician user = MainSceneController.getUser();
 
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
-        Patient p = new Patient();
         String wardNumber = tfWardNumber.getText();
         String movementMeans = tfMovementMeans.getText();
         String attendingPhysician = tfAttendingPhysician.getText();
@@ -57,6 +58,8 @@ public class PatientHistoryFormController implements Initializable {
         String specialComments = tfSpecialComments.getText();
         String historyID = tfHistoryID.getText();
 
+        selectedPatient.setPatientEssential(wardNumber, attendingPhysician, specialComments);
+        user.writeRecord();
         String folderPath = "PatientHistory";
         String filename = selectedPatient.getPatientID() + " Patient History.json";
         String filePath = folderPath + File.separator + filename;
@@ -94,7 +97,7 @@ public class PatientHistoryFormController implements Initializable {
         String filePath = folderPath + File.separator + filename;
         File file = new File(filePath);
         if(file.exists()){
-        PatientHistory.setTextField(selectedPatient, tfWardNumber, tfMovementMeans, tfAttendingPhysician, tfMajorComplication, tfTreatmentResults, tfSpecialComments, tfHistoryID);
+            PatientHistory.setTextField(selectedPatient, tfWardNumber, tfMovementMeans, tfAttendingPhysician, tfMajorComplication, tfTreatmentResults, tfSpecialComments, tfHistoryID);
         }else {
             tfWardNumber.setText("None");
             tfMovementMeans.setText("None");

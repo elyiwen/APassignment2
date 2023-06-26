@@ -205,7 +205,8 @@ public class PatientPageController implements Initializable{
         tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
         tcPatientContactNo.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientContactNo"));
         tcStatus.setCellValueFactory(new PropertyValueFactory<Patient, String>("status"));
+        tcWardNo.setCellValueFactory(new PropertyValueFactory<Patient, String>("wardNumber"));
+        tcAttendingPhysician.setCellValueFactory(new PropertyValueFactory<Patient, String>("attendingPhysician"));
+        tcLatestUpdate.setCellValueFactory(new PropertyValueFactory<Patient, String>("comment"));
     }
-
-
 }

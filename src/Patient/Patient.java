@@ -33,6 +33,11 @@ public class Patient implements Serializable {
     private String emergencyName;
     private String emergencyRelationship;
 
+    //
+    private String wardNumber;
+    private String attendingPhysician;
+    private String comment;
+
     private static final long serialVersionUID = -4216126862664342211L;
 
     //Patient List
@@ -65,6 +70,13 @@ public class Patient implements Serializable {
         this.emergencyContactNo = emergencyContactNo;
         this.emergencyName = emergencyName;
         this.emergencyRelationship = emergencyRelationship;
+    }
+
+    public void setPatientEssential(String wardNumber, String attendingPhysician, String comment){
+        this.wardNumber = wardNumber;
+        this.attendingPhysician = attendingPhysician;
+        this.comment = comment;
+
     }
 
     public String generateID(){
@@ -178,5 +190,17 @@ public class Patient implements Serializable {
 
     public static File getPatientFile(){
         return patientFile;
+    }
+
+    public String getWardNumber() {
+        return wardNumber;
+    }
+
+    public String getAttendingPhysician() {
+        return attendingPhysician;
+    }
+
+    public String getComment() {
+        return comment;
     }
 }

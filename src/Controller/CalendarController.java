@@ -173,7 +173,7 @@ public class CalendarController implements Initializable {
         int year = dateFocus.getYear();
         int month = dateFocus.getMonthValue();
 
-        String filePath = "appointments.txt";
+        String filePath = "appointments.json";
         File file = new File(filePath);
         if (!file.exists()) {
             System.err.println("Appointments file not found: " + file.getAbsolutePath());
