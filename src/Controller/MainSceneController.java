@@ -32,9 +32,6 @@ public class MainSceneController implements Initializable{
     private ComboBox<String> cbProfile;
 
     @FXML
-    private Button btnAdmin;
-
-    @FXML
     private Button btnHome;
 
     @FXML
@@ -78,12 +75,7 @@ public class MainSceneController implements Initializable{
             }
         }
     }
-
-    @FXML
-    void btnAdminClicked(ActionEvent event) throws IOException {
-        switchScene("AdminPage");
-    }
-
+    
     @FXML
     void btnHomeClicked(ActionEvent event) throws IOException {
         switchScene("HomePage");

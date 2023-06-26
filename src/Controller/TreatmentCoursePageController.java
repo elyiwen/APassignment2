@@ -2,6 +2,7 @@ package Controller;
 
 import Patient.Patient;
 import Patient.PatientHistory;
+import code.Clinician;
 import Patient.MedicalHistory;
 import Patient.Encounters;
 import Patient.Events;
@@ -30,6 +31,7 @@ import javax.swing.*;
 public class TreatmentCoursePageController implements Initializable{
 
     private Patient selectedPatient = PatientPageController.getSelectedPatient();
+    private static Clinician user = MainSceneController.getUser();
 
     @FXML
     private Label labelPatientID;
@@ -107,6 +109,9 @@ public class TreatmentCoursePageController implements Initializable{
     private Label labelAdditionalComments;
 
     @FXML
+    private Button btnEdit;
+
+    @FXML
     private Button btnBack;
 
     @FXML
@@ -142,8 +147,6 @@ public class TreatmentCoursePageController implements Initializable{
     @FXML
     private VBox eventsVBox;
 
-
-
     public static Stage stagePatientHistoryForm;
     public static Scene scenePatientHistoryForm;
     public static Stage stageMedicalHistoryForm;
@@ -152,6 +155,11 @@ public class TreatmentCoursePageController implements Initializable{
     public static Scene sceneEncounterForm;
     public static Stage stageEventForm;
     public static Scene sceneEventForm;
+
+    @FXML
+    void btnEditInfoClicked() throws IOException{
+        user.editPatient(selectedPatient);
+    }
 
     @FXML
     void btnBackClicked(ActionEvent event) throws IOException{

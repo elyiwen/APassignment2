@@ -7,7 +7,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+import Controller.PatientFormController;
 import Patient.Patient;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public abstract class Clinician {
     
@@ -70,6 +76,20 @@ public abstract class Clinician {
                 break;
             }
         }
+    }
+
+    public void editPatient(Patient selectedPatient) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/PatientForm.fxml"));
+        Parent root = loader.load();
+
+        PatientFormController pfc = loader.getController();
+        pfc.setBiodata(selectedPatient.getPatientName(), selectedPatient.getPatientIdentityNo(), selectedPatient.getPrefLanguage(), selectedPatient.getGender(), 
+                        selectedPatient.getPatientDoB(), selectedPatient.getRace_Ethinicity(), selectedPatient.getMaritalStatus(), selectedPatient.getStatus());
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void writeRecord() throws IOException{

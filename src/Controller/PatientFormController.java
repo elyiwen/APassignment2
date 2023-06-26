@@ -78,6 +78,7 @@ public class PatientFormController implements Initializable{
     private TextField tfZip;
 
     private static Clinician user = MainSceneController.getUser();
+    private static Patient selectedPatient = PatientPageController.getSelectedPatient();
 
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
@@ -99,12 +100,21 @@ public class PatientFormController implements Initializable{
         String emergencyName = tfEmergencyName.getText();
         String emergencyRelationship = tfEmergencyRelationship.getText();
         String emergencyContactNo = tfEmergencyContactNo.getText();
-
-        Patient newPatient = new Patient();
-        newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
-        newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
-        user.addPatient(newPatient);
-        user.writeRecord();
+        if (selectedPatient == null){
+            Patient newPatient = new Patient();
+            newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+            newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
+            user.addPatient(newPatient);
+            user.writeRecord();
+        }
+        else {
+            Patient.getPatientList().remove(selectedPatient);
+            Patient newPatient = new Patient();
+            newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+            newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
+            user.addPatient(newPatient);
+            user.writeRecord();
+        }
 
         Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
         alertSuccess.setHeaderText("NOTIFICATION");
@@ -129,5 +139,16 @@ public class PatientFormController implements Initializable{
         chbStatus.getItems().removeAll(chbStatus.getItems());
         chbStatus.getItems().addAll("Outpatient", "Inpatient", "Candidate");
         chbStatus.setValue("Candidate");
+    }
+
+    public void setBiodata(String patientName, String identityNo, String prefLanguage, String gender, LocalDate doB, String race_ethinicity, String maritalStatus, String status){
+        this.tfPatientName.setText(patientName);
+        this.tfIdentityNo.setText(identityNo);
+        this.chbPreferredLanguage.setValue(prefLanguage);
+        this.chbGender.setValue(gender);
+        this.dpDob.setValue(doB);
+        this.tfRace_Ethnicity.setText(race_ethinicity);
+        this.chbMaritalStatus.setValue(maritalStatus);
+        this.chbStatus.setValue(status);
     }
 }
