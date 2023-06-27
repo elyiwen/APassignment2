@@ -76,7 +76,6 @@ public class Patient implements Serializable {
         this.wardNumber = wardNumber;
         this.attendingPhysician = attendingPhysician;
         this.comment = comment;
-
     }
 
     public String generateID(){

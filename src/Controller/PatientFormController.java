@@ -109,6 +109,7 @@ public class PatientFormController implements Initializable{
         Patient newPatient = new Patient();
         newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
         newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
+        newPatient.setPatientEssential("None", "None", "None");
         user.addPatient(newPatient);
         user.writeRecord();
 
