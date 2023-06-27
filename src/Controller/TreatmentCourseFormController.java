@@ -1,7 +1,6 @@
 package Controller;
 
 import Patient.Patient;
-import Patient.PatientHistory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,13 +15,20 @@ import javax.swing.*;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class TreatmentCourseFormController implements Initializable {
 
     private Patient selectedPatient = PatientPageController.getSelectedPatient();
+
+    //Treament Course
+    @FXML
+    private TextField tfTreatmentID;
+    @FXML
+    private DatePicker dpSD;
+    @FXML
+    private DatePicker dpED;
 
     //Diagnosis
     @FXML
@@ -64,6 +70,9 @@ public class TreatmentCourseFormController implements Initializable {
 
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
+        String treatmentID = tfTreatmentID.getText();
+        String startingDate = null;
+        String endingDate = null;
         String disease = tfDisease.getText();
         String dateOfDiagnosis = null;
         String analysis = tfAnalysis.getText();
@@ -81,11 +90,35 @@ public class TreatmentCourseFormController implements Initializable {
         String sDateOfMedication = null;
 
         if (disease.isEmpty() || analysis.isEmpty() || contentOfAnalysis.isEmpty() || procedure.isEmpty() || contentOfProcedure.isEmpty() || medication.isEmpty()
-                || dosage.isEmpty() || comment.isEmpty() || frequency.isEmpty() || type.isEmpty()) {
+                || dosage.isEmpty() || comment.isEmpty() || frequency.isEmpty() || type.isEmpty() || treatmentID.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Incomplete Fields");
             alert.setHeaderText(null);
             alert.setContentText("Please fill out all the fields");
+            alert.showAndWait();
+            return;
+        }
+
+        LocalDate SD = dpSD.getValue();
+        if (SD != null) {
+            startingDate = SD.toString();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Incomplete Fields");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a starting date");
+            alert.showAndWait();
+            return;
+        }
+
+        LocalDate ED = dpED.getValue();
+        if (ED != null) {
+            endingDate = ED.toString();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Incomplete Fields");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a end date");
             alert.showAndWait();
             return;
         }
@@ -141,7 +174,10 @@ public class TreatmentCourseFormController implements Initializable {
         String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Treatment Course.json";
         String filePath = folderPath + File.separator + filename;
-        String fileContent = "Disease: " + disease + "\n" +
+        String fileContent = "Treatment Course ID: " + treatmentID + "\n" +
+                "Starting Date: " + startingDate + "\n" +
+                "Ending Date: " + endingDate + "\n" +
+                "Disease: " + disease + "\n" +
                 "Date of Diagnosis: " + dateOfDiagnosis + "\n" +
                 "Name of Analysis: " + analysis + "\n" +
                 "Content Of Analysis: " + contentOfAnalysis + "\n" +
@@ -162,14 +198,14 @@ public class TreatmentCourseFormController implements Initializable {
             try {
                 String existingContent = new String(Files.readAllBytes(file.toPath()));
                 int eventCount = countDiseaseOccurrences(existingContent);
-                String updatedContent = "-----Encounter " + (eventCount + 1) + "-----\n" + fileContent + existingContent;
+                String updatedContent = "-----Treatment Course " + (eventCount + 1) + "-----\n" + fileContent + existingContent;
                 Files.write(file.toPath(), updatedContent.getBytes());
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "An error occurred while updating the file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             try (FileWriter patientEvent = new FileWriter(file)) {
-                patientEvent.write("-----Encounter 1-----\n" + fileContent);
+                patientEvent.write("-----Treatment Course 1-----\n" + fileContent);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "An error occurred while writing the file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -180,10 +216,10 @@ public class TreatmentCourseFormController implements Initializable {
 
     private int countDiseaseOccurrences(String content) {
         int count = 0;
-        int index = content.indexOf("-----Event");
+        int index = content.indexOf("-----Treatment Course");
         while (index != -1) {
             count++;
-            index = content.indexOf("-----Event", index + 1);
+            index = content.indexOf("-----Treatment Course", index + 1);
         }
         return count;
     }

@@ -16,6 +16,59 @@
    <children>
       <TabPane prefHeight="436.0" prefWidth="888.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
+            <Tab text="Treatment Course">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="888.0">
+                     <children>
+                        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="888.0" style="-fx-background-color: #DFDFDF;">
+                           <top>
+                              <Pane prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #274D62;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="27.0" layoutY="5.0" prefHeight="27.0" prefWidth="179.0" text="Treatment Course" textFill="#dfdfdf">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <left>
+                              <Pane prefHeight="375.0" prefWidth="108.0" BorderPane.alignment="CENTER" />
+                           </left>
+                           <center>
+                              <Pane prefHeight="38.0" prefWidth="780.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TextField fx:id="tfTreatmentID" layoutX="102.0" layoutY="76.0" prefHeight="25.0" prefWidth="254.0" style="-fx-background-color: #FFFFFF;" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="-87.0" layoutY="143.0" prefHeight="27.0" prefWidth="158.0" text="Starting Date">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker fx:id="dpSD" layoutX="101.0" layoutY="144.0" prefHeight="25.0" prefWidth="163.0" />
+                                    <Button fx:id="btnSave" layoutX="297.0" layoutY="288.0" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="35.0" prefWidth="74.0" text="Save">
+                                       <font>
+                                          <Font name="System Bold Italic" size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Label alignment="CENTER_RIGHT" layoutX="-90.0" layoutY="75.0" prefHeight="27.0" prefWidth="180.0" text="Treatment Course ID">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER_RIGHT" layoutX="-88.0" layoutY="214.0" prefHeight="27.0" prefWidth="158.0" text="Ending Date">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker fx:id="dpED" layoutX="101.0" layoutY="215.0" prefHeight="25.0" prefWidth="163.0" />
+                                 </children>
+                              </Pane>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
             <Tab text="Diagnosis">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="888.0">
@@ -45,11 +98,6 @@
                                        </font>
                                     </Label>
                                     <DatePicker fx:id="dpDoD" layoutX="101.0" layoutY="144.0" prefHeight="25.0" prefWidth="163.0" />
-                                    <Button fx:id="btnSave" layoutX="297.0" layoutY="288.0" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="35.0" prefWidth="74.0" text="Save">
-                                       <font>
-                                          <Font name="System Bold Italic" size="20.0" />
-                                       </font>
-                                    </Button>
                                     <Label alignment="CENTER_RIGHT" layoutX="2.0" layoutY="75.0" prefHeight="27.0" prefWidth="65.0" text="Disease">
                                        <font>
                                           <Font size="18.0" />
