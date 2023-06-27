@@ -2,10 +2,11 @@ package Controller;
 
 import Patient.Patient;
 import Patient.PatientHistory;
-import code.Clinician;
 import Patient.MedicalHistory;
 import Patient.Encounters;
 import Patient.Events;
+import Patient.TreatmentCourse;
+import code.Clinician;
 
 import java.awt.*;
 import java.io.File;
@@ -108,6 +109,15 @@ public class TreatmentCoursePageController implements Initializable{
 
     @FXML
     private Label labelAdditionalComments;
+
+    @FXML
+    private Label labelTreatmentCourseID;
+
+    @FXML
+    private Label labelStartingDate;
+
+    @FXML
+    private Label labelEndingDate;
 
     @FXML
     private Button btnEdit;
@@ -315,6 +325,7 @@ public class TreatmentCoursePageController implements Initializable{
         MedicalHistory.displayMedicalHistory(selectedPatient, labelFamilyHistory, labelAllergies, labelSmoking, labelAlcohol, labelTriageDetails, labelAdditionalComments);
         Encounters.displayAllEncounters(selectedPatient, encountersVBox);
         Events.displayAllEvents(selectedPatient,eventsVBox);
+        TreatmentCourse.displayTreatmentCourse(selectedPatient, labelTreatmentCourseID, labelStartingDate, labelEndingDate);
     }
 }
 
