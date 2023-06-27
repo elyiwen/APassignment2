@@ -1,5 +1,5 @@
 package Patient;
 
-public class Candidate extends Patient{
+public class Candidate extends PatientData{
     
 }
