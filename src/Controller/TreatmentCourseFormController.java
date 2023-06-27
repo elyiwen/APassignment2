@@ -172,7 +172,7 @@ public class TreatmentCourseFormController implements Initializable {
         }
 
         String folderPath = "File";
-        String filename = selectedPatient.getPatientID() + " Treatment Course.json";
+        String filename = selectedPatient.getPatientID() + " Treatment Course.txt";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Treatment Course ID: " + treatmentID + "\n" +
                 "Starting Date: " + startingDate + "\n" +

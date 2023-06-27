@@ -59,7 +59,7 @@ public class EncounterFormController implements Initializable {
         }
 
         String folderPath = "File";
-        String filename = selectedPatient.getPatientID() + " Encounter.json";
+        String filename = selectedPatient.getPatientID() + " Encounter.txt";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Encounter: " + encounter + "\n" +
                 "Date: " + date + "\n";

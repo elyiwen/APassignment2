@@ -1,7 +1,6 @@
 package Controller;
 
 import Patient.Patient;
-import Patient.PatientHistory;
 import User.Clinician;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+
+import Interfaces.PatientHistory;
 
 
 public class PatientHistoryFormController implements Initializable {
@@ -61,7 +62,7 @@ public class PatientHistoryFormController implements Initializable {
         selectedPatient.setPatientEssential(wardNumber, attendingPhysician, specialComments);
         user.writeRecord();
         String folderPath = "File";
-        String filename = selectedPatient.getPatientID() + " Patient History.json";
+        String filename = selectedPatient.getPatientID() + " Patient History.txt";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Ward Number: " + wardNumber + "\n" +
                 "Movement Means: " + movementMeans + "\n" +
@@ -93,11 +94,11 @@ public class PatientHistoryFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String folderPath = "File";
-        String filename = selectedPatient.getPatientID() + " Patient History.json";
+        String filename = selectedPatient.getPatientID() + " Patient History.txt";
         String filePath = folderPath + File.separator + filename;
         File file = new File(filePath);
         if(file.exists()){
-            PatientHistory.setTextField(selectedPatient, tfWardNumber, tfMovementMeans, tfAttendingPhysician, tfMajorComplication, tfTreatmentResults, tfSpecialComments, tfHistoryID);
+            selectedPatient.setTextField(selectedPatient, tfWardNumber, tfMovementMeans, tfAttendingPhysician, tfMajorComplication, tfTreatmentResults, tfSpecialComments, tfHistoryID);
         }else {
             tfWardNumber.setText("None");
             tfMovementMeans.setText("None");

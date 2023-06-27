@@ -28,6 +28,7 @@ public abstract class Clinician {
     private static ArrayList<Clinician> clinicianList = new ArrayList<>();
 
     private static ArrayList<Patient> patientList = Patient.getPatientList();
+    
     private static File patientFile = Patient.getPatientFile();
 
     public Clinician(String clinicianID, String clinicianName, String clinicianContactNo, String clinicianRNIC, String clinicianPassword){

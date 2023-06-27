@@ -5,12 +5,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Interfaces.Events;
+import Interfaces.MedicalHistory;
+import Interfaces.PatientHistory;
+import Interfaces.TreatmentCourse;
 import Patient.Patient;
-import Patient.PatientHistory;
-import Patient.MedicalHistory;
-import Patient.Events;
-import Patient.Encounters;
-import Patient.TreatmentCourse;
 import User.Clinician;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -114,16 +113,12 @@ public class PatientPageController implements Initializable{
                 tableView.getItems().remove(selectedPatient);
                 user.deletePatient(selectedPatient);
                 user.writeRecord();
-                PatientHistory ph = new PatientHistory();
-                ph.deletePatientHistoryFile();
-                MedicalHistory mh = new MedicalHistory();
-                mh.deleteMedicalHistoryFile();
-                Encounters e = new Encounters();
-                e.deleteEncountersFile();
-                Events ev = new Events();
-                ev.deleteEventFile();
-                TreatmentCourse tc = new TreatmentCourse();
-                tc.deleteTreatmentCourseFile();
+
+                selectedPatient.deletePatientHistoryFile();
+                selectedPatient.deleteMedicalHistoryFile();
+                selectedPatient.deleteEncountersFile();
+                selectedPatient.deleteEventFile();
+                selectedPatient.deleteTreatmentCourseFile();
 
             } catch (NullPointerException npe){
                 Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Select A Patient", ButtonType.OK, ButtonType.CANCEL);
@@ -198,7 +193,6 @@ public class PatientPageController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         tbPatientList = tableView.getItems();
         tbPatientList.setAll(Patient.getPatientList());
         tableView.setItems(tbPatientList);

@@ -51,6 +51,7 @@ public class MainSceneController implements Initializable{
 
     @FXML
     void cbProfileClicked(ActionEvent event) throws IOException{
+        
         // Log Out Method
         if (cbProfile.getValue().equals("Log Out")){
 

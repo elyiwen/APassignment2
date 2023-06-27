@@ -1,11 +1,6 @@
 package Controller;
 
 import Patient.Patient;
-import Patient.PatientHistory;
-import Patient.MedicalHistory;
-import Patient.Encounters;
-import Patient.Events;
-import Patient.TreatmentCourse;
 import User.Clinician;
 
 import java.awt.*;
@@ -27,7 +22,10 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-
+import Interfaces.Events;
+import Interfaces.MedicalHistory;
+import Interfaces.PatientHistory;
+import Interfaces.TreatmentCourse;
 
 public class TreatmentCoursePageController implements Initializable{
 
@@ -234,7 +232,7 @@ public class TreatmentCoursePageController implements Initializable{
     @FXML
     void btnViewEncountersClicked(ActionEvent event) throws IOException{
             String folderPath = "File";
-            String filename = selectedPatient.getPatientID() + " Encounter.json";
+            String filename = selectedPatient.getPatientID() + " Encounter.txt";
             String filePath = folderPath + File.separator + filename;
 
             File file = new File(filePath);
@@ -263,7 +261,7 @@ public class TreatmentCoursePageController implements Initializable{
     @FXML
     void btnViewEventsClicked(ActionEvent event) throws IOException{
         String folderPath = "File";
-        String filename = selectedPatient.getPatientID() + " Event.json";
+        String filename = selectedPatient.getPatientID() + " Event.txt";
         String filePath = folderPath + File.separator + filename;
 
         File file = new File(filePath);
@@ -292,7 +290,7 @@ public class TreatmentCoursePageController implements Initializable{
     @FXML
     void btnViewTreatmentCourseClicked(ActionEvent event) throws IOException{
         String folderPath = "File";
-        String filename = selectedPatient.getPatientID() + " Treatment Course.json";
+        String filename = selectedPatient.getPatientID() + " Treatment Course.txt";
         String filePath = folderPath + File.separator + filename;
 
         File file = new File(filePath);
@@ -332,11 +330,12 @@ public class TreatmentCoursePageController implements Initializable{
         labelEmail.setText("Email: " + selectedPatient.getPatientEmail());
         labelContactNo.setText("Contact No: " + selectedPatient.getPatientContactNo());
         labeEmergency.setText("Emergency Info: " + selectedPatient.getEmergencyInfo());
-        PatientHistory.displayPatientHistory(selectedPatient, labelWardNumber, labelMovementMeans, labelAttendingPhysician, labelMajorComplications, labelTreatmentResults, labelSpecialComments, labelHistoryID);
-        MedicalHistory.displayMedicalHistory(selectedPatient, labelFamilyHistory, labelAllergies, labelSmoking, labelAlcohol, labelTriageDetails, labelAdditionalComments);
-        Encounters.displayAllEncounters(selectedPatient, encountersVBox);
-        Events.displayAllEvents(selectedPatient,eventsVBox);
-        TreatmentCourse.displayTreatmentCourse(selectedPatient, labelTreatmentCourseID, labelStartingDate, labelEndingDate, diagnosisVBox, analysisVBox, procedureVBox, medicationVBox);
+
+        selectedPatient.displayPatientHistory(selectedPatient, labelWardNumber, labelMovementMeans, labelAttendingPhysician, labelMajorComplications, labelTreatmentResults, labelSpecialComments, labelHistoryID);
+        selectedPatient.displayMedicalHistory(selectedPatient, labelFamilyHistory, labelAllergies, labelSmoking, labelAlcohol, labelTriageDetails, labelAdditionalComments);
+        selectedPatient.displayAllEncounters(selectedPatient, encountersVBox);
+        selectedPatient.displayAllEvents(selectedPatient,eventsVBox);
+        selectedPatient.displayTreatmentCourse(selectedPatient, labelTreatmentCourseID, labelStartingDate, labelEndingDate, diagnosisVBox, analysisVBox, procedureVBox, medicationVBox);
     }
 }
 

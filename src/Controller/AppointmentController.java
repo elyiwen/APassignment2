@@ -42,7 +42,7 @@ public class AppointmentController implements Initializable {
                     "ID: " + id + "\n" +
                     "Time: " + time + "\n";
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("File/appointments.json", true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("File/appointments.txt", true))) {
                 writer.write(appointmentDetails);
                 JOptionPane.showMessageDialog(null, "Appointment saved successfully.");
             } catch (IOException e) {
@@ -57,7 +57,7 @@ public class AppointmentController implements Initializable {
     @FXML
     public void editAppointments() {
         try {
-            Desktop.getDesktop().edit(new File("File/appointments.json"));
+            Desktop.getDesktop().edit(new File("File/appointments.txt"));
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error opening appointments file for editing: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }

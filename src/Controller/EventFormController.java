@@ -61,7 +61,7 @@ public class EventFormController implements Initializable {
         }
 
         String folderPath = "File";
-        String filename = selectedPatient.getPatientID() + " Event.json";
+        String filename = selectedPatient.getPatientID() + " Event.txt";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Event: " + events + "\n" +
                 "Time: " + time + "\n" +

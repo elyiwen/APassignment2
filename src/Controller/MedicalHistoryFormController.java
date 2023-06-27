@@ -1,7 +1,6 @@
 package Controller;
 
 import Patient.Patient;
-import Patient.MedicalHistory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -20,6 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+
+import Interfaces.MedicalHistory;
 
 
 public class MedicalHistoryFormController implements Initializable {
@@ -57,7 +58,7 @@ public class MedicalHistoryFormController implements Initializable {
         String additionalComments = tfAdditionalComments.getText();
 
         String folderPath = "File";
-        String filename = selectedPatient.getPatientID() + " Medical History.json";
+        String filename = selectedPatient.getPatientID() + " Medical History.txt";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Family History: " + familyHistory + "\n" +
                 "Allergies: " + allergies + "\n" +
@@ -88,11 +89,11 @@ public class MedicalHistoryFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String folderPath = "File";
-        String filename = selectedPatient.getPatientID() + " Medical History.json";
+        String filename = selectedPatient.getPatientID() + " Medical History.txt";
         String filePath = folderPath + File.separator + filename;
         File file = new File(filePath);
         if(file.exists()){
-            MedicalHistory.setTextField(selectedPatient, tfFamilyHistory, tfAllergies, tfSmoking, tfAlcohol, tfTriageDetails, tfAdditionalComments);
+            selectedPatient.setTextField(selectedPatient, tfFamilyHistory, tfAllergies, tfSmoking, tfAlcohol, tfTriageDetails, tfAdditionalComments);
         }else {
             tfFamilyHistory.setText("None");
             tfAllergies.setText("None");
