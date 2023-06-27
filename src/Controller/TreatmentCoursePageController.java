@@ -158,6 +158,18 @@ public class TreatmentCoursePageController implements Initializable{
     @FXML
     private VBox eventsVBox;
 
+    @FXML
+    private VBox diagnosisVBox;
+
+    @FXML
+    private VBox analysisVBox;
+
+    @FXML
+    private VBox procedureVBox;
+
+    @FXML
+    private VBox medicationVBox;
+
     public static Stage stagePatientHistoryForm;
     public static Scene scenePatientHistoryForm;
     public static Stage stageMedicalHistoryForm;
@@ -325,7 +337,7 @@ public class TreatmentCoursePageController implements Initializable{
         MedicalHistory.displayMedicalHistory(selectedPatient, labelFamilyHistory, labelAllergies, labelSmoking, labelAlcohol, labelTriageDetails, labelAdditionalComments);
         Encounters.displayAllEncounters(selectedPatient, encountersVBox);
         Events.displayAllEvents(selectedPatient,eventsVBox);
-        TreatmentCourse.displayTreatmentCourse(selectedPatient, labelTreatmentCourseID, labelStartingDate, labelEndingDate);
+        TreatmentCourse.displayTreatmentCourse(selectedPatient, labelTreatmentCourseID, labelStartingDate, labelEndingDate, diagnosisVBox, analysisVBox, procedureVBox, medicationVBox);
     }
 }
 
