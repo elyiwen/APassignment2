@@ -46,7 +46,7 @@ public class PatientHistoryFormController implements Initializable {
     private TextField tfHistoryID;
 
     private Patient selectedPatient = PatientPageController.getSelectedPatient();
-    private static Clinician user = MainSceneController.getUser();
+    private Clinician user = LoginSceneController.getUser();
 
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {

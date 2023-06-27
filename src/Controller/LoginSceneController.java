@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -21,6 +22,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.Node;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class LoginSceneController implements Initializable{
@@ -39,49 +41,54 @@ public class LoginSceneController implements Initializable{
 
     private static Clinician user;
 
-    public static String accountType;
-    public static String userID;
-
     @FXML
     void btnLogInClicked(ActionEvent event){
         
         try{
-        accountType = cbAccountType.getValue();
-        userID = tfUsername.getText();
+
+        // Get User Login Information
+        String accountType = cbAccountType.getValue();
+        String userID = tfUsername.getText();
         String password = tfPassword.getText();
 
-            switch (accountType) {
-                case "Doctor":
-                    if (Clinician.loginAuthentication(accountType, userID, password) == true) {
-                        user = (Doctor) Clinician.login(accountType, userID, password);
-                        loginInfo(true, event);
-                        user.readRecord();
-                    } else {
-                        loginInfo(false, event);
-                    }
-                    break;
+        // Login Method with different Users
+        switch (accountType) {
 
-                case "Pharmacist":
-                    if (Clinician.loginAuthentication(accountType, userID, password) == true) {
-                        user = (Pharmacist) Clinician.login(accountType, userID, password);
-                        loginInfo(true, event);
-                        user.readRecord();
-                    } else {
-                        loginInfo(false, event);
-                    }
-                    break;
+            case "Doctor":
+                if (Clinician.loginAuthentication(accountType, userID, password) == true) {
+                    user = (Doctor) Clinician.login(accountType, userID, password);
+                    loginConfirmation(true, event);
+                    user.readRecord();
+                } 
+                else {
+                    loginConfirmation(false, event);
+                }
+                break;
 
-                case "Nurse":
-                    if (Clinician.loginAuthentication(accountType, userID, password) == true) {
-                        user = (Nurse) Clinician.login(accountType, userID, password);
-                        loginInfo(true, event);
-                        user.readRecord();
-                    } else {
-                        loginInfo(false, event);
-                    }
-                    break;
+            case "Pharmacist":
+                if (Clinician.loginAuthentication(accountType, userID, password) == true) {
+                    user = (Pharmacist) Clinician.login(accountType, userID, password);
+                    loginConfirmation(true, event);
+                    user.readRecord();
+                } 
+                else {
+                    loginConfirmation(false, event);
+                }
+                break;
+
+            case "Nurse":
+                if (Clinician.loginAuthentication(accountType, userID, password) == true) {
+                    user = (Nurse) Clinician.login(accountType, userID, password);
+                    loginConfirmation(true, event);
+                    user.readRecord();
+                } 
+                else {
+                    loginConfirmation(false, event);
+                }
+                break;
             }
         }
+
         catch (NullPointerException npe){
             Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Please Select Account Type", ButtonType.OK);
             alertSuccess.setHeaderText("NOTIFICATION");
@@ -89,13 +96,13 @@ public class LoginSceneController implements Initializable{
             alertSuccess.showAndWait();
         }
         catch (IOException ioe){
-            Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "No Patient file recorded", ButtonType.OK);
+            Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "No Patient File Recorded", ButtonType.OK);
             alertSuccess.setHeaderText("NOTIFICATION");
             alertSuccess.setTitle("ALERT");
             alertSuccess.showAndWait();
         }
         catch (ClassNotFoundException cnfe){
-            Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "No Patient recorded", ButtonType.OK);
+            Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "No Patient Recorded", ButtonType.OK);
             alertSuccess.setHeaderText("NOTIFICATION");
             alertSuccess.setTitle("ALERT");
             alertSuccess.showAndWait();
@@ -105,6 +112,7 @@ public class LoginSceneController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        // Setting Default Users
         new Doctor("doctor", 
         "Alpha", 
         "0112223333", 
@@ -129,11 +137,13 @@ public class LoginSceneController implements Initializable{
         "Critical Care Nurse",
         "Medical Intensive Care Unit");
 
+        // Setting ComboBox Selections
         cbAccountType.getItems().removeAll(cbAccountType.getItems());
         cbAccountType.getItems().addAll("Doctor", "Nurse", "Pharmacist");
     }
 
-    public void loginInfo(boolean authentication, ActionEvent event) throws IOException{
+    // Show Confirmation Message before Login
+    public void loginConfirmation(boolean authentication, ActionEvent event) throws IOException{
         if (authentication == true){
                 Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Login Success", ButtonType.OK, ButtonType.CANCEL);
                 alertSuccess.setHeaderText("NOTIFICATION");
@@ -152,14 +162,18 @@ public class LoginSceneController implements Initializable{
             }
     }
 
+    // Load Main Page
     private void loadMainPage(ActionEvent event) throws IOException{
         Parent mainFXML = FXMLLoader.load(getClass().getResource("/Scene/MainScene.fxml"));
 
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene mainScene = new Scene(mainFXML);
-        primaryStage.setMaximized(true);
         primaryStage.setScene(mainScene);
         primaryStage.show();
+
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2); 
+        primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 4);  
     }
 
     //Getter

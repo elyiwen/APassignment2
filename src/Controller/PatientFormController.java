@@ -80,7 +80,7 @@ public class PatientFormController implements Initializable{
     @FXML
     private TextField tfZip;
 
-    private static Clinician user = MainSceneController.getUser();
+    private Clinician user = LoginSceneController.getUser();
 
     private Patient editedPatient;
 

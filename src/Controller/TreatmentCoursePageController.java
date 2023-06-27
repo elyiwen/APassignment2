@@ -31,10 +31,6 @@ import javax.swing.*;
 
 public class TreatmentCoursePageController implements Initializable{
 
-    private Patient selectedPatient = PatientPageController.getSelectedPatient();
-
-    private static Clinician user = MainSceneController.getUser();
-
     @FXML
     private Label labelPatientID;
 
@@ -180,6 +176,9 @@ public class TreatmentCoursePageController implements Initializable{
     public static Scene sceneEventForm;
     public static Stage stageTreatmentCourseForm;
     public static Scene sceneTreatmentCourseForm;
+
+    private Patient selectedPatient = PatientPageController.getSelectedPatient();
+    private Clinician user = LoginSceneController.getUser();
 
     @FXML
     void btnEditInfoClicked() throws IOException{

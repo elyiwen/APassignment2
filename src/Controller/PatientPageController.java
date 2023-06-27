@@ -76,7 +76,7 @@ public class PatientPageController implements Initializable{
 
     private static Patient selectedPatient;
 
-    private static Clinician user;
+    private Clinician user = LoginSceneController.getUser();
 
     private static ObservableList<Patient> tbPatientList = FXCollections.observableArrayList();
 
@@ -198,8 +198,6 @@ public class PatientPageController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        user = MainSceneController.getUser();
 
         tbPatientList = tableView.getItems();
         tbPatientList.setAll(Patient.getPatientList());
