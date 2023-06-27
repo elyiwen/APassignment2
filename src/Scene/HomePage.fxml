@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomePageController">
    <children>
-      <VBox layoutX="123.0" layoutY="42.0" prefHeight="605.0" prefWidth="633.0" style="-fx-border-color: #0794A3;">
+      <VBox layoutX="122.0" layoutY="9.0" prefHeight="605.0" prefWidth="633.0" style="-fx-border-color: #0794A3;">
          <children>
             <HBox prefHeight="30.0" prefWidth="638.0" style="-fx-background-color: #0794A3;">
                <children>
@@ -47,7 +47,7 @@
             </TableView>
          </children>
       </VBox>
-      <ScrollPane fx:id="todaysAppointmentScrollPane" layoutX="768.0" layoutY="250.0" prefHeight="400.0" prefWidth="625.0">
+      <ScrollPane fx:id="todaysAppointmentScrollPane" layoutX="767.0" layoutY="217.0" prefHeight="400.0" prefWidth="625.0">
          <content>
             <VBox fx:id="todaysAppointmentVBox" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="610.0">
                <children>
@@ -63,7 +63,7 @@
             </VBox>
          </content>
       </ScrollPane>
-      <ScrollPane layoutX="764.0" layoutY="42.0" prefHeight="200.0" prefWidth="633.0">
+      <ScrollPane layoutX="763.0" layoutY="9.0" prefHeight="200.0" prefWidth="633.0">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="509.0" prefWidth="618.0">
                <children>
@@ -83,6 +83,6 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Button fx:id="btnRefresh" layoutX="1338.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnRefreshClicked" text="Refresh" />
+      <Button fx:id="btnRefresh" layoutX="1337.0" layoutY="-19.0" mnemonicParsing="false" onAction="#btnRefreshClicked" text="Refresh" />
    </children>
 </AnchorPane>

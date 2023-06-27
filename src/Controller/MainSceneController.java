@@ -102,6 +102,15 @@ public class MainSceneController implements Initializable{
         Image img = new Image("/Image/" + user.getAccountType() + "Icon.png");
         imageIcon.setImage(img);
 
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/Scene/" + "HomePage" + ".fxml"));
+            borderPane.setCenter(root); 
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
         cbProfile.getItems().removeAll(cbProfile.getItems());
         cbProfile.getItems().addAll(user.getClinicianID(), "Log Out");
         cbProfile.setPromptText(user.getClinicianID());
