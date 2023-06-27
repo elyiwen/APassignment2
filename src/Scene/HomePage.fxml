@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomePageController">
    <children>
-      <VBox layoutX="123.0" layoutY="42.0" prefHeight="400.0" prefWidth="633.0" style="-fx-border-color: #0794A3;">
+      <VBox layoutX="123.0" layoutY="42.0" prefHeight="605.0" prefWidth="633.0" style="-fx-border-color: #0794A3;">
          <children>
             <HBox prefHeight="30.0" prefWidth="638.0" style="-fx-background-color: #0794A3;">
                <children>
@@ -37,7 +37,7 @@
                   </Button>
                </children>
             </HBox>
-            <TableView fx:id="tableCheck" prefHeight="386.0" prefWidth="631.0">
+            <TableView fx:id="tableCheck" prefHeight="580.0" prefWidth="631.0">
               <columns>
                 <TableColumn fx:id="colCheck" prefWidth="75.0" text="Check" />
                 <TableColumn fx:id="colTask" prefWidth="338.0" text="Task" />
@@ -47,22 +47,6 @@
             </TableView>
          </children>
       </VBox>
-      <ScrollPane layoutX="123.0" layoutY="456.0" prefHeight="192.0" prefWidth="633.0">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="618.0">
-               <children>
-                  <Label alignment="CENTER" layoutY="-2.0" prefHeight="34.0" prefWidth="631.0" style="-fx-background-color: #0794A3;" text="Inbox" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="INBOX" />
-                     </graphic>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
       <ScrollPane fx:id="todaysAppointmentScrollPane" layoutX="768.0" layoutY="250.0" prefHeight="400.0" prefWidth="625.0">
          <content>
             <VBox fx:id="todaysAppointmentVBox" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="610.0">
