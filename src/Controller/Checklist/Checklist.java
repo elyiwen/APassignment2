@@ -20,7 +20,7 @@ public class Checklist implements Serializable{
     private transient CheckBox checkBox;
 
     public static ArrayList<Checklist> checklistList = new ArrayList<>();
-    private static File patientChecklistFile = new File("patientChecklist.txt");
+    private static File patientChecklistFile = new File("patientChecklist.json");
 
 
     public Checklist(String task, String urgency, String date, String value) {

@@ -15,7 +15,7 @@ public class Announcement {
     private String announcementMessage;
 
     public static ArrayList<Announcement> announcementList = new ArrayList<>();
-    private static File announcementListFile = new File("announcementList.txt");
+    private static File announcementListFile = new File("announcementList.json");
 
     public Announcement(String date, String announcementMessage) {
         this.date = date;

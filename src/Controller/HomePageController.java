@@ -110,7 +110,10 @@ public class HomePageController implements Initializable {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            Alert alertNotFound = new Alert(AlertType.CONFIRMATION, "No Appointments Set", ButtonType.OK, ButtonType.CANCEL);
+            alertNotFound.setHeaderText("NOTIFICATION");
+            alertNotFound.setTitle("ALERT");
+            alertNotFound.showAndWait();
         }
     }
 
