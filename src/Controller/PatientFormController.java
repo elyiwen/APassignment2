@@ -5,6 +5,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import Patient.Candidate;
 import Patient.Patient;
 import User.Clinician;
 import javafx.event.ActionEvent;
@@ -106,33 +107,49 @@ public class PatientFormController implements Initializable{
         String emergencyContactNo = tfEmergencyContactNo.getText();
 
         if (editedPatient == null){
-        Patient newPatient = new Patient();
-        newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
-        newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
-        newPatient.setPatientEssential("None", "None", "None");
-        user.addPatient(newPatient);
-        user.writeRecord();
+        
+            if (status.equals("Candidate")){
+                Candidate newCandidate = new Candidate();
+                newCandidate.setCandidateBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+                user.addCandidate(newCandidate);
+                user.writeCandidateRecord();
+            }
 
-        Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
-        alertSuccess.setHeaderText("NOTIFICATION");
-        alertSuccess.setTitle("ALERT");
-        alertSuccess.showAndWait();
+            else{
+                Patient newPatient = new Patient();
+                newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+                newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
+                newPatient.setPatientEssential("None", "None", "None");
+                user.addPatient(newPatient);
+                user.writeRecord();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml"));
-        Scene scene = new Scene(root);
-        PatientPageController.stage.setScene(scene);
+                Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
+                alertSuccess.setHeaderText("NOTIFICATION");
+                alertSuccess.setTitle("ALERT");
+                alertSuccess.showAndWait();
+
+                Parent root = FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml"));
+                Scene scene = new Scene(root);
+                PatientPageController.stage.setScene(scene);
+            }
         }
-        else if (editedPatient != null){
-            editedPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
-            editedPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
-            user.writeRecord();
 
+        else if (editedPatient != null){
+            if (status.equals("Candidate")){
+                Candidate editedCandidate = (Candidate)editedPatient;
+                editedCandidate.setCandidateBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+            }
+            else{
+                editedPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+                editedPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
+                user.writeRecord();
+            }
+            
             Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Edited Successfully", ButtonType.OK, ButtonType.CANCEL);
             alertSuccess.setHeaderText("NOTIFICATION");
             alertSuccess.setTitle("ALERT");
             alertSuccess.showAndWait();
-        }
-        
+        }        
     }
 
     @Override

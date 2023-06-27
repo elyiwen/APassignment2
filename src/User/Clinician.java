@@ -8,8 +8,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import Controller.PatientFormController;
+import Patient.Candidate;
 import Patient.Patient;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,8 +34,12 @@ public abstract class Clinician {
     private static ArrayList<Clinician> clinicianList = new ArrayList<>();
 
     private static ArrayList<Patient> patientList = Patient.getPatientList();
+
+    private static JSONArray candidateArray = Candidate.getCandidateArray();
     
     private static File patientFile = Patient.getPatientFile();
+
+    private static File candidateFile = Candidate.getCandidateFile();
 
     public Clinician(String clinicianID, String clinicianName, String clinicianContactNo, String clinicianRNIC, String clinicianPassword){
         this.clinicianID = clinicianID;
@@ -70,12 +80,38 @@ public abstract class Clinician {
         patientList.add(newPatient);
     }
 
+    public void addCandidate(Candidate candidate){
+        JSONObject objCandidate = new JSONObject();
+
+        objCandidate.put("Patient ID: ", candidate.getPatientID());
+        objCandidate.put("Patient Name", candidate.getPatientName());
+        objCandidate.put("Status", candidate.getStatus());
+        candidateArray.add(objCandidate);
+        System.out.println("Candidate Added");
+    }
+
     public void deletePatient(Patient selectedPatient) throws IOException{
         for (Patient p : patientList){
             if (p.equals(selectedPatient)){
                 patientList.remove(p);
                 break;
             }
+        }
+    }
+
+    public void deleteCandidate(Candidate candidate){
+        int len = candidateArray.size();
+        boolean check = false;
+        for (int i = 0; i < len; i++){
+            JSONObject selectedCandidate = (JSONObject)candidateArray.get(i);
+            if (selectedCandidate.get("Patient Name").equals(candidate.getPatientName())){
+                candidateArray.remove(selectedCandidate);
+                check = true;
+                break;
+            }
+        }
+        if (check == true){
+            System.out.println("Candidate Deleted");
         }
     }
 
@@ -107,14 +143,25 @@ public abstract class Clinician {
         oos.close();
     }
 
+    public void writeCandidateRecord() throws IOException{
+        FileOutputStream fos = new FileOutputStream(candidateFile);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(candidateArray);
+        oos.close();
+    }
+
     public void readRecord() throws IOException, ClassNotFoundException{
         FileInputStream fis = new FileInputStream(patientFile);
         ObjectInputStream ois = new ObjectInputStream(fis);
         while(fis.available() > 0){
-            Patient p = (Patient)ois.readObject();
-            patientList.add(p);
+            Candidate c = (Candidate)ois.readObject();
+            candidateArray.add(c);
         }
         ois.close();
+    }
+
+    public void readCandidateRecord() throws IOException, ClassNotFoundException{
+        
     }
 
     //Setter

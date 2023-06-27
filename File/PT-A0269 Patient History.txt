@@ -1,7 +1,0 @@
-Ward Number: Ward Number1
-Movement Means: Movement Means1
-Attending Physician: Mr Physician1
-Major Complication: Description
-Treatment Results: None
-Special Comments: Description
-History ID: 1

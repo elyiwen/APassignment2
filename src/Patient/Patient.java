@@ -25,28 +25,28 @@ import javafx.scene.layout.VBox;
 public class Patient implements TreatmentCourse, Encounters, MedicalHistory, PatientHistory, Events, Serializable {
 
     // Biodata
-    private String patientID;
-    private String patientName;
-    private String patientIdentityNo;
-    private LocalDate doB;
-    private String age;
-    private String gender;
-    private String race_ethnicity;
-    private String prefLanguage;
-    private String maritalStatus;
-    private String status;
+    protected String patientID;
+    protected String patientName;
+    protected String patientIdentityNo;
+    protected LocalDate doB;
+    protected String age;
+    protected String gender;
+    protected String race_ethnicity;
+    protected String prefLanguage;
+    protected String maritalStatus;
+    protected String status;
 
     // ContactInfo
-    private String address;
-    private String country;
-    private String state;
-    private String city;
-    private String zipCode;
-    private String patientEmail;
-    private String patientContactNo;
-    private String emergencyContactNo;
-    private String emergencyName;
-    private String emergencyRelationship;
+    protected String address;
+    protected String country;
+    protected String state;
+    protected String city;
+    protected String zipCode;
+    protected String patientEmail;
+    protected String patientContactNo;
+    protected String emergencyContactNo;
+    protected String emergencyName;
+    protected String emergencyRelationship;
 
     //Essential
     private String wardNumber;

@@ -59,6 +59,7 @@ public class LoginSceneController implements Initializable{
                     user = (Doctor) Clinician.login(accountType, userID, password);
                     loginConfirmation(true, event);
                     user.readRecord();
+                    user.readCandidateRecord();
                 } 
                 else {
                     loginConfirmation(false, event);
@@ -70,6 +71,7 @@ public class LoginSceneController implements Initializable{
                     user = (Pharmacist) Clinician.login(accountType, userID, password);
                     loginConfirmation(true, event);
                     user.readRecord();
+                    user.readCandidateRecord();
                 } 
                 else {
                     loginConfirmation(false, event);
@@ -81,6 +83,7 @@ public class LoginSceneController implements Initializable{
                     user = (Nurse) Clinician.login(accountType, userID, password);
                     loginConfirmation(true, event);
                     user.readRecord();
+                    user.readCandidateRecord();
                 } 
                 else {
                     loginConfirmation(false, event);
