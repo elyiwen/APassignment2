@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import code.Clinician;
-import code.Doctor;
-import code.Nurse;
-import code.Pharmacist;
+import User.Clinician;
+import User.Doctor;
+import User.Nurse;
+import User.Pharmacist;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

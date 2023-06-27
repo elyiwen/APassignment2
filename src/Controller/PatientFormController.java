@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import Patient.Patient;
-import code.Clinician;
+import User.Clinician;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -6,7 +6,7 @@ import Patient.MedicalHistory;
 import Patient.Encounters;
 import Patient.Events;
 import Patient.TreatmentCourse;
-import code.Clinician;
+import User.Clinician;
 
 import java.awt.*;
 import java.io.File;

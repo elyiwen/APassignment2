@@ -1,4 +1,4 @@
-package Controller.Announcements;
+package Features;
 
 import java.io.File;
 import java.io.FileInputStream;

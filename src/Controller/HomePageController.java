@@ -31,8 +31,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import Controller.Announcements.Announcement;
-import Controller.Checklist.Checklist;
+import Features.Announcement;
+import Features.Checklist;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 
 public class HomePageController implements Initializable {
@@ -110,10 +110,7 @@ public class HomePageController implements Initializable {
                 }
             }
         } catch (IOException e) {
-            Alert alertNotFound = new Alert(AlertType.CONFIRMATION, "No Appointments Set", ButtonType.OK, ButtonType.CANCEL);
-            alertNotFound.setHeaderText("NOTIFICATION");
-            alertNotFound.setTitle("ALERT");
-            alertNotFound.showAndWait();
+            return;
         }
     }
 

@@ -2,8 +2,10 @@ package Controller;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
-import code.Clinician;
+
 import Patient.Patient;
+import User.Clinician;
+
 import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -2,7 +2,7 @@ package Controller;
 
 import Patient.Patient;
 import Patient.PatientHistory;
-import code.Clinician;
+import User.Clinician;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
