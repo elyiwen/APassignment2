@@ -1,6 +1,5 @@
 package Patient;
 
-import Patient.Patient;
 import Controller.PatientPageController;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

@@ -17,6 +17,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 
 public class EventFormController implements Initializable {
 
@@ -69,21 +71,33 @@ public class EventFormController implements Initializable {
         if (file.exists()) {
             try {
                 String existingContent = new String(Files.readAllBytes(file.toPath()));
-                String updatedContent = fileContent + existingContent;
+                int eventCount = countEventOccurrences(existingContent);
+                String updatedContent = "-----Event " + (eventCount + 1) + "-----\n" + fileContent + existingContent;
                 Files.write(file.toPath(), updatedContent.getBytes());
             } catch (IOException ex) {
-                System.out.println("An error occurred while updating the file: " + ex.getMessage());
+                JOptionPane.showMessageDialog(null, "An error occurred while updating the file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            try (FileWriter patientEncounter = new FileWriter(file)) {
-                patientEncounter.write(fileContent);
+            try (FileWriter patientEvent = new FileWriter(file)) {
+                patientEvent.write("-----Event 1-----\n" + fileContent);
             } catch (IOException ex) {
-                System.out.println("An error occurred while writing the file: " + ex.getMessage());
+                JOptionPane.showMessageDialog(null, "An error occurred while writing the file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
+
+    private int countEventOccurrences(String content) {
+        int count = 0;
+        int index = content.indexOf("-----Event");
+        while (index != -1) {
+            count++;
+            index = content.indexOf("-----Event", index + 1);
+        }
+        return count;
+    }
+
 
 
 

@@ -10,6 +10,7 @@ import Patient.PatientHistory;
 import Patient.MedicalHistory;
 import Patient.Events;
 import Patient.Encounters;
+import Patient.TreatmentCourse;
 import code.Clinician;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -121,6 +122,8 @@ public class PatientPageController implements Initializable{
                 e.deleteEncountersFile();
                 Events ev = new Events();
                 ev.deleteEventFile();
+                TreatmentCourse tc = new TreatmentCourse();
+                tc.deleteTreatmentCourseFile();
 
             } catch (NullPointerException npe){
                 Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Select A Patient", ButtonType.OK, ButtonType.CANCEL);
