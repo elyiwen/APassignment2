@@ -26,10 +26,10 @@ public class AnnouncementFormController implements Initializable{
 
     @FXML
     void btnAddClicked(ActionEvent event) throws IOException {
-        String announcement = tfAnnouncement.getText();
+        String announcementMessage = tfAnnouncement.getText();
         String date = dpDateAnnouncement.getValue().toString();
 
-        Announcement newAnnouncementList = new Announcement(date, announcement);
+        Announcement newAnnouncementList = new Announcement(date, announcementMessage);
         Announcement.announcementList.add(newAnnouncementList);
         Announcement.writeToFile();
 

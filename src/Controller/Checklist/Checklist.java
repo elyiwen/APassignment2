@@ -70,8 +70,12 @@ public class Checklist implements Serializable{
         Checklist.checklistList = checklistList;
     }
 
-    public void addPatientChecklist(Checklist checklist) {
+    public void addChecklist(Checklist checklist) {
         checklistList.add(checklist);
+    }
+
+    public static void deleteChecklist(Checklist checklist) {
+        checklistList.remove(checklist);
     }
 
     public static void writeToFile() throws IOException {

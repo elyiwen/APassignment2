@@ -57,17 +57,6 @@
                   <FontAwesomeIcon glyphName="USERS" size="30" />
                </graphic>
             </Button>
-            <Button fx:id="btnAdmin" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnAdminClicked" prefHeight="75.0" prefWidth="111.0" style="-fx-background-color: #0794A3;" text="Admin" textFill="WHITE" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon glyphName="KEY" size="30" />
-               </graphic>
-               <HBox.margin>
-                  <Insets left="-10.0" />
-               </HBox.margin>
-            </Button>
             <ImageView fx:id="imageIcon" fitHeight="47.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets left="250.0" />

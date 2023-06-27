@@ -12,22 +12,22 @@ import java.util.ArrayList;
 public class Announcement {
 
     private String date;
-    private String announcement;
+    private String announcementMessage;
 
     public static ArrayList<Announcement> announcementList = new ArrayList<>();
     private static File announcementListFile = new File("announcementList.txt");
 
-    public Announcement(String date, String announcement) {
+    public Announcement(String date, String announcementMessage) {
         this.date = date;
-        this.announcement = announcement;
+        this.announcementMessage = announcementMessage;
     }
 
     public String getDate() {
         return date;
     }
 
-    public String getAnnouncement() {
-        return announcement;
+    public String getAnnouncementMessage() {
+        return announcementMessage;
     }
 
     public static ArrayList<Announcement> getAnnouncementList() {
@@ -38,16 +38,16 @@ public class Announcement {
         this.date = date;
     }
 
-    public void setAnnouncement(String announcement) {
-        this.announcement = announcement;
-    }
-    
-    public static void addAnnouncement(Announcement announcement) {
-        announcementList.add(announcement);
+    public void setAnnouncement(String announcementMessage) {
+        this.announcementMessage = announcementMessage;
     }
 
     public static void setAnnounceList(ArrayList<Announcement> announceList) {
         Announcement.announcementList = announceList;
+    }
+
+    public static void addAnnouncement(Announcement announcement) {
+        announcementList.add(announcement);
     }
 
     public static void writeToFile() throws IOException {

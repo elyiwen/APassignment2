@@ -10,13 +10,17 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -40,6 +44,9 @@ public class HomePageController implements Initializable {
     private Button btnRefresh;
 
     @FXML
+    private Button btnDelete;
+
+    @FXML
     private ScrollPane todaysAppointmentScrollPane;
 
     @FXML
@@ -49,7 +56,7 @@ public class HomePageController implements Initializable {
     private TableView<Checklist> tableCheck;
 
     @FXML
-    private TableColumn<Checklist, String> colCheck;
+    private TableColumn<Checklist, CheckBox> colCheck;
 
     @FXML
     private TableColumn<Checklist, String> colDate;
@@ -72,7 +79,7 @@ public class HomePageController implements Initializable {
     @FXML
     private TableColumn<Announcement, String> colAnnouncements;
 
-
+    private static Checklist selectedChecklist;
 
     public Stage stagePatientCheck;
     public Scene scenePatientCheck;
@@ -116,6 +123,21 @@ public class HomePageController implements Initializable {
             stagePatientCheck.setResizable(false);
             stagePatientCheck.show();
     }
+
+    
+    @FXML
+    void btnDeleteClicked(ActionEvent event) throws IOException {
+        try {
+            selectedChecklist = tableCheck.getSelectionModel().getSelectedItem();
+            tableCheck.getItems().remove(selectedChecklist);
+            Checklist.deleteChecklist(selectedChecklist);
+        } catch (NullPointerException npe) {
+            Alert alertError = new Alert(AlertType.ERROR, "Please select a checklist.", ButtonType.OK);
+            alertError.setHeaderText("Notification");
+            alertError.setTitle("Error");
+            alertError.showAndWait();
+        }
+    }
     
     @FXML
     void btnAnnouncementAddClicked(MouseEvent event) throws IOException {
@@ -150,12 +172,12 @@ public class HomePageController implements Initializable {
         colTask.setCellValueFactory(new PropertyValueFactory<Checklist, String>("Task"));
         colDate.setCellValueFactory(new PropertyValueFactory<Checklist, String>("Date"));
         colUrgency.setCellValueFactory(new PropertyValueFactory<Checklist, String>("Urgency"));
-        colCheck.setCellValueFactory(new PropertyValueFactory<Checklist, String>("Check"));
+        colCheck.setCellValueFactory(new PropertyValueFactory<Checklist, CheckBox>("Checkbox"));
 
         patientCheckList.setAll(Checklist.getChecklistList());
         tableCheck.setItems(patientCheckList);
 
-        colAnnouncements.setCellValueFactory(new PropertyValueFactory<Announcement, String>("Message"));
+        colAnnouncements.setCellValueFactory(new PropertyValueFactory<Announcement, String>("announcementMessage"));
         colAnnounceDate.setCellValueFactory(new PropertyValueFactory<Announcement, String>("Date"));
 
         announcementList.setAll(Announcement.getAnnouncementList());
