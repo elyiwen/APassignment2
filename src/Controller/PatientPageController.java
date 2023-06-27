@@ -10,6 +10,7 @@ import Patient.PatientHistory;
 import Patient.MedicalHistory;
 import Patient.Events;
 import Patient.Encounters;
+import Patient.TreatmentCourse;
 import code.Clinician;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -121,6 +122,8 @@ public class PatientPageController implements Initializable{
                 e.deleteEncountersFile();
                 Events ev = new Events();
                 ev.deleteEventFile();
+                TreatmentCourse tc = new TreatmentCourse();
+                tc.deleteTreatmentCourseFile();
 
             } catch (NullPointerException npe){
                 Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Select A Patient", ButtonType.OK, ButtonType.CANCEL);
@@ -189,6 +192,10 @@ public class PatientPageController implements Initializable{
         tableView.setItems(patientSortedData);   
     }
 
+    public static Patient getSelectedPatient(){
+        return selectedPatient;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -197,14 +204,12 @@ public class PatientPageController implements Initializable{
         tbPatientList = tableView.getItems();
         tbPatientList.setAll(Patient.getPatientList());
         tableView.setItems(tbPatientList);
-
         tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
         tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));
         tcPatientContactNo.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientContactNo"));
         tcStatus.setCellValueFactory(new PropertyValueFactory<Patient, String>("status"));
-    }
-
-    public static Patient getSelectedPatient(){
-        return selectedPatient; 
+        tcWardNo.setCellValueFactory(new PropertyValueFactory<Patient, String>("wardNumber"));
+        tcAttendingPhysician.setCellValueFactory(new PropertyValueFactory<Patient, String>("attendingPhysician"));
+        tcLatestUpdate.setCellValueFactory(new PropertyValueFactory<Patient, String>("comment"));
     }
 }

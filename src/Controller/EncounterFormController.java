@@ -17,6 +17,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 
 
 public class EncounterFormController implements Initializable {
@@ -57,8 +58,8 @@ public class EncounterFormController implements Initializable {
             return;
         }
 
-        String folderPath = "Encounter";
-        String filename = selectedPatient.getPatientID() + " Encounter.txt";
+        String folderPath = "File";
+        String filename = selectedPatient.getPatientID() + " Encounter.json";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Encounter: " + encounter + "\n" +
                 "Date: " + date + "\n";
@@ -67,21 +68,33 @@ public class EncounterFormController implements Initializable {
         if (file.exists()) {
             try {
                 String existingContent = new String(Files.readAllBytes(file.toPath()));
-                String updatedContent = fileContent + existingContent;
+                int eventCount = countEncounterOccurrences(existingContent);
+                String updatedContent = "-----Encounter " + (eventCount + 1) + "-----\n" + fileContent + existingContent;
                 Files.write(file.toPath(), updatedContent.getBytes());
-            } catch (IOException e) {
-                System.out.println("An error occurred while updating the file: " + e.getMessage());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "An error occurred while updating the file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            try (FileWriter patientEncounter = new FileWriter(file)) {
-                patientEncounter.write(fileContent);
-            } catch (IOException e) {
-                System.out.println("An error occurred while writing the file: " + e.getMessage());
+            try (FileWriter patientEvent = new FileWriter(file)) {
+                patientEvent.write("-----Encounter 1-----\n" + fileContent);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "An error occurred while writing the file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
+
+    private int countEncounterOccurrences(String content) {
+        int count = 0;
+        int index = content.indexOf("-----Encounter");
+        while (index != -1) {
+            count++;
+            index = content.indexOf("-----Encounter", index + 1);
+        }
+        return count;
+    }
+
 
 
 

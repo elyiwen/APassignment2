@@ -81,7 +81,8 @@ public class PatientFormController implements Initializable{
     private TextField tfZip;
 
     private static Clinician user = MainSceneController.getUser();
-    private static Patient selectedPatient = PatientPageController.getSelectedPatient();
+
+    private Patient editedPatient;
 
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
@@ -104,25 +105,26 @@ public class PatientFormController implements Initializable{
         String emergencyRelationship = tfEmergencyRelationship.getText();
         String emergencyContactNo = tfEmergencyContactNo.getText();
 
-        if (selectedPatient == null){
-            Patient newPatient = new Patient();
-            newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
-            newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
-            user.addPatient(newPatient);
-            user.writeRecord();
+        if (editedPatient == null){
+        Patient newPatient = new Patient();
+        newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+        newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
+        newPatient.setPatientEssential("None", "None", "None");
+        user.addPatient(newPatient);
+        user.writeRecord();
 
-            Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
-            alertSuccess.setHeaderText("NOTIFICATION");
-            alertSuccess.setTitle("ALERT");
-            alertSuccess.showAndWait();
+        Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
+        alertSuccess.setHeaderText("NOTIFICATION");
+        alertSuccess.setTitle("ALERT");
+        alertSuccess.showAndWait();
 
-            Parent root = FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml"));
-            Scene scene = new Scene(root);
-            PatientPageController.stage.setScene(scene);
+        Parent root = FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml"));
+        Scene scene = new Scene(root);
+        PatientPageController.stage.setScene(scene);
         }
-        else {
-            selectedPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
-            selectedPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
+        else if (editedPatient != null){
+            editedPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+            editedPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
             user.writeRecord();
 
             Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Edited Successfully", ButtonType.OK, ButtonType.CANCEL);
@@ -130,6 +132,7 @@ public class PatientFormController implements Initializable{
             alertSuccess.setTitle("ALERT");
             alertSuccess.showAndWait();
         }
+        
     }
 
     @Override
@@ -174,5 +177,9 @@ public class PatientFormController implements Initializable{
         this.tfEmergencyName.setText(emergencyName);
         this.tfEmergencyRelationship.setText(emergencyRelationship);
         this.tfEmergencyContactNo.setText(emergencyContactNo);
+    }
+
+    public void setEditedPatient(Patient editedPatient){
+        this.editedPatient = editedPatient;
     }
 }

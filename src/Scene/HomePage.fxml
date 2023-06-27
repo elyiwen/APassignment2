@@ -99,6 +99,6 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Button fx:id="btnRefresh" layoutX="1441.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnRefreshClicked" text="Refresh" />
+      <Button fx:id="btnRefresh" layoutX="1338.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnRefreshClicked" text="Refresh" />
    </children>
 </AnchorPane>

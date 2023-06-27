@@ -1,6 +1,8 @@
 package Controller;
 
 import Patient.Patient;
+import Patient.PatientHistory;
+import code.Clinician;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -9,12 +11,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 
 
 public class PatientHistoryFormController implements Initializable {
@@ -40,20 +45,23 @@ public class PatientHistoryFormController implements Initializable {
     @FXML
     private TextField tfHistoryID;
 
-    private static Patient selectedPatient = PatientPageController.getSelectedPatient();
+    private Patient selectedPatient = PatientPageController.getSelectedPatient();
+    private static Clinician user = MainSceneController.getUser();
 
     @FXML
     void btnSaveClicked(ActionEvent event) throws IOException {
         String wardNumber = tfWardNumber.getText();
-        String movementMeans =tfMovementMeans.getText();
-        String attendingPhysician =tfAttendingPhysician.getText();
-        String majorComplication =tfMajorComplication.getText();
-        String treatmentResults =tfTreatmentResults.getText();
-        String specialComments =tfSpecialComments.getText();
-        String historyID =tfHistoryID.getText();
+        String movementMeans = tfMovementMeans.getText();
+        String attendingPhysician = tfAttendingPhysician.getText();
+        String majorComplication = tfMajorComplication.getText();
+        String treatmentResults = tfTreatmentResults.getText();
+        String specialComments = tfSpecialComments.getText();
+        String historyID = tfHistoryID.getText();
 
-        String folderPath = "PatientHistory";
-        String filename = selectedPatient.getPatientID() + " Patient History.txt";
+        selectedPatient.setPatientEssential(wardNumber, attendingPhysician, specialComments);
+        user.writeRecord();
+        String folderPath = "File";
+        String filename = selectedPatient.getPatientID() + " Patient History.json";
         String filePath = folderPath + File.separator + filename;
         String fileContent = "Ward Number: " + wardNumber + "\n" +
                 "Movement Means: " + movementMeans + "\n" +
@@ -66,17 +74,16 @@ public class PatientHistoryFormController implements Initializable {
         File file = new File(filePath);
         if (file.exists()) {
             try {
-                String existingContent = new String(Files.readAllBytes(file.toPath()));
-                String updatedContent = fileContent + "\n----------Patient History----------\n" + existingContent;
-                Files.write(file.toPath(), updatedContent.getBytes());
+                Files.newBufferedWriter(file.toPath(), StandardOpenOption.TRUNCATE_EXISTING).close();
+                Files.write(file.toPath(), fileContent.getBytes());
             } catch (IOException e) {
-                System.out.println("An error occurred while updating the file: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "An error occurred while updating the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             try (FileWriter patientHistory = new FileWriter(file)) {
                 patientHistory.write(fileContent);
             } catch (IOException e) {
-                System.out.println("An error occurred while writing the file: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "An error occurred while writing the file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -85,6 +92,20 @@ public class PatientHistoryFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        
+        String folderPath = "File";
+        String filename = selectedPatient.getPatientID() + " Patient History.json";
+        String filePath = folderPath + File.separator + filename;
+        File file = new File(filePath);
+        if(file.exists()){
+            PatientHistory.setTextField(selectedPatient, tfWardNumber, tfMovementMeans, tfAttendingPhysician, tfMajorComplication, tfTreatmentResults, tfSpecialComments, tfHistoryID);
+        }else {
+            tfWardNumber.setText("None");
+            tfMovementMeans.setText("None");
+            tfAttendingPhysician.setText("None");
+            tfMajorComplication.setText("None");
+            tfTreatmentResults.setText("None");
+            tfSpecialComments.setText("None");
+            tfHistoryID.setText("None");
+        }
     }
 }
