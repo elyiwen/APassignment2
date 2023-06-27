@@ -5,10 +5,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Interfaces.Events;
-import Interfaces.MedicalHistory;
-import Interfaces.PatientHistory;
-import Interfaces.TreatmentCourse;
 import Patient.Patient;
 import User.Clinician;
 import javafx.collections.FXCollections;

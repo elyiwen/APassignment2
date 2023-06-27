@@ -22,11 +22,6 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-import Interfaces.Events;
-import Interfaces.MedicalHistory;
-import Interfaces.PatientHistory;
-import Interfaces.TreatmentCourse;
-
 public class TreatmentCoursePageController implements Initializable{
 
     @FXML

@@ -20,8 +20,6 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-import Interfaces.PatientHistory;
-
 
 public class PatientHistoryFormController implements Initializable {
 
