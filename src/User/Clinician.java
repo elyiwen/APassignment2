@@ -117,13 +117,11 @@ public abstract class Clinician {
 
     public void deleteCandidate(Candidate candidate){
         int len = candidateArray.size();
-        boolean check = false;
         for (int i = 0; i < len; i++){
             JSONObject selectedCandidate = (JSONObject)candidateArray.get(i);
             JSONObject c = (JSONObject)selectedCandidate.get("Candidate");
             if (c.get("Patient Name").equals(candidate.getPatientName())){
                 candidateArray.remove((selectedCandidate));
-                check = true;
                 break;
             }
         }
@@ -191,8 +189,13 @@ public abstract class Clinician {
         String name = (String)objPatient.get("Patient Name");
         LocalDate doB = LocalDate.parse((String)objPatient.get("Date of Birth"));
         String statusUpdate = (String)objPatient.get("Status Update");
+        String race_ethinicty = (String)objPatient.get("Race_Ethinicity");
+        String gender = (String)objPatient.get("Gender");
+        String prefLanguage = (String)objPatient.get("Preferred Language");
+        String maritalStatus = (String)objPatient.get("Marital Status");
+        String status = (String)objPatient.get("Status");
         Candidate c = new Candidate();
-        c.setCandidateBiodata(name, identityNo, doB, statusUpdate, statusUpdate, identityNo, name, statusUpdate, statusUpdate);
+        c.setCandidateBiodata(name, identityNo, doB, race_ethinicty, gender, prefLanguage, maritalStatus, status, statusUpdate);;
         Candidate.getCandidateList().add(c);
     }
 
