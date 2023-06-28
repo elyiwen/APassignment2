@@ -37,6 +37,7 @@ public class AnnouncementFormController implements Initializable{
         Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Successfully Announced", ButtonType.OK, ButtonType.CANCEL);
         alertSuccess.setHeaderText("NOTIFICATION");
         alertSuccess.setTitle("ALERT");
+        alertSuccess.showAndWait();
     }
 
     @Override

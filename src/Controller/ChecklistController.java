@@ -44,6 +44,7 @@ public class ChecklistController implements Initializable{
         Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Task Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
         alertSuccess.setHeaderText("NOTIFICATION");
         alertSuccess.setTitle("ALERT");
+        alertSuccess.showAndWait();
     }
 
     @Override

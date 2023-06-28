@@ -14,11 +14,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomePageController">
    <children>
-      <VBox layoutX="123.0" layoutY="42.0" prefHeight="400.0" prefWidth="633.0" style="-fx-border-color: #0794A3;">
+      <VBox layoutX="122.0" layoutY="9.0" prefHeight="605.0" prefWidth="633.0" style="-fx-border-color: #0794A3;">
          <children>
             <HBox prefHeight="30.0" prefWidth="638.0" style="-fx-background-color: #0794A3;">
                <children>
-                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="579.0" text="Patient Care &amp; Action Item Checklist" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="547.0" text="Patient Care &amp; Action Item Checklist" textFill="WHITE">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -26,44 +26,30 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteClicked" prefHeight="25.0" prefWidth="85.0" text="Delete" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #0794A3;">
+                  <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteClicked" prefHeight="28.0" prefWidth="142.0" style="-fx-background-color: #0794A3;" text="DELETE" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="REMOVE" size="20" />
+                     </graphic></Button>
+                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="137.0" style="-fx-background-color: #0794A3;" text="ADD" textFill="WHITE">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                      <graphic>
-                        <FontAwesomeIcon fx:id="btnAddCheck" fill="WHITE" glyphName="PLUS" onMouseClicked="#btnAddPatientCheckClicked" size="20" text="" />
+                        <FontAwesomeIcon fx:id="btnAddCheck" fill="WHITE" glyphName="PLUS" onMouseClicked="#btnAddPatientCheckClicked" size="20" />
                      </graphic>
                   </Button>
                </children>
             </HBox>
-            <TableView fx:id="tableCheck" prefHeight="386.0" prefWidth="631.0">
+            <TableView fx:id="tableCheck" prefHeight="580.0" prefWidth="631.0">
               <columns>
-                <TableColumn fx:id="colCheck" prefWidth="75.0" text="Check" />
                 <TableColumn fx:id="colTask" prefWidth="338.0" text="Task" />
-                  <TableColumn fx:id="colUrgency" minWidth="0.0" prefWidth="85.0" text="Urgency" />
-                  <TableColumn fx:id="colDate" prefWidth="132.0" text="Date &amp; Time" />
+                  <TableColumn fx:id="colUrgency" minWidth="0.0" prefWidth="155.20001220703125" text="Urgency" />
+                  <TableColumn fx:id="colDate" prefWidth="136.800048828125" text="Date &amp; Time" />
               </columns>
             </TableView>
          </children>
       </VBox>
-      <ScrollPane layoutX="123.0" layoutY="456.0" prefHeight="192.0" prefWidth="633.0">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="618.0">
-               <children>
-                  <Label alignment="CENTER" layoutY="-2.0" prefHeight="34.0" prefWidth="631.0" style="-fx-background-color: #0794A3;" text="Inbox" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="INBOX" />
-                     </graphic>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
-      <ScrollPane fx:id="todaysAppointmentScrollPane" layoutX="768.0" layoutY="250.0" prefHeight="400.0" prefWidth="625.0">
+      <ScrollPane fx:id="todaysAppointmentScrollPane" layoutX="767.0" layoutY="217.0" prefHeight="400.0" prefWidth="625.0">
          <content>
             <VBox fx:id="todaysAppointmentVBox" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="610.0">
                <children>
@@ -79,26 +65,26 @@
             </VBox>
          </content>
       </ScrollPane>
-      <ScrollPane layoutX="764.0" layoutY="42.0" prefHeight="200.0" prefWidth="633.0">
+      <ScrollPane layoutX="763.0" layoutY="9.0" prefHeight="200.0" prefWidth="633.0">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="509.0" prefWidth="618.0">
                <children>
-                  <Label alignment="CENTER" layoutY="-2.0" prefHeight="34.0" prefWidth="631.0" style="-fx-background-color: #0794A3;" text="Notice Board and Announcements" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="-2.0" prefHeight="28.0" prefWidth="631.0" style="-fx-background-color: #0794A3;" text="Notice Board and Announcements" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tableAnnouncement" layoutY="32.0" prefHeight="168.0" prefWidth="625.0">
+                  <TableView fx:id="tableAnnouncement" layoutY="32.0" prefHeight="483.0" prefWidth="626.0">
                     <columns>
                       <TableColumn fx:id="colAnnouncements" prefWidth="507.0" text="Announcement" />
                       <TableColumn fx:id="colAnnounceDate" prefWidth="117.0" text="Date" />
                     </columns>
                   </TableView>
-                  <FontAwesomeIcon fx:id="btnAnnounceAdd" fill="WHITE" glyphName="PLUS" layoutX="588.0" layoutY="22.0" onMouseClicked="#btnAnnouncementAddClicked" size="20" text="" />
+                  <FontAwesomeIcon fx:id="btnAnnounceAdd" fill="WHITE" glyphName="PLUS" layoutX="588.0" layoutY="19.0" onMouseClicked="#btnAnnouncementAddClicked" size="20" text="" />
                </children>
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Button fx:id="btnRefresh" layoutX="1338.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnRefreshClicked" text="Refresh" />
+      <Button fx:id="btnRefresh" layoutX="1337.0" layoutY="-19.0" mnemonicParsing="false" onAction="#btnRefreshClicked" style="-fx-background-color: #0794A3;" text="REFRESH" textFill="WHITE" />
    </children>
 </AnchorPane>
