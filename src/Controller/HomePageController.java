@@ -56,9 +56,6 @@ public class HomePageController implements Initializable {
     private TableView<Checklist> tableCheck;
 
     @FXML
-    private TableColumn<Checklist, CheckBox> colCheck;
-
-    @FXML
     private TableColumn<Checklist, String> colDate;
 
     @FXML
@@ -172,7 +169,6 @@ public class HomePageController implements Initializable {
         colTask.setCellValueFactory(new PropertyValueFactory<Checklist, String>("Task"));
         colDate.setCellValueFactory(new PropertyValueFactory<Checklist, String>("Date"));
         colUrgency.setCellValueFactory(new PropertyValueFactory<Checklist, String>("Urgency"));
-        colCheck.setCellValueFactory(new PropertyValueFactory<Checklist, CheckBox>("Checkbox"));
 
         patientCheckList.setAll(Checklist.getChecklistList());
         tableCheck.setItems(patientCheckList);

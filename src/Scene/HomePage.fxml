@@ -42,10 +42,9 @@
             </HBox>
             <TableView fx:id="tableCheck" prefHeight="580.0" prefWidth="631.0">
               <columns>
-                <TableColumn fx:id="colCheck" prefWidth="75.0" text="Check" />
                 <TableColumn fx:id="colTask" prefWidth="338.0" text="Task" />
-                  <TableColumn fx:id="colUrgency" minWidth="0.0" prefWidth="85.0" text="Urgency" />
-                  <TableColumn fx:id="colDate" prefWidth="132.0" text="Date &amp; Time" />
+                  <TableColumn fx:id="colUrgency" minWidth="0.0" prefWidth="155.20001220703125" text="Urgency" />
+                  <TableColumn fx:id="colDate" prefWidth="136.800048828125" text="Date &amp; Time" />
               </columns>
             </TableView>
          </children>

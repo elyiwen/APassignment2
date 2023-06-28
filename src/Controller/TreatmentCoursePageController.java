@@ -1,6 +1,5 @@
 package Controller;
 
-import Patient.Candidate;
 import Patient.Patient;
 import User.Clinician;
 
