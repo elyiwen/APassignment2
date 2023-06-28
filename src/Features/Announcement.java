@@ -59,7 +59,7 @@ public class Announcement {
         oos.close();
     }
 
-    public void readFromFile() throws FileNotFoundException, IOException, ClassNotFoundException {
+    public static void readFromFile() throws FileNotFoundException, IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream(announcementListFile);
         ObjectInputStream ois = new ObjectInputStream(fis);
         while (fis.available() > 0) {
