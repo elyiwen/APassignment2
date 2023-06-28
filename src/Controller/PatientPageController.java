@@ -109,7 +109,7 @@ public class PatientPageController implements Initializable{
             try{
                 selectedPatient = tableView.getSelectionModel().getSelectedItem();
                 tableView.getItems().remove(selectedPatient);
-                if (((Candidate)selectedPatient).getStatus().equals("Candidate")){
+                if (selectedPatient instanceof Candidate){
                     user.deleteCandidate((Candidate)selectedPatient);
                     Candidate.getCandidateList().remove((Candidate)selectedPatient);
                     user.writeCandidateRecord();

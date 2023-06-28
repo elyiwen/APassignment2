@@ -49,9 +49,9 @@ public class Patient implements TreatmentCourse, Encounters, MedicalHistory, Pat
     protected String emergencyRelationship;
 
     //Essential
-    private String wardNumber;
-    private String attendingPhysician;
-    private String comment;
+    protected String wardNumber;
+    protected String attendingPhysician;
+    protected String comment;
 
     //Patient List
     private static ArrayList<Patient> patientList = new ArrayList<>();

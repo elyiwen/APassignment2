@@ -112,61 +112,86 @@ public class PatientFormController implements Initializable{
         String emergencyContactNo = tfEmergencyContactNo.getText();
         String statusUpdate = tfCandidateRemark.getText();
 
-        if (editedPatient == null){
-            if (status.equals("Candidate")){
-                Candidate newCandidate = new Candidate();
-                newCandidate.setCandidateBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status, statusUpdate);
-                user.addCandidate(newCandidate);
-                user.addCandidateList(newCandidate);
-                user.writeCandidateRecord();
-            }
-
-            else{
-                Patient newPatient = new Patient();
-                newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
-                newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
-                newPatient.setPatientEssential("None", "None", "None");
-                user.addPatient(newPatient);
-                user.writeRecord();
-
-                Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
-                alertSuccess.setHeaderText("NOTIFICATION");
-                alertSuccess.setTitle("ALERT");
-                alertSuccess.showAndWait();
-
-                Parent root = FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml"));
-                Scene scene = new Scene(root);
-                PatientPageController.stage.setScene(scene);
-            }
-        }
-
-        else if (editedPatient != null){
-
-            if (editedPatient.getStatus().equals("Candidate")){
-                Candidate candidate = (Candidate)editedPatient;
-                user.deleteCandidate(candidate);
-                candidate.setCandidateBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status, statusUpdate);
-                user.addCandidate(candidate);
-                user.writeCandidateRecord();
-            }
-            else{
-                editedPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
-                editedPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
-                user.writeRecord();
-            }
-            
-            Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Edited Successfully", ButtonType.OK, ButtonType.CANCEL);
-            alertSuccess.setHeaderText("NOTIFICATION");
-            alertSuccess.setTitle("ALERT");
-            alertSuccess.showAndWait();
-        }     
-        
-        else if (patientName.isEmpty() && identityNo.isEmpty() && doB == null){
+        if (tfPatientName.getText().isEmpty() || tfIdentityNo.getText().isEmpty() || dpDob.getValue() == null){
             Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Fill In Required Section", ButtonType.OK, ButtonType.CANCEL);
             alertError.setHeaderText("NOTIFICATION");
             alertError.setTitle("ALERT");
             alertError.showAndWait();
         }
+
+        else{
+            if (editedPatient == null){
+                if (status.equals("Candidate")){
+                    Candidate newCandidate = new Candidate();
+                    newCandidate.setCandidateBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status, statusUpdate);
+                    user.addCandidate(newCandidate);
+                    user.addCandidateList(newCandidate);
+                    user.writeCandidateRecord();
+
+                    Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Candidate Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
+                    alertSuccess.setHeaderText("NOTIFICATION");
+                    alertSuccess.setTitle("ALERT");
+                    alertSuccess.showAndWait();
+
+                    Parent root = FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml"));
+                    Scene scene = new Scene(root);
+                    PatientPageController.stage.setScene(scene);
+                }
+
+                else{
+                    Patient newPatient = new Patient();
+                    newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+                    newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
+                    newPatient.setPatientEssential("None", "None", "None");
+                    user.addPatient(newPatient);
+                    user.writeRecord();
+
+                    Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Recorded Successfully", ButtonType.OK, ButtonType.CANCEL);
+                    alertSuccess.setHeaderText("NOTIFICATION");
+                    alertSuccess.setTitle("ALERT");
+                    alertSuccess.showAndWait();
+
+                    Parent root = FXMLLoader.load(getClass().getResource("/Scene/PatientForm.fxml"));
+                    Scene scene = new Scene(root);
+                    PatientPageController.stage.setScene(scene);
+                }
+            }
+
+            else if (editedPatient != null){
+
+                if (editedPatient.getStatus().equals("Candidate") && chbStatus.getValue().equals("Candidate")){
+                    Candidate candidate = (Candidate)editedPatient;
+                    user.deleteCandidate(candidate);
+                    candidate.setCandidateBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status, statusUpdate);
+                    user.addCandidate(candidate);
+                    user.writeCandidateRecord();
+                }
+                else if (editedPatient.getStatus().equals("Candidate") && !(chbStatus.getValue().equals("Candidate"))){
+                        user.deleteCandidate((Candidate)editedPatient);
+                        System.out.println(Candidate.getCandidateList());
+                        Candidate.getCandidateList().remove((Candidate)editedPatient);
+                        user.writeCandidateRecord();
+                        System.out.println(Candidate.getCandidateList());
+
+                        Patient newPatient = new Patient();
+                        newPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+                        newPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
+                        user.addPatient(newPatient);
+                        user.writeRecord();
+                        System.out.println(Patient.getPatientList());
+                    }
+                else{
+                    editedPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+                    editedPatient.setPatientContactInfo(address, country, state, city, zipCode, email, contactNo, emergencyContactNo, emergencyName, emergencyRelationship);
+                    user.writeRecord();
+                }
+                
+                Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Patient Edited Successfully", ButtonType.OK, ButtonType.CANCEL);
+                alertSuccess.setHeaderText("NOTIFICATION");
+                alertSuccess.setTitle("ALERT");
+                alertSuccess.showAndWait();
+            }   
+        }  
     }
 
     @Override

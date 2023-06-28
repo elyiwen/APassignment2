@@ -30,9 +30,21 @@ public class Candidate extends Patient{
         this.maritalStatus = maritalStatus;
         this.status = status;
         this.statusUpdate = statusUpdate;
+        this.wardNumber = "-";
+        this.attendingPhysician = "-";
+        this.comment = this.statusUpdate;
         this.patientID = generateID();
         this.age = calAge(doB);
     }
+
+    public String generateID(){
+        String idFirst = "C";
+        char[] patientNameChar = getPatientName().toCharArray();
+        String idMid = patientNameChar[0] + "-" + patientNameChar[1];
+        String idLast = getPatientIdentityNo().substring(getPatientIdentityNo().length() - 4);
+        String patientID = idFirst + idMid.toUpperCase() + idLast;
+        return patientID;
+    };
     
     //Getters
     public static File getCandidateFile(){
