@@ -1,0 +1,6 @@
+-----Encounter 2-----
+Encounter: General Surgery, Ward SC
+Date: 2023-06-09
+-----Encounter 1-----
+Encounter: Emergency, Observation
+Date: 2023-06-13

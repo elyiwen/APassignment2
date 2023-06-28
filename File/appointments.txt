@@ -1,0 +1,16 @@
+Date: 2023-06-28
+Name: Meeting
+ID: doctor
+Time: 11:00 AM
+Date: 2023-07-04
+Name: Appointment
+ID: doctor
+Time: 5:00 PM
+Date: 2023-07-07
+Name: Lab Result
+ID: pharmacist
+Time: 10:00 AM
+Date: 2023-06-28
+Name: X-Ray exam of forearm
+ID: doctor
+Time: 2:00 PM

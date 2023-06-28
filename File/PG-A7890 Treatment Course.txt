@@ -1,0 +1,19 @@
+-----Treatment Course 1-----
+Treatment Course ID: TC8765
+Starting Date: 2023-04-04
+Ending Date: 2023-08-09
+Disease: Ischemic Stroke
+Date of Diagnosis: 2023-03-30
+Name of Analysis: Noncontrast CT scan for brain
+Content Of Analysis: Hypodensity
+Date of Analysis: 2023-05-22
+Name of Procedure: Therapeutic 
+Content Of Procedure: Administer recombinant tissue plasminogen activator through IV in the arm
+Time: 23:43
+Date of Procedure: 2023-05-04
+Name of Medication: Recombinant tissue plasminogen activator (r-tPA)
+Dosage: 0.9 mg/kg (max 90mg)
+Comment: Intravenous
+Frequency: once
+C,DC,WH: DC
+Started Date: 2023-06-12

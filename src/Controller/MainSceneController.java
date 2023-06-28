@@ -3,6 +3,9 @@ package Controller;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+import Features.Announcement;
+import Features.Checklist;
+import Patient.Candidate;
 import Patient.Patient;
 import User.Clinician;
 
@@ -66,6 +69,9 @@ public class MainSceneController implements Initializable{
 
                 // Load Login Page
                 Patient.getPatientList().clear();
+                Candidate.getCandidateList().clear();
+                Checklist.getChecklistList().clear();
+                Announcement.getAnnouncementList().clear();
                 Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 Parent root = FXMLLoader.load(getClass().getResource("/Scene/LoginScene.fxml"));
                 Scene loginScene = new Scene(root);

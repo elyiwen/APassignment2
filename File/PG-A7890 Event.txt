@@ -1,0 +1,8 @@
+-----Event 2-----
+Event: Neurology: Condition Stablised
+Time: 00:47
+Date: 2023-06-05
+-----Event 1-----
+Event: Emergency: Entered ER
+Time: 08:00
+Date: 2023-06-01

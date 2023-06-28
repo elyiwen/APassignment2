@@ -1,0 +1,30 @@
+[
+    {
+        "Candidate": {
+            "Status": "Candidate",
+            "Identity No": "741212086678",
+            "Patient ID": "CS-I6678",
+            "Race_Ethinicty": "None",
+            "Patient Name": "Simon Wrensky",
+            "Status Update": "Awaiting Triage Result",
+            "Preferred Language": "English",
+            "Date of Birth": "2001-01-09",
+            "Gender": "Male",
+            "Marital Status": "Single"
+        }
+    },
+    {
+        "Candidate": {
+            "Status": "Candidate",
+            "Identity No": "123456789012",
+            "Patient ID": "CE-X9012",
+            "Race_Ethinicty": "None",
+            "Patient Name": "Example Candidate",
+            "Status Update": "-",
+            "Preferred Language": "None",
+            "Date of Birth": "2003-06-09",
+            "Gender": "None",
+            "Marital Status": "None"
+        }
+    }
+]

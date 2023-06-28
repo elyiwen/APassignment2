@@ -16,7 +16,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 public class AnnouncementFormController implements Initializable{
-        @FXML
+    @FXML
     private Button btnAddAnnouncement;
 
     @FXML
