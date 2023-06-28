@@ -1,0 +1,30 @@
+[
+    {
+        "Candidate": {
+            "Status": "Candidate",
+            "Identity No": "098765432112",
+            "Patient ID": "PC-A2112",
+            "Patient Name": "Candidate2",
+            "Status Update": "Body Checkup",
+            "Race\/Ethinicty": "None",
+            "Preferred Language": "None",
+            "Date of Birth": "2022-06-15",
+            "Gender": "None",
+            "Marital Status": "None"
+        }
+    },
+    {
+        "Candidate": {
+            "Status": "Candidate",
+            "Identity No": "030916070269",
+            "Patient ID": "PT-A0269",
+            "Patient Name": "Tay Yi Aun",
+            "Status Update": "",
+            "Race\/Ethinicty": "None",
+            "Preferred Language": "None",
+            "Date of Birth": "2021-06-01",
+            "Gender": "None",
+            "Marital Status": "None"
+        }
+    }
+]

@@ -5,6 +5,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import org.json.simple.parser.ParseException;
+
 import Patient.Candidate;
 import Patient.Patient;
 import User.Clinician;
@@ -81,12 +83,15 @@ public class PatientFormController implements Initializable{
     @FXML
     private TextField tfZip;
 
+    @FXML
+    private TextField tfCandidateRemark;
+
     private Clinician user = LoginSceneController.getUser();
 
     private Patient editedPatient;
 
     @FXML
-    void btnSaveClicked(ActionEvent event) throws IOException {
+    void btnSaveClicked(ActionEvent event) throws IOException, ClassNotFoundException, ParseException {
         String patientName = tfPatientName.getText();
         String identityNo = tfIdentityNo.getText();
         String prefLangauge = chbPreferredLanguage.getValue();
@@ -105,13 +110,14 @@ public class PatientFormController implements Initializable{
         String emergencyName = tfEmergencyName.getText();
         String emergencyRelationship = tfEmergencyRelationship.getText();
         String emergencyContactNo = tfEmergencyContactNo.getText();
+        String statusUpdate = tfCandidateRemark.getText();
 
         if (editedPatient == null){
-        
             if (status.equals("Candidate")){
                 Candidate newCandidate = new Candidate();
-                newCandidate.setCandidateBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+                newCandidate.setCandidateBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status, statusUpdate);
                 user.addCandidate(newCandidate);
+                user.addCandidateList(newCandidate);
                 user.writeCandidateRecord();
             }
 
@@ -135,9 +141,13 @@ public class PatientFormController implements Initializable{
         }
 
         else if (editedPatient != null){
-            if (status.equals("Candidate")){
-                Candidate editedCandidate = (Candidate)editedPatient;
-                editedCandidate.setCandidateBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
+
+            if (editedPatient.getStatus().equals("Candidate")){
+                Candidate candidate = (Candidate)editedPatient;
+                user.deleteCandidate(candidate);
+                candidate.setCandidateBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status, statusUpdate);
+                user.addCandidate(candidate);
+                user.writeCandidateRecord();
             }
             else{
                 editedPatient.setPatientBiodata(patientName, identityNo, doB, race_ethnicity, gender, prefLangauge, maritalStatus, status);
@@ -149,7 +159,14 @@ public class PatientFormController implements Initializable{
             alertSuccess.setHeaderText("NOTIFICATION");
             alertSuccess.setTitle("ALERT");
             alertSuccess.showAndWait();
-        }        
+        }     
+        
+        else if (patientName.isEmpty() && identityNo.isEmpty() && doB == null){
+            Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Fill In Required Section", ButtonType.OK, ButtonType.CANCEL);
+            alertError.setHeaderText("NOTIFICATION");
+            alertError.setTitle("ALERT");
+            alertError.showAndWait();
+        }
     }
 
     @Override

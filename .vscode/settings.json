@@ -10,6 +10,10 @@
         "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\javafx.swing.jar",
         "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\javafx.web.jar",
         "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\javafx-swt.jar",
-        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\json-simple-1.1.jar"
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\json-simple-1.1.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\com.fasterxml.jackson.annotations.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\com.fasterxml.jackson.databind.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\jackson-core-2.2.3.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\gson-2.2.2.jar"
     ]
 }

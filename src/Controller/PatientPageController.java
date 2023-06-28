@@ -1,10 +1,12 @@
 package Controller;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.json.simple.parser.ParseException;
+
+import Patient.Candidate;
 import Patient.Patient;
 import User.Clinician;
 import javafx.collections.FXCollections;
@@ -96,7 +98,7 @@ public class PatientPageController implements Initializable{
     }
 
     @FXML
-    void btnDeleteClicked(ActionEvent event) throws IOException {
+    void btnDeleteClicked(ActionEvent event) throws IOException, ClassNotFoundException, ParseException {
         if (user.getAccountType().equals("Pharmacist")){
             Alert alertError = new Alert(AlertType.CONFIRMATION, "No Privilege To Delete Patient", ButtonType.OK, ButtonType.CANCEL);
             alertError.setHeaderText("NOTIFICATION");
@@ -107,14 +109,21 @@ public class PatientPageController implements Initializable{
             try{
                 selectedPatient = tableView.getSelectionModel().getSelectedItem();
                 tableView.getItems().remove(selectedPatient);
-                user.deletePatient(selectedPatient);
-                user.writeRecord();
+                if (((Candidate)selectedPatient).getStatus().equals("Candidate")){
+                    user.deleteCandidate((Candidate)selectedPatient);
+                    Candidate.getCandidateList().remove((Candidate)selectedPatient);
+                    user.writeCandidateRecord();
+                }
 
-                selectedPatient.deletePatientHistoryFile();
-                selectedPatient.deleteMedicalHistoryFile();
-                selectedPatient.deleteEncountersFile();
-                selectedPatient.deleteEventFile();
-                selectedPatient.deleteTreatmentCourseFile();
+                else{
+                    user.deletePatient(selectedPatient);
+                    user.writeRecord();
+                    selectedPatient.deletePatientHistoryFile();
+                    selectedPatient.deleteMedicalHistoryFile();
+                    selectedPatient.deleteEncountersFile();
+                    selectedPatient.deleteEventFile();
+                    selectedPatient.deleteTreatmentCourseFile();
+                }
 
             } catch (NullPointerException npe){
                 Alert alertError = new Alert(AlertType.CONFIRMATION, "Please Select A Patient", ButtonType.OK, ButtonType.CANCEL);
@@ -128,6 +137,7 @@ public class PatientPageController implements Initializable{
     @FXML
     void btnRefreshClicked(ActionEvent event) {
         tbPatientList.setAll(Patient.getPatientList());
+        tbPatientList.addAll(Candidate.getCandidateList());     
         tableView.setItems(tbPatientList);
     }
 
@@ -190,7 +200,8 @@ public class PatientPageController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tbPatientList = tableView.getItems();
-        tbPatientList.setAll(Patient.getPatientList());
+        tbPatientList.setAll(Patient.getPatientList());   
+        tbPatientList.addAll(Candidate.getCandidateList());     
         tableView.setItems(tbPatientList);
         tcPatientID.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientID"));
         tcPatientName.setCellValueFactory(new PropertyValueFactory<Patient, String>("patientName"));

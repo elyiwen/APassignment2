@@ -3,14 +3,18 @@ package User;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import Controller.PatientFormController;
 import Patient.Candidate;
@@ -81,13 +85,25 @@ public abstract class Clinician {
     }
 
     public void addCandidate(Candidate candidate){
+        JSONObject objCandidateData = new JSONObject();
         JSONObject objCandidate = new JSONObject();
 
-        objCandidate.put("Patient ID: ", candidate.getPatientID());
-        objCandidate.put("Patient Name", candidate.getPatientName());
-        objCandidate.put("Status", candidate.getStatus());
+        objCandidateData.put("Patient ID", candidate.getPatientID());
+        objCandidateData.put("Patient Name", candidate.getPatientName());
+        objCandidateData.put("Date of Birth", candidate.getPatientDoB().toString());
+        objCandidateData.put("Race_Ethinicty", candidate.getRace_Ethinicity());
+        objCandidateData.put("Gender", candidate.getGender());
+        objCandidateData.put("Preferred Language", candidate.getPrefLanguage());
+        objCandidateData.put("Marital Status", candidate.getMaritalStatus());
+        objCandidateData.put("Identity No", candidate.getPatientIdentityNo());
+        objCandidateData.put("Status", candidate.getStatus());
+        objCandidateData.put("Status Update", candidate.getStatusUpdate());
+        objCandidate.put("Candidate", objCandidateData);
         candidateArray.add(objCandidate);
-        System.out.println("Candidate Added");
+    }
+
+    public void addCandidateList(Candidate candidate){
+        Candidate.getCandidateList().add(candidate);
     }
 
     public void deletePatient(Patient selectedPatient) throws IOException{
@@ -104,14 +120,12 @@ public abstract class Clinician {
         boolean check = false;
         for (int i = 0; i < len; i++){
             JSONObject selectedCandidate = (JSONObject)candidateArray.get(i);
-            if (selectedCandidate.get("Patient Name").equals(candidate.getPatientName())){
-                candidateArray.remove(selectedCandidate);
+            JSONObject c = (JSONObject)selectedCandidate.get("Candidate");
+            if (c.get("Patient Name").equals(candidate.getPatientName())){
+                candidateArray.remove((selectedCandidate));
                 check = true;
                 break;
             }
-        }
-        if (check == true){
-            System.out.println("Candidate Deleted");
         }
     }
 
@@ -144,24 +158,42 @@ public abstract class Clinician {
     }
 
     public void writeCandidateRecord() throws IOException{
-        FileOutputStream fos = new FileOutputStream(candidateFile);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(candidateArray);
-        oos.close();
+        FileWriter fw = new FileWriter(candidateFile);
+        fw.write(candidateArray.toJSONString());
+        
+        fw.flush();
+        fw.close();
     }
 
     public void readRecord() throws IOException, ClassNotFoundException{
         FileInputStream fis = new FileInputStream(patientFile);
         ObjectInputStream ois = new ObjectInputStream(fis);
-        while(fis.available() > 0){
-            Candidate c = (Candidate)ois.readObject();
-            candidateArray.add(c);
+        while (fis.available() > 0){
+            Patient p = (Patient)ois.readObject();
+            patientList.add(p);
         }
         ois.close();
     }
 
-    public void readCandidateRecord() throws IOException, ClassNotFoundException{
-        
+    public void readCandidateRecord() throws IOException, ClassNotFoundException, ParseException{
+        FileReader fr = new FileReader(candidateFile);
+        JSONParser parser = new JSONParser();
+        Object obj = parser.parse(fr);
+        candidateArray = (JSONArray)obj;
+        for (Object candidate : candidateArray){
+            parseObjCandidate((JSONObject) candidate);
+        }
+    }
+
+    public static void parseObjCandidate(JSONObject candidate) throws IOException{
+        JSONObject objPatient = (JSONObject)candidate.get("Candidate");
+        String identityNo = (String)objPatient.get("Identity No");
+        String name = (String)objPatient.get("Patient Name");
+        LocalDate doB = LocalDate.parse((String)objPatient.get("Date of Birth"));
+        String statusUpdate = (String)objPatient.get("Status Update");
+        Candidate c = new Candidate();
+        c.setCandidateBiodata(name, identityNo, doB, statusUpdate, statusUpdate, identityNo, name, statusUpdate, statusUpdate);
+        Candidate.getCandidateList().add(c);
     }
 
     //Setter

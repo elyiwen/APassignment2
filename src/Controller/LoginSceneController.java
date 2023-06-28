@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.json.simple.parser.ParseException;
+
 import User.Clinician;
 import User.Doctor;
 import User.Nurse;
@@ -42,7 +44,7 @@ public class LoginSceneController implements Initializable{
     private static Clinician user;
 
     @FXML
-    void btnLogInClicked(ActionEvent event){
+    void btnLogInClicked(ActionEvent event) throws ParseException{
         
         try{
 
@@ -92,12 +94,12 @@ public class LoginSceneController implements Initializable{
             }
         }
 
-        catch (NullPointerException npe){
-            Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Please Select Account Type", ButtonType.OK);
-            alertSuccess.setHeaderText("NOTIFICATION");
-            alertSuccess.setTitle("ALERT");
-            alertSuccess.showAndWait();
-        }
+        // catch (NullPointerException npe){
+        //     Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "Please Select Account Type", ButtonType.OK);
+        //     alertSuccess.setHeaderText("NOTIFICATION");
+        //     alertSuccess.setTitle("ALERT");
+        //     alertSuccess.showAndWait();
+        // }
         catch (IOException ioe){
             Alert alertSuccess = new Alert(AlertType.CONFIRMATION, "No Patient File Recorded", ButtonType.OK);
             alertSuccess.setHeaderText("NOTIFICATION");
