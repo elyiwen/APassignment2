@@ -33,7 +33,7 @@ public class EncounterFormController implements Initializable {
     private Patient selectedPatient = PatientPageController.getSelectedPatient();
 
     @FXML
-    void btnSaveClicked(ActionEvent event) throws IOException {
+    void btnSaveClicked(ActionEvent event) throws IOException {    //A method for creating a file to record encounters
         String encounter = tfEncounter.getText();
         String date = null;
 
@@ -85,7 +85,7 @@ public class EncounterFormController implements Initializable {
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
-    private int countEncounterOccurrences(String content) {
+    private int countEncounterOccurrences(String content) {  //
         int count = 0;
         int index = content.indexOf("-----Encounter");
         while (index != -1) {

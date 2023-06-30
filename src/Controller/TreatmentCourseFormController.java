@@ -69,7 +69,7 @@ public class TreatmentCourseFormController implements Initializable {
     private ComboBox<String> typeComboBox;
 
     @FXML
-    void btnSaveClicked(ActionEvent event) throws IOException {
+    void btnSaveClicked(ActionEvent event) throws IOException { //A method for creating a file to record treatment course
         String treatmentID = tfTreatmentID.getText();
         String startingDate = null;
         String endingDate = null;

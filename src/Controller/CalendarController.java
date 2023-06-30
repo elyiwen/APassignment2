@@ -41,6 +41,7 @@ public class CalendarController implements Initializable {
         drawCalendar();
     }
 
+    //Event handler for moving back one month
     @FXML
     void backOneMonth(ActionEvent event) {
         dateFocus = dateFocus.minusMonths(1);
@@ -48,6 +49,7 @@ public class CalendarController implements Initializable {
         drawCalendar();
     }
 
+    //Event handler for moving forward one month
     @FXML
     void forwardOneMonth(ActionEvent event) {
         dateFocus = dateFocus.plusMonths(1);
@@ -55,12 +57,14 @@ public class CalendarController implements Initializable {
         drawCalendar();
     }
 
+    //Refreshes the calendar view
     @FXML
     public void refreshCalendar() {
         calendar.getChildren().clear();
         drawCalendar();
     }
 
+    //Draws the calendar grid and populates it with dates and appointments
     private void drawCalendar() {
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));
@@ -79,6 +83,7 @@ public class CalendarController implements Initializable {
         }
         int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1, 0, 0, 0, 0, dateFocus.getZone()).getDayOfWeek().getValue();
 
+        //Iterate over each cell in the calendar grid
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 StackPane stackPane = new StackPane();
@@ -116,6 +121,7 @@ public class CalendarController implements Initializable {
         }
     }
 
+    //Creates a calendar activity representation within a cell
     private void createCalendarActivity(List<String> appointments, double rectangleHeight, double rectangleWidth, StackPane stackPane) {
         VBox calendarActivityBox = new VBox();
 
@@ -168,6 +174,7 @@ public class CalendarController implements Initializable {
     }
 
 
+    //Retrieves the appointments for the specified month
     private Map<Integer, List<String>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
         Map<Integer, List<String>> calendarActivityMap = new HashMap<>();
         int year = dateFocus.getYear();
@@ -196,7 +203,7 @@ public class CalendarController implements Initializable {
                                 appointmentDetails += line.substring(4) + "\n";
                             } else if (line.startsWith("Time: ")) {
                                 appointmentDetails += line.substring(6) + "\n";
-                                break; // End of appointment details
+                                break; //End of appointment details
                             }
                         }
 

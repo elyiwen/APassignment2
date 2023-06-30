@@ -48,7 +48,7 @@ public class PatientHistoryFormController implements Initializable {
     private Clinician user = LoginSceneController.getUser();
 
     @FXML
-    void btnSaveClicked(ActionEvent event) throws IOException {
+    void btnSaveClicked(ActionEvent event) throws IOException {  //A method for creating a file to record patient history
         String wardNumber = tfWardNumber.getText();
         String movementMeans = tfMovementMeans.getText();
         String attendingPhysician = tfAttendingPhysician.getText();
@@ -90,7 +90,7 @@ public class PatientHistoryFormController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {  //Set the texts to none if the patient history file is not exist
         String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Patient History.txt";
         String filePath = folderPath + File.separator + filename;

@@ -48,7 +48,7 @@ public class MedicalHistoryFormController implements Initializable {
 
 
     @FXML
-    void btnSaveClicked(ActionEvent event) throws IOException {
+    void btnSaveClicked(ActionEvent event) throws IOException { //A method for creating a file to record medical history
         String familyHistory = tfFamilyHistory.getText();
         String allergies = tfAllergies.getText();
         String smoking = tfSmoking.getText();
@@ -86,7 +86,7 @@ public class MedicalHistoryFormController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {  //Set the texts to none if the medical history file is not exist
         String folderPath = "File";
         String filename = selectedPatient.getPatientID() + " Medical History.txt";
         String filePath = folderPath + File.separator + filename;

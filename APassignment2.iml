@@ -82,7 +82,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$PATH_TO_FX$/fontawesomefx-8.2.jar!/" />
+          <root url="jar://C:/Program Files/Java/fontawesomefx-8.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -91,7 +91,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$PATH_TO_FX$/json-simple-1.1.jar!/" />
+          <root url="jar://C:/Program Files/Java/json-simple-1.1.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

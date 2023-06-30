@@ -28,7 +28,7 @@ public class AppointmentController implements Initializable {
     private ComboBox<String> timeComboBox;
 
     @FXML
-    public void makeAppointment() {
+    public void makeAppointment() {  //A method for scheduling an appointment for the exact day
         LocalDate selectedDate = datePicker.getValue();
         String name = nameTextField.getText();
         String id = idTextField.getText();
@@ -55,7 +55,7 @@ public class AppointmentController implements Initializable {
     }
 
     @FXML
-    public void editAppointments() {
+    public void editAppointments() {  //Open the txt file to edit the appointment
         try {
             Desktop.getDesktop().edit(new File("File/appointments.txt"));
         } catch (IOException e) {

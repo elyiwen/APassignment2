@@ -34,7 +34,7 @@ public class EventFormController implements Initializable {
     private Patient selectedPatient = PatientPageController.getSelectedPatient();
 
     @FXML
-    void btnSaveClicked(ActionEvent event) throws IOException {
+    void btnSaveClicked(ActionEvent event) throws IOException { //A method for creating a file to record event
         String events = tfEvent.getText();
         String time = tfTime.getText();
         String date = null;
